@@ -1,0 +1,342 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Georgia;}{\f1\fnil\fcharset0 Times New Roman;}{\f2\fnil\fcharset161 Times New Roman;}{\f3\fnil Times New Roman;}{\f4\fnil\fcharset1 Cambria Math;}}
+{\*\generator Riched20 10.0.17763}{\*\mmathPr\mmathFont4\mwrapIndent1440 }\viewkind4\uc1 
+\pard\tx440\tx880\tx1320\tx1760\tx2200\tx2640\tx3080\tx3520\tx3960\tx4400\tx4840\tx5280\tx5720\tx6160\tx6600\tx7040\tx7480\tx7920\tx8360\tx8800\tx9240\f0\fs22 Principles of Data Mining\par
+Professor Kinsman\par
+CSCI-420-01\par
+December 2, 2019 \par
+\par
+Professor:  Greetings.  Welcome.  It says according to the clock it's past time to start.  Am I right?  \par
+\par
+Student:  No it's 3 minutes.  \par
+\par
+Professor:  3 minutes to go?  OK, well here, struggle with this for 2 minutes.  I just want you to see these questions before you walk into a final exam.  \par
+\par
+There's more on the back.  Some day I need to get a watch that I actually wear.  \par
+\par
+Student:  You have a watch you don't wear?  \par
+\par
+Professor:  I have 2.  I have one for daylight savings time and one for Eastern Standard Time.  I keep taking them off and losing them because they're not really that comfortable.  \par
+\par
+OK we don't have time for these shenanigans.  What's the answer to the first one?  What's the diagram if I form all the regions around a particular data point?  I get the diagrams around the one nearest neighbor.  The lines are the decision boundaries.  If you're within that decision boundary you're classified the same as that one nearest neighbor.  Remember that?  That's a Voranoi diagram.  [sp?]  \par
+\par
+I don't know how to spell it better than anybody else.  \par
+\par
+These diagrams are fun to look at and used all over computer science.  All kinds of ways.  I plot the distance between those two and halfway here . . . you take any two data points -- like this one here, halfway between would be this here -- you just keep bisecting space between two data points until polygons show up.  What's the second one?  Give me one.  \par
+\par
+Student:  You have to have lots of dots.  \par
+\par
+Professor:  Lots of points.  Lots of data points.  Big data.  Slow down knn because you have to check a lot of data points.  OK?  What would make that even worse?  \par
+\par
+Student:  High density.  \par
+\par
+Professor:  No.  Something about the points that makes life even worse.  Blake?  \par
+\par
+Student:  High dimensional data.  \par
+\par
+Professor:  Each data point has a lot of attributes.  OK?  That means you have to make a lot of differences.  You have to do a lot of difference calculations.  How do we make it -- there has to be a way to make it faster!  Onkar?  How can I make that faster?  \par
+\par
+Student:  Reduce the dimensions.  \par
+\par
+Professor:  I could.  But I could use PCA -- reduce the dimensionality.  Sure.  I can try that.  What's a second way?  \par
+\par
+Student:  [Can't hear/can't understand.]  \par
+\par
+Professor:  I'm not understanding that.  Can you give me a second way to make it faster?  \par
+\par
+Student:  Remove data in the areas that are in uniform regions.  \par
+\par
+Professor:  Yes.  Data that's not decision making data.  Data that's far from boundaries.  I can delete that and build a classifier from then on.  Then there's another trick they use to make \i\f1 k\i0\f0  nearest neighbors faster.  Can you give me a guess, Parker?  \par
+\par
+KDBalls or KD Trees are essentially broken decision points that get us in the vicinity and then you check the neighbors.  OK.  Got to read upside down here . . . oh!  How do we pick the best value of \i\f1 k\i0\f0 ?  It could be one, two, or five nearest neighbor, or even four nearest neighbor.  You just don't know.  For a 3 class problem, dogs, cats, and some people have pet rats.  OK?  Something that could be confused with a dog or a cat.  Opossums.  Skunks.  I had a friend who had a pet skunk.  \par
+\par
+But two of them have to be the same for -- one of them has to be the main thing.  What else, Carl?  Oh, how do I pick the value of \i\f1 k\i0\f0 ?  That's the problem.  Don't make me cross!  \par
+\par
+Student:  N-fold cross validation.  \par
+\par
+Professor:  You have to check your data!  You pick one and see if it works and what the accuracy is.  You choose 3 and pick the accuracy.  OK?  \par
+\par
+Why do we call this a lazy learner?  \par
+\par
+Other people call it that.  I mean, you pick on it, poor thing.  It's called a lazy learner because you don't have to build the classifier until you need it!  They don't actually care what the answer is until you need the answer and then they say, "Ok, well what's the closest data point to this one?"  You can pick as you're going along.  \par
+\par
+OK I have 3D data and my 3D data is in 3 dimensions.  I go out one Mahalanobis distance from the center.  If I had 1D data and I went out one Mahalanobis distance from the center, what fraction of the data would I get?  \par
+\par
+Student:  60 something.  \par
+\par
+Student:  68.  \par
+\par
+Professor:  Yes that's the \i\f1 z\i0 -\i score\i0\f0  thing.  2D data, now I have two dimensions and this bullseye target, remember that?  I had a bullseye and the Gaussian distribution and the 68% didn't fill in that middle Mahalanobis distance from the center, it was only 40%.  Then I go this other way and basically for a while they go down by halfsies.  It goes 40, 20, 10 -- almost by halves.  So it'd be 20% for that data, as you're going along.  \par
+\par
+Today we'll be talking about unbalanced data sets.  I just thought you had to see this.  I'd collect it, but we don't have time.  I don't have time to get you frustrated on it so we'll keep going.  Ready?  I know we're all exhausted.  It was a great break.  And if it was any longer I'd need another break to recover from it.  \par
+\par
+C is a classifier because the person who came up with this particular chapter of the book liked to use C for a classifier.  C\sub 1\nosupersub  is the first classifier.  C\sub 2\nosupersub  is the second.  Guess what the 3rd classifier is?  C\sub 3\nosupersub .  \f2\lang1032\'f9\i\f1\lang1033  \i0\f0 is class 1.  So you have a classifier that's trying to choose between \f2\lang1032\'f9\sub\f1\lang1033 1\nosupersub\i  \i0\f0 and 2.  It's a binary problem.  Boys, girls.  Dogs, cats.  No opossums allowed.  \par
+\par
+So omega is the class and Cs are the classifiers.  I thought this was confusing so I wanted to hit you in the hit with it and make sure you know.  We have a class imbalance problem and we'll also talk about hard data.  Some data is hard to classify so we'll increase the importance of that.  Give it more importance.  \par
+\par
+OK?  \par
+\par
+Bagging is creating subsets of data and boosting makes the data get picked more often.  And we'll use ensemble methods.  These methods say I have a bunch of different classifiers that are all silly but together they might be better than any one of them and we'll see why that works.  So, we know what an ensemble is.  Anybody here sing in an ensemble?  I thought we had singers.  What about music players?  Couple of you.  I thought we had more than that, but maybe nobody wants to admit to it this late at night when it's dark outside.  \par
+\par
+When I go to church, I sing in an ensemble.  So we're all together singing as an ensemble.  But I'm not a good singer, so I get to the parts I can't do and I mouth the words for a while and let everybody else do the singing, and then we get to the part where I can sing and I sing loudly.  Together, we sound great.  Just by judiciously abandoning it.  And musicians try to play the same music together at the same time and pace, that's an ensemble.  All different people contribute to the process and it gets better.  \par
+\par
+In our class, we have classifiers.  And that's the ensemble classifier problem.  But here's another interesting issue.  We have 850 odd data points and I want to build a classifier to find people who have celiacs.  But my glute free shoppers, there's only 1 out of 135 of them that are in there.  In a typical population, I may only have 7 or 8 of them.  They're very rare.  I'm just special.  That's me.  Gluten free.  Fight for gluten freedom!  \par
+\par
+Anyway, I've got this problem I can't just build a classifier on everything because I have unbalanced data.  Here's another example: this weekend I saw a news article.  Somebody came out with a new study.  It built a classifier that will predict if somebody will have an epileptic fit with 99.96% accuracy.  Do you know what an epileptic fit is like?  You know how you drop a coin into your computer and sparks fly and it shorts out?  And there's a bad smell, but that's another thing.  \par
+\par
+Epilepsy is like when your brain temporarily shorts out.  Sometimes it's triggered by allergies or flashing lights.  And so it happens but not very often.  I have friends who are epileptic and there's a whole range.  Sometimes an epileptic fit is very quiet.  You are just sitting there in class and you don't even know you had one.  The world winks out and then back on.  Another times you have a seizure where your body vibrates out of control.  So this group wrote this classifier that predicts it.  What's the problem?  \par
+\par
+People who have epileptic fits, how often do they have them?  \par
+\par
+Student:  Not often.  \par
+\par
+Professor:  It's like once or twice a year.  It's really bad if that once or twice happens while you're driving, so my friends usually have other plans for driving.  But it's rare.  So I can be even more accurate than that by saying you won't have a seizure or epileptic fit.  Who cares?  See the problem?  It's not a balanced data set.  Here's another case: one of my thesis students got his thesis and he had a million images.  \par
+\par
+He had a million images and 6 thousand other ones.  In those images, only 6 thousand of them were class 2.  So he's trying to figure out if an image is one thing or the other.  Class one is a native species, like milkweed.  Something that grows naturally in our area.  Class 2 was an invasive species, like a tall red grass that's all around campus.  It's invasive.  We don't want it.  So he has highly unbalanced data.  See the problem?  \par
+\par
+I can't just build a classifier or I'd always guess it's native.  So I would get all of them -- I could be very high with accuracy but my classifier doesn't help me.  Even for him, a zero-rule would be right 99.4% of the time, which is surprisingly low, compared to a million to six thousand.  OK.  Got it.  \par
+\par
+You already know an ensemble classifier.  An ensemble classifier says, pick the nearest 3 -- the \i\f1 k\i0\f0 -nearest neighbors.  You pick your 3 nearest data points in data space and you say they're probably the same as things near them.  So if the attribute is having dark hair or light hair, then you go through and look at the people who have -- if you have somebody with dark hair you look at all the other people with dark hair.  If they have a beard, you look at the beards.  Then you ask, who is male or female?  \par
+\par
+The whole point is you have an ensemble.  Things looking at and checking each other.  We always use an odd number for the 2 class problem.  Make sense?  Got it?  \par
+\par
+You remember we talked about walks like a duck, talks like a duck?  So we saw these diagrams.  Got it.  Figured it out.  \par
+\par
+So this idea was saying, you have a thing and you want to know what it is and you find the two closest records and decide a data metric, and then decide if it's a duck.  \par
+\par
+Something else where I build a final classifier where all the intermediate ones vote.  \par
+\par
+Student:  Random forest.  \par
+\par
+Professor:  Or, what else is random?  \par
+\par
+Student:  Random projections.  \par
+\par
+Professor:  Sure!  I'm will go quick through some of these.  \par
+\par
+I have my original data and it's highly skewed.  I'll carefully pull out and pull out data set 1, 2, and so on.  I'll build a classifier on the subset of the data.  I'll do this in such a way that's more balanced.  Then -- remember C\sub 1\nosupersub  is a classifier, not the class.  So each one of these work together so you end up with a classifier star that's working on this thing.  For right now, let's think about one of these data sets and one of these classifiers.  I'll emphasize just one data set and one classifier.  Each one of these gets to vote on an outcome.  \par
+\par
+For today, each classifier gets one vote.  That's it.  Later on we'll talk about classifiers where one of the classifiers is more important than another.  It has more strength.  It's stronger.  Like in a democratic world -- the Democrat Party used to have super delegates or something and they could outvote everybody else.  \par
+\par
+Bagging.  Bagging.  When I first heard about this I thought it had to do with shopping bags, but it has nothing to do with that.  Bagging is kind of an acronym.  It's shorthand for Bootstrap Aggregation.  Pick a small sample, and then build classifiers on those samples as you go along.  Do you know what bootstrapping process is?  Jonathan?  OK, this is good for me to know.  \par
+\par
+I left my cowboy boots at home.  But when I put them on, my feet have gotten fatter so I have to have straps on the side to hold on to and then I push my feet in so I can squeeze my feet in.  Those straps on the sides are called bootstraps.  They let you get a good handle on the boot so you can stuff your foot in.  There's a jargon in American English called, "Pull yourselves up by the bootsraps."  It doesn't work.  Bootstrapping in computer science is where you have something small that grows.  For example, the boot loader for Windows used to be a system where it would go out to a particular location on the disk, load a tiny program off the disk, and that program on the disk knew how to load the full operating system.  \par
+\par
+So you ran a small program to run a bigger program, that runs the whole thing.  Make sense?  Growing your way up.  Pulling yourself up by the bootstrap.  That's the analogy.  But it's silly because you can't pull yourself up by bootstraps, but anyway, bootstrap aggeration.  But I use bootstrap loaders all the time.  You should know about them.  \par
+\par
+We'll do this to simulate a data set that's of a different size.  Bagging -- oh, wait.  Did I miss something?  Yeah, OK, I'm there.  \par
+\par
+I'm going to go out, pick some data at random, form a new subset of my data, build a little classifier based on that set, and then I keep repeating this process until I'm done.  When I get to some point here I combine all my classifiers, and that's the answer.  I just keep doing this until at some point some stopping criteria is met.  Some stopping criteria might be the accuracy is above some amount.  \par
+\par
+OK?  \par
+\par
+So this accuracy -- oh.  How might I know to stop?  If you want to put \i\f1 n\i0\f0 -fold cross validation in here, where would you sneak it in?  So, if I was going to put \i\f1 n\i0\f0 -fold cross validation, I'd put it in after step 4.  I would combine the base classifiers and then test it to see how good I got.  If the accuracy was above my desired accuracy, I'd stop and be done.  OK?  \par
+\par
+Yeah . . . so one of the tricks we use is called boosting and we'll talk about that in a few minutes.  But boosting is selecting some data that's more rare.  What I'll do with the balance of my data is use weighted random sampling.  I'm trying to sample -- how many women do we have here?  Not a whole lot.  Because it's computer science.  OK?  Some classes better than others.  Not a lot of women.  \par
+\par
+So if I was doing something that was women versus men, I'd have to keep resampling small subsets of my data.  So the women would have more weight than the men when we randomly pick people out of our sample.  Make sense?  I pick 8 data points, I would give Emily more weight than Carl.  Sorry Carl.  She's becomes more important because she's \i rare.\i0   I'm making this up as I go along and I'll get myself into trouble.  Keep going.  \par
+\par
+Weighted random sampling.  And we'll use that same thing in a minute to do boosting.  Some sample points are hard to classify and they get more data as you're going along.  OK we have this, that's out of the book . . . there are 3 strategies for forming these little subsets.  They're called bagging without, sampling without replacement and sampling with replacement between each batch -- get to the example Kinsman!  \par
+\par
+So here I have 16 records and I want to build other samples to have better data.  I build one sample that's a size 6.  I go out and randomly pick 6 of my records.  9, 2, 1, 6, 11, 10.  11, 15.  I know.  Then I pick another 6.  I have to stop now, why?  Douglas?  \par
+\par
+Student:  Because you don't have enough records left.  \par
+\par
+Professor:  I've run out of data!  Bummer.  I have to stop.  So I build a classifier for classifier 1, and 2 . . . that's one method of bagging.  I'm sampling without any replacement.  We can do better than that.  The second method is sampling with replacement between samples.  So here we pull out 6 records, 16, 11, 7, 14 . . . got it.  Then I take all of those records and I throw them back in and pull out another 6 at random.  Here I have 16, 6, 14, 12, 1, and 13.  I did write a MATLAB program to do this.  16 shows up again.  There's 14 showing up again.  And then you throw them all back and give another one.  OK.  \par
+\par
+This process, just by chance, may give more weight to some values that are in there.  So in this case, the number 6 came up 3 times.  But using this technique, you can't get the same 6 within the same set.  As you're going out.  You can't have one batch with the 6 in there twice.  6 can be in different batches twice, but not the same batch twice.  The 3rd technique can generate a batch where the same data elements, or record, can show up multiple times.  And this can be helpful.  \par
+\par
+So here you randomly pull out the number 14.  Then you throw it back and pick another.  Then you get 6.  Then you throw it back and randomly get another, 10.  So then you get 14 and that has shown up twice.  Then you throw it back and pull another.  So 14 can show up 3 times in the same batch.  The next batch has 4 showing up twice.  Random means you can get the same one multiple times.  OK?  Questions?  \par
+\par
+Student:  Is there a reason in the last example we're still sticking with batches instead of setting the batch class to 1?  \par
+\par
+Professor:  Yeah because I want a representative batch.  I want these 6 here to represent the whole universe of things that will happen.  So now I build a classifier on these.  If the number 14 was a woman, for example, and I want to have this thing -- this batch -- be equal men and women, I might give weight to 14 in which case it gets pulled out by accident more often.  \par
+\par
+Student:  This can be repeated within the same batch and different batches?  \par
+\par
+Professor:  Yep.  You can have 14 five times in a row in the next one.  Blake?  \par
+\par
+Student:  Is this useful mainly with very similar data where records have similar data points or things that have potential to be records that have very near duplicate data within them?  \par
+\par
+Professor:  It solves the problem where you have data that's unbalanced.  Once upon a time, the United States government funded a study to try to teach a computer program to recognize Russian tanks versus American tanks.  This was decades ago.  They built a classifier and it worked really well.  But there was a problem.  All of the pictures they had of Russian tanks were taken by spies.  So what they really did was built a night classifier that correctly recognized when the picture was taken at night.  Because pictures of Russian tanks in the daytime is a rare thing, I guess.  What they should have done was taken the few samples of Russian tanks they had in the daytime and used a boosting mechanism to fix it.  \par
+\par
+So they'd have a Russian tank in daytime, daytime, American tank, American tank . . . see what I'm saying?  \par
+\par
+OK.  Ensembles!  Time to sing.  We've seen this diagram before.  An ensemble is all of the Cs talking to each other.  OK?  Each of these Cs is a classifier.  Each one votes for an answer and the majority rules as we're going along.  OK?  \par
+\par
+They sometimes vote, sometimes they cheat, sometimes they don't know what they're doing, but the majority rules.  Now, in the worst case, it would be bad if all of the classifiers, for whatever reason, ended up being the same.  I could have a classifier that says if your first name begins with the letter A, you must be a male.  Because two out of three people with the first name beginning with the letter A are men.  Sorry, Annalee.  \par
+\par
+So I repeat that process and I keep coming up with a variant of that.  If the first letter of your name is a vowel then you're -- whatever.  They're basically related to one other.  That's bad.  The overall accuracy of my combined classifier would not change if they're all dependent and related on each other.  So if I have 3 classifiers, they're all \super\f1 1\nosupersub\f3\u8260?\sub\f1 3\nosupersub\i  \i0\f0 and all related to each other, doesn't get any better.  But if the base classifiers are all statistically independent, then there's only an error when two or three of them are wrong.  See what I'm doing?  Carl?  You with me?  \par
+\par
+This is exciting stuff!  You were born -- when you were born, you were classified!  Using an ensemble classifier!  We'll talk about that in a minute.  But let's do the probability.  In one dimensions, 1D, \super\f1 1\nosupersub\f3\u8260?\sub\f1 3\nosupersub\i  \i0\f0 -- if this classifier is wrong \super\f1 1\nosupersub\f3\u8260?\sub\f1 3\nosupersub\i  \i0\f0 of the time, we can represent that with some region along a number line.  So that's \super\f1 1\nosupersub\f3\u8260?\sub\f1 3\nosupersub\i  \i0\f0 of a region along a number line.  The area in red is where it's wrong for that classifier.  \par
+\par
+In 2D, now it's not a distance along a number line, it's now an area.  So that's the region where classifier 1 is wrong in two dimensions.  This is classifier 1 this way and classifier 2 goes up.  OK?  So, got it.  We got this region.  This is proportional to how often is classifier number 1 wrong?  Got it?  \par
+\par
+Let's see how badly I can mess this up.  \par
+\par
+Here is where classifier 2 is wrong.  It's also wrong \super\f1 1\nosupersub\f3\u8260?\sub\f1 3\nosupersub\i  \i0\f0 of the time, but its \super\f1 1\nosupersub\f3\u8260?\sub\f1 3\nosupersub\i  \i0\f0 is statistically independent of the others so we can put it on a different axis and multiply it through.  This says they're both wrong, only in this region and this region.  You with me?  \par
+\par
+OK, so the red is one color, this is green, another color, and red and green make yellow.  So I added the lights to get a color I can remember.  OK?  \par
+\par
+So this red area -- well, that's where they're both right.  That white area.  And that's right for \super\f1 4\nosupersub\f3\u8260?\sub\f1 9\nosupersub\i  \i0\f0 of the time.  That's good.  If that's \super\f1 4\nosupersub\f3\u8260?\sub\f1 9\nosupersub\i  \i0\f0 how often is one or the other wrong?  \super\f1 5\nosupersub\f3\u8260?\sub\f1 9\nosupersub\i  \i0\f0 of the time.  The red area is what fraction?  \super\f1 2\nosupersub\f3\u8260?\sub\f1 27\nosupersub\f0 , right?  No, it's hard to stay awake, I know.  It's \super\f1 2\nosupersub\f3\u8260?\sub\f1 9\nosupersub\i  \i0\f0 so \super\f1 4\nosupersub\f3\u8260?\sub\f1 9\nosupersub\i  \i0\f0 of the time either C\sub 1\nosupersub  is wrong and C\sub 2\nosupersub  is right, but here, it's the opposite case.  You with me?  But we don't know which!  How do we know?  I don't know.  We can't tell.  So, they only disagree -- oh, they disagree \super\f1 4\nosupersub\f3\u8260?\sub\f1 9\nosupersub\i  \i0\f0 of the time!  It would be nice if we could figure it out.  \par
+\par
+Oh, I have an idea!  We'll let the 3rd classifier help us out!  We need more information.  So now when I go to 3D, I have one classifier going along the bottom and another on the side . . . let's do the one on the bottom.  I have the volume of the region that's wrong.  You with me?  \par
+\par
+So, red, green, blue.  There's 3 of them.  When I start putting them together, I can now figure out -- oh, if I have 3 classifiers, and each one of them picks class 1 or 2 -- because 3 things are picking one or two, one or two has to be the majority two out of three times.  But how often are they wrong?  Those are different statistics.  This region here is -- oh, let's take this apart.  \par
+\par
+So red and blue makes magenta back there.  You can't see the volume but it goes up and down.  There's where they're both wrong.  The red and the green -- that's yellow, that's where C\sub 1\nosupersub  and 2 are wrong.  And the blue and the green is the cyan part and they're wrong there and then there's a hidden situation where they're all wrong.  \par
+\par
+So that region, this intersection of all 3 classifiers, where they're all wrong, that's \super\f1 1\nosupersub\f3\u8260?\sub\f1 9\nosupersub .\i  \i0\f0  OK?  Yes?  Onkar?  Are you OK?   You can correct me when I make mistakes!  What's \super\f1 1\nosupersub\f3\u8260?\sub\f1 3\nosupersub\i  \i0\'d7\i  \super\i0 1\nosupersub\f3\u8260?\sub\f1 3\nosupersub\i  \i0\'d7\i  \super\i0 1\nosupersub\f3\u8260?\sub\f1 3\nosupersub\f0 ?  It's \super\f1 1\nosupersub\f3\u8260?\sub\f1 27\nosupersub .\i  \i0\f0  That's the chunk there.  The part above it is where they're both wrong.  \par
+\par
+Here's another one sticking out front.  That's \super\f1 2\nosupersub\f3\u8260?\sub\f1 3\nosupersub\i  \i0\f0 this way, times \super\f1 1\nosupersub\f3\u8260?\sub\f1 3\nosupersub\i  \i0\f0 -- it's another \super\f1 2\nosupersub\f3\u8260?\sub\f1 27\nosupersub .\i  \i0\f0   Then I have another chunk that's another \super\f1 2\nosupersub\f3\u8260?\sub\f1 27\nosupersub .\i  \i0\f0  So how often would this classifier be wrong in probability space?  It would be \super\f1 1\nosupersub\f3\u8260?\sub\f1 27\nosupersub\f0  + \super\f1 2\nosupersub\f3\u8260?\sub\f1 27\nosupersub\i  \i0\f3\u8210?\i\f1  \i0\f0 it's \super\f1 7\nosupersub\f3\u8260?\sub\f1 27\nosupersub .\i  \i0\f0   Each of the base classifiers were wrong \super\f1 1\nosupersub\f3\u8260?\sub\f1 3\nosupersub\i  \i0\f0 of the time.  So I've got from \super\f1 9\nosupersub\f3\u8260?\sub\f1 27\nosupersub\i  \i0\f0 down to \super\f1 7\nosupersub\f3\u8260?\sub\f1 27\nosupersub .\i  \i0\f0  So it has gotten smarter by having 3 things take a vote.  Eric?  \par
+\par
+Student:  This is the case when all the classifiers are statistically independent?  \par
+\par
+Professor:  They're all separate from each other, yes.  It gets better.  And you can see that.  And the error drops from .33 to .26 and the ensemble is much better.  What if the fractions are different?  You can even do this if they're different.  \par
+\par
+The first case, that cube of region where they're wrong is all fractions multiplied times each other.  How often are all 3 wrong?  \super\f1 1\nosupersub\f3\u8260?\sub\f1 3\nosupersub\i  \i0\'d7\i  \super\i0 2\nosupersub\f3\u8260?\sub\f1 5\nosupersub\i  \i0\'d7\i  \super\i0 5\nosupersub\f3\u8260?\sub\f1 7\nosupersub .\f0   How often are the first two wrong and the second right?  Whatever that is.  How often is the first one, the second, and the last wrong, but the middle one right?  You can do the math.  \par
+\par
+And then we multiply the first one times 1 minus the second one times the third one.  Then we multiply 1 minus the first one, times the second one, times the third.  That's the error rate.  If I averaged those 3, I get 0.34.  When I take these and do the math, I find it drops down to 0.27.  So by combining 3 different classifiers that have these 3 error rates, I get better.  Even if each one is not very good, you get better as you go along.  \par
+\par
+This is a committee of idiots, OK?  Have everybody vote, even if the votes aren't really good.  All you have to do is have each vote be slightly better than 50% and they all do better.  Here's the math.  Because Onkar loves math.  He can handle this.  \par
+\par
+Here's a case where I have 25 base classifiers.  What's the majority of 25?  \par
+\par
+Student:  13.  \par
+\par
+Professor:  What's half of 25?  Anybody afraid to talk?  You all had a great break and you can't talk anymore?  Half of 25 is 12.5, so slightly more is 13.  That's why this summation starts at 13.  You can actually compute this out.  I did once.  That's how I got the answer, 0.06.  \par
+\par
+This is the number of ways you could actually be wrong.  OK?  \par
+\par
+This one is 25 choose \i\f1 k.\i0\f0   That's how many ways there are to get \i\f1 k\i0\f0  of them wrong.  Epsilon to the \i\f1 k\i0\f0  is the probability of getting \i\f1 k\i0\f0  classifiers all wrong.  And the last one is the probability of getting \f1 25\i  \i0\f4\u8722?\i\f1\lang1033  k \i0\f0 classifiers correct.   You add them all up and you get 0.06.  We're going from an error rate of 0.35 using 25 different classifiers, everybody votes, and the majority wins.  You get all the way down to 0.06 for an error rate.  Much, much better.  OK?  \par
+\par
+So this diagram comes right out of the book but I recreated it.  So here's the base error rate.  What if I had a base error rate that was -- I don't know, \super\f1 4\nosupersub\f3\u8260?\sub\f1 7\nosupersub\f0 ?  What if I have a classifier that's wrong \super\f1 4\nosupersub\f3\u8260?\sub\f1 7\nosupersub\i  \i0\f0 of the time?  \par
+\par
+Student:  Just do random selection?  \par
+\par
+Professor:  You'd be better off picking things at random, right?  Blake?  \par
+\par
+Student:  I was going to say if we're comparing it to a seeker, that probably means something in the classifier is flipped you need to adjust.  \par
+\par
+Professor:  I have my friend Joe, nothing wrong with that name, but everytime Joe says something he's wrong.  Gives really bad advice.  He says, "invest!"  And then the stock market falls.  When he says invest, I short.  When he says sell, I buy.  Because Joe is off more often than he's right.  So I swap it.  So we'd never use a base classifier that has more than 50%.  So we can ignore half of this.  \par
+\par
+Here are cases where the base classifier is above the dotted line, but we don't care.  We wouldn't use those.  We only want to use those cases in which the base classifier is at least half right.  Then what?  \par
+\par
+Right now we've got a base classifier that's at about .35 and I have 25 of them, and I'm up in here, which is about 0.06 for an error rate.  You can see the base classifier goes from an error rate of something high down to something low.  It's very helpful to have these things working.  Boosting!  This is another -- OK, questions?  Comments?  I know, we're all trying hard to get our projects done and everything graded and back to students or whatever you're doing on your end.  I understand.  \par
+\par
+Boosting says, sometimes some things are more important than other times.  This is giving more importance to the records that need more importance.  For example, I might have 10 different records.  And I go in and build a classifier the first time.  This classifier, for the first round, is drawn on this data.  We pull some data out.  \par
+\par
+Oh, it must have been with item resampling between each pull, because see the number 3 twice?  So I build a classifier on this and classify everything.  Everything classified correctly I give less importance.  And then I give more importance to the next thing -- oh.  The number 4 was misclassified for that record, number 4, gets more weight.  Until as you go over and over again, that number 4 gets more and more weight as we're boosting along.  Until eventually we have a classifier that gets it right and we stop.  So this is called boosting.  OK?  \par
+\par
+How does boosting work?  If 4 needs more weight, we give it a larger region of our random space.  When I draw a number for record 1 through 10, I give them an allocation in space, on a number line between 0 and 1.  And then I randomly draw a number between 0 and 1.  If I have a number between 0 and .1, I give it record 1.  This is an even distribution.  This is a weighted distribution where you can't see but this is a bit smaller.  Can you see that's less than .1?  Here's 3, it's must less than .3.  \par
+\par
+So each of these gets less region of probability space.  This is how we hack random number generators to make them give us what we want.  The number 4 gets a much wider space so you're more likely -- in fact the probability of falling in here is .25.  A quarter of the time you'll pull a number 4 out of that.  A quarter of the time you'll be in this region so you'll use record 4.  It gives more weight.  It's a wonderful hack.  You hack your data distribution in the number world and then randomly pick it.  \par
+\par
+OK.  Let's talk about Virginia.  Virginia is one of my heroes.  She generated an algorithm.  I know you don't remember when you were born, it was horrible and painful and they cut your umbilical cord off -- I still miss mine.  Anyway, Virginia Apgar, which I got this image off of some place . . . she came up with this wonderful ensemble classifier back in 1952.  \par
+\par
+She came up with 5 different questions to ask when a baby is born.  5 different questions.  Quick, easy questions.  The pediatric nurse can run down these 5 questions, memorize them, spit out an answer and say, "Yep, this baby will be fine!"  Or whatever.  \par
+\par
+In the '50s, there was a time when women were knocked out in labor.  They thought everybody can't possibly put up with that much pain.  \par
+\par
+Sometimes they gave the mom too much anestia.  But we want babies to be breathing when they're born.  \par
+\par
+Virginia was out to lunch and wanted to have a quick test to tell if the baby was in trouble when they were born.  And Dr. Apgar -- an actual Doctor, gave the amount of anesthesia -- \par
+\par
+So we'll look at appearance, pulse, it's grimace and how well it's breathing is.  It's respiration.  I know it's been a long time since you were born and you've probably forgotten but you're usually pink when you're born.  You look at the palms of your hands, I don't care how dark your skin is now, it was pink when you were born.  Pretty pink.  You look at the palms and if the baby is blue all over, we give it a 0.  Because blue is not good.  \par
+\par
+If it's pink all over, we give it a 2.  In-between, it gets a 1.  See how this works?  This one will turn out very important.  Some clues.  OK.  What else do we have?  Pulse.  When you were born, you got scared.  Because you're in a cozy place and then you get squished and shot out and somebody wraps you in a towel and it's nasty.  Your heart rate goes way up.  It's a scary experience.  I can't believe I went through it.  I have had anxiety every since.  \par
+\par
+If your beats per minute are less than that, that's not good.  You get a 0 for that.  Babies usually get excited when you poke them.  So if you poke them and they cry, that's good.  So they get a 2.  If they're unresponsive, that's not good.  You get a 0.  \par
+\par
+When you're born, you like to be all in this thing called the fetal position.  So you take the babies arms and spread them out and the baby should go back like this again.  If the arms and legs resist extension, you get a 2.  Otherwise that's not good.  If the breathing is strong, that's good.  Not breathing, that's a 0.  In-between, they get a 1.  So we ask 5 questions, you get scored from 0 to 2 on all of them and add them up.  The highest you can get is 10.  \par
+\par
+Here's an example: pink all over, you get a 2.  \par
+\par
+[Professor reading: PowerPoint.]  \par
+\par
+That's a relatively healthy child.  Here's the score.  7 or over -- 7 is a lucky number.  Simple, easy, ensemble classifier.  7 or better is good.  When my first child was born, they said, "Oh, she's beautiful, she has an Apgar score of 9!"  They missed the fact one of her feet was mangled.  So she was born with a flipper.  But she grew out of it.  But then it grew back.  So it's not perfect but it generally answers the question quickly if the baby will be happy or not.  OK?  \par
+\par
+So 0 says, bad.  2 is good.  1 says this is a classifier that refuses to choose.  It needs more information.  It's not a straight decision tree.  It says, "Oh, go ask another classifier.  I defer!"  Go figure out what somebody else says.  I don't know, ask somebody else.  That's very powerful.  Because it's saying you're in the dubious zone.  OK?  \par
+\par
+Our next ensemble classifier.  We have covered this . . . dirt easy.  Random forest.  Pick a random attribute, threshold, build a classifier, and you give the majority to whatever you are.  These are embarrassingly parallelizable.  Here I have something where I randomly pick a location, let's see what you are.  Probably yellow.  \par
+\par
+Random location, attribute, location . . . above this we'd pick probably green.  Below that you're probably pink.  OK?  Above this one, random location, you're probably magenta.  Below that you're probably not paying attention.  It's either blue or yellow as you're going along and you add them up.  It's dirt easy.  You take these thresholds and write them out to a file that automatically does it.  The triangle is the balance point.  That's random decision trees and I need to make sure you can pick.  \par
+\par
+A point here would be classified as yellow by this one, blue for that one, and it would be yellow for that one so it's probably yellow.  OK?  And you'll notice the data is sloped diagonally and yet this still works.  Got it?  \par
+\par
+Questions?  Jonathan?  \par
+\par
+Student:  Between the second and the third ensemble members, can you say you've lost independence?  \par
+\par
+Isn't the second classifier partly dependent on the third?  \par
+\par
+Professor:  They were randomly drawn.  I only used 3 because I can't show you 27 or 500.  But literally you'd have a random forest.  You just let the computer go.  It picks a random attribute, a random value.  It says if you're above this, you're probably in the majority class above that threshold.  \par
+\par
+So there might be something screwy going on, but it's not intentional.  \par
+\par
+3rd one is random projection.  I pick a random vector through space, another random vector, another . . . I find some threshold somewhere along that vector and now I have a data point.  I'd take that data point, project it onto -- that's supposed to be a right angle -- if it's up above that then we go one place -- here's another projection vector this gets projected down.  When you project, you go to the closest point on the line.  OK?  \par
+\par
+Will you remember?  \par
+\par
+So now, this one classifies as yellow because it's up above.  The second is blue, in this case.  And this one is yellow.  So 2 to 1, that would be a yellow data point.  Here's a point I don't know, I project it onto my vectors and each vector runs the classifier and votes.  It's dirt easy.  Everybody talks to each other.  \par
+\par
+And you could do it again for some other data point.  \par
+\par
+Now, we can answer the following questions: what is bagging?  What does it stand for?  Bootstrap aggregation.  Would it help if I wore my boots?  Probably not.  \par
+\par
+What's the problem?  Bagging is feeding itself . . . I'm waiting for Eugene to look it up.  \par
+\par
+Student:  Creating subsets of data.  \par
+\par
+Professor:  What's the problem?  \par
+\par
+Student:  Imbalanced data sets.  \par
+\par
+Professor:  Yes.  So hopefully we're trying to get sample size and by using many hopefully the total will be better than ever.  An ensemble classifier is a classifier that's built up out of a lot of little classifiers.  What's the most common little classifier we can use?  \par
+\par
+Student:  Decision stump.  \par
+\par
+Professor:  Or a stub.  Depending on who you're talking to.  I have 3 classifiers that are wrong.  \super\f1 4\nosupersub\f3\u8260?\sub\f1 7\nosupersub ,\i  \super\i0 3\nosupersub\f3\u8260?\sub\f1 9\nosupersub ,\i  \i0\f0 and \super\f1 6\nosupersub\f3\u8260?\sub\f1 13\nosupersub\i  \i0\f0 of the time.  What is the ensemble error?  Remember the pattern?  It's all 3 multiplied plus \super\f1 4\nosupersub\f3\u8260?\sub\f1 8\nosupersub ,\i  \i0\f3\u8540?\i\f1  \i0\f0 -- \par
+\par
+Student:  I thought each of the classifiers needs to be at least right 50% of the time?  \super\f1 4\nosupersub\f3\u8260?\sub\f1 7\nosupersub\i  \i0\f0 is above -- \par
+\par
+Professor:  Is \super\f1 4\nosupersub\f3\u8260?\sub\f1 7\nosupersub\i  \i0\f0 -- oh . . . what's wrong with this?  What is -- that would be bad!  That would be a trick question!  Yes, you'd say, "oh, I don't use \super\f1 4\nosupersub\f3\u8260?\sub\f1 7\nosupersub\i  \i0\f0 I actually use \super\f1 3\nosupersub\f3\u8260?\sub\f1 7\nosupersub\f0 , right?"  I wouldn't be that tricky.  Probably not in 420.  \par
+\par
+720, all bets are off.  \par
+\par
+These are all voting algorithms.  \par
+\par
+Who is doctor Virginia Apgar?  She is famous for saving your life.  Everybody started using it.  It was famous.  \par
+\par
+What's a decision stub?  A decision tree with no big deal.  \par
+\par
+A random forest is a bunch of decision stubs.  \par
+\par
+What is a committee of idiots?  It's how corporations are run!  Each person on the board of directors pays money to be on the board.  I don't know how that works.  I wonder why I'm not on a board of directors.  Maybe because I am smart enough not to pay money -- anyway, each person has their own field of expertise.  And altogether they think they know better than any one of them individually.  \par
+\par
+What does it mean to refuse to choose?  \par
+\par
+You'd have a question that's going on about some attribute and if it's less than T\sub 1\nosupersub , then it's \f2\lang1032\'f9\sub\f1\lang1033 1\nosupersub .\f0   And if it's greater than T\sub 2\nosupersub , then it's \f2\lang1032\'f9\sub\f1\lang1033 2\nosupersub .\f0   Otherwise, keeping asking questions.  So you keep asking more questions and you'd carve off chunks that are hopefully good.  \par
+\par
+Questions?  \par
+\par
+Student:  Is that almost like a combination fast acceptance and fast decision cascade?  \par
+\par
+Professor:  It's a fast decision cascade.  \par
+\par
+Student:  So boosting is specifically for making harder examples more frequent, whereas for bagging, where you're making like less frequent classes, like more common -- \par
+\par
+Professor:  Bagging is any type you're redrawing those samples to form new subsets to build classifiers on.  \par
+\par
+Student:  So you're messing with the probabilities?  \par
+\par
+Professor:  You could use boosting under the covers while you're bagging.  \par
+\par
+If you see somebody with acne, you might think they're under 18.  But it's the story of my life.  The doctor said don't worry, I'd outgrow it.  I keep waiting to outgrow it.  Anyway, so I am a hard person to classify using that particular attribute.  Right?  So I would get more weight when you start trying to guess my age.  I also have a cute little baby face.  So people think I'm way younger than I am and I have to correct them sometimes.  But I try not to do it too often.  People think I'm 40 and I'm actually like 50 something.  I'm one of those "boomers" that has all that experience.  \par
+\par
+It's getting nasty.  People keep saying I'm old.  Someday, you may be old too.  That's how it goes.  \par
+\par
+Questions?  Other questions?  Comments?  This is wicked cool the fact that this works.  When this came out, random forest took over conferences in 2010.  It was just before big data came out and nailed everything.  We didn't have some of the neural networks going quite yet.  \par
+\par
+OK.  More on Wednesday.  And then we will have Monday . . . and we'll probably have some question and answer sessions on Tuesday.  I think I'll be around on reading day if you have questions.  Go forth.  Be safe.  \par
+}
+ 

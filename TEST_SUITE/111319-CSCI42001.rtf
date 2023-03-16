@@ -1,0 +1,324 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Georgia;}{\f1\fnil\fcharset0 Times New Roman;}{\f2\fnil Times New Roman;}{\f3\fnil\fcharset161 Times New Roman;}}
+{\*\generator Riched20 10.0.17763}\viewkind4\uc1 
+\pard\tx440\tx880\tx1320\tx1760\tx2200\tx2640\tx3080\tx3520\tx3960\tx4400\tx4840\tx5280\tx5720\tx6160\tx6600\tx7040\tx7480\tx7920\tx8360\tx8800\tx9240\f0\fs22 Principles of Data Mining\par
+Professor Kinsman\par
+CSCI-420-01\par
+November 13, 2019 \par
+\par
+Professor:  \i It's working!  \i0 Woohoo!  \par
+\par
+I suppose -- isn't that neat?  Look at the edges.  Isn't it nifty?  It's fluorescent.  It is fluorescent orange.  I will light up your seat for you.  Look how fluorescent orange it is!  Woohoo!  \par
+\par
+Here let me break your computer for you.  Are you fluorescent?  Fluorescing?  White paper!  Yahoo!  They throw phosphor in there.  When I was a little kid, probably 14 or 15, my dad gave this to me.  Because he knew I liked the color orange.  What shape is this triangle?  \par
+\par
+Student:  It's a triangle with a circle.  \par
+\par
+Professor:  Yeah so you can grab it.  But that's like a 30/60/90 triangle, right?  Remember that?  \par
+\par
+Student:  No.  \par
+\par
+Professor:  Uh-oh.  I was saying to another student the other day, "you don't remember these things?"  I said they should at least try to remember them and another student said, "some of us don't go to college to learn stuff."  [Class laughing.]  \par
+\par
+It's my job as a professor to set high expectations.  And that's OK.  Not everybody does perfect.  That's just how it goes.  I brought markers today.  And a yard stick for drawing lines with.  Don't worry, Nick, you're safe.  I've been joking with Nick lately.  Yahoo.  That's good.  I have my fluorescent light to see things and we're good to go.  We'll talk about EM today.  Really quickly.  \par
+\par
+I don't think I'll assign you an EM homework because life is hard enough as it is.  We good?  What else am I doing?  Announcements.  We'll take the agglomeration and smash it in with the PCA.  Principle components analysis.  In order to do that and make sure you stay on track, work with a partner.  You get a week reprieve but it's coming up and it's going to be a bang when they've all hit.  With me?  So don't delay too much.  This is a good time to work on projects.  I have this write-up that says, go find all the left turns.  But it depends on your cost function.  \par
+\par
+If your cost function doesn't include left turns, then you don't have to worry about the left turns.  Originally we were going to worry about that but life is too short to get frantic about that.  \par
+\par
+You should have one that you are trying to work with.  When you are in grade school, and in the first few years of your college career, they give you assignments and homeworks.  I need to be able to grade them so I give you specific step-by-step directions so I can grade them.  For the project, go have fun!  Tyler -- wherever he is -- was thinking about doing something related to going up or down hill.  That's a great idea.  I like that idea.  \par
+\par
+When I looked at his cost function it didn't include going up or down hill.  Rats.  So he's making life easy for himself.  I haven't given a lot of feedback.  But it's good if the factors add up to 1.  So I can look at it and it says \f1\'bd\i  \i0\f0 of this plus \f1\'bc\i  \i0\f0 of that -- so I can quickly look through and see the relative importance of things you're playing with and it's good for you to know what's important and what's less important.  Some of the numbers I saw were a bit weird.  OK?  \par
+\par
+Go have fun with it.  On the way here, this morning, Carl?  \par
+\par
+Student:  Is there a perfect approach?  \par
+\par
+Professor:  No, Carl.  You go and explore.  \par
+\par
+Student:  I was iffy about the regularization.  I had the 1 out of 10 -- \par
+\par
+Professor:  As a general idea, if your regularization is \super\f1 1\nosupersub\f2\u8260?\sub\f1 10\nosupersub ,\i  \i0\f0 that means it's an order of magnitude less important.  Orders of magnitude -- this is important.  When you multiply by 10, it becomes 10 times more important.  That's an order of magnitude off.  OK?  You saw me drop the magnet through the conductive wire and it generated LEDs.  Remember that?  The mathematics for computing how much electricity comes out of a transformer is off by 5 orders of magnitude.  They had to invent another thing called metal inductions to get it to work.  \par
+\par
+Student:  In the example, since you're multiplying the regularization by a factor of 1 over 10, does that mean you have to multiply the objective function by a factor of 9 over 10?  \par
+\par
+Professor:  Yes.  These are general rules of thumb.  It's a guess.  The guess is that I want to make sure the objective function is 10 times more important.  Ish.  But it could be 9 times more important.  The regularization breaks the ties as you're going along.  Everybody with me?  \par
+\par
+Today I'm going to cover things at a high level and a fast level.  And our goal is to make sure you don't get confused in the next few lectures.  OK?  You OK with this?  We'll talk about the following items.  \par
+\par
+Now I know where I was leaving my markers.  \par
+\par
+First I'll talk about EM.  Expectation maximization.  And I'll just whip through it.  And then we'll talk about projection vectors.  Because on the midterm when I was looking at it, some people got confused.  Don't worry terribly much about the midterm.  It's going to be a while before we get it graded but we'll try to be as quick as possible.  We should also mention the midterm . . . \par
+\par
+Projection vectors.  Projection vectors.  One is called principal components -- I'll do it this way.  Principal components analysis.  And in no particular order it could have been A or B or B or A.  I want to know the difference between that one and this thing called the Fisher -- the FLD -- Fisher Linear -- I'm getting ahead of myself.  Fisher linear differentiator.  This helps us classify.  This is a pre-processing technique.  \par
+\par
+This rotates my data.  And sometimes when we get lucky and pray really hard that's the answer to everything.  It makes life much easier when you do PCA editing.  It's so common that we'll call it PCA.  FLD -- this is a classifier.  Sometimes it's the best classifier and sometimes it's not.  About 80% of the time, it helps.  OK?  \par
+\par
+Midterms.  I always make a deal with my students that if we get the tribal grade, good, and we get the group grade good, and everybody submits your feedback for the professor, like a 95% or more, I drop one of the two midterms.  OK?  It's not bribery.  That would be nasty.  I could get in trouble for that.  But I mentioned this ahead of time.  We want you to give feedback.  Because otherwise the one person who wasn't here today and gets mad because we covered a bunch of stuff today and gets lost, that person will write nasty stuff and be lost.  And I don't want to have the nasty stuff.  I want people to write good things as well.  So that's avoiding the Yelp! effect, OK?  \par
+\par
+Two semesters ago a bunch of students said, "Oh, we're getting As anyway so we won't give feedback."  They explicitly decided not to give feedback.  Did that help them?  \par
+\par
+Student:  It didn't hurt them.  \par
+\par
+Professor:  It didn't help them!  It only hurt them.  And I couldn't figure out -- learning here in this classroom is not a zero sum game.  It's not like if Nick does better, Amy does worse.  That's not the case.  The goal here is to get everybody to the highest level you're possible of.  OK?  Does this make sense?  \par
+\par
+So just give me nice feedback and that would be nice.  I don't -- I can't give you too much guidance on this but my dad always said, "If you can't say something nice, don't say anything."  That would be nice.  [Class laughing.]  \par
+\par
+On the form they have this thing, "your professor wants to know how to improve himself!"  What that really means is, "is there any reason we shouldn't give this person a raise?"  So don't fret about the midterms.  The goal of everything going up to the end is to prepare you for the final.  When you do the final exam, you do well.  It's the summation of all of it.  The midterms are to get you ready so you've seen the questions.  Everybody good?  Any ethical issues they want to raise?  Or complaints?  Come see me about it later, OK?  \par
+\par
+Did we talk about EM?  I don't think we did.  What else?  We have to talk about RIT history.  I'm wearing my RIT football shirt.  Anybody been to a hockey game?  Raise your hand.  Look at everybody.  Raise your hand if you've been to a football game.  See?  Nobody knows about us.  RIT is undefeated in football since 1978.  That's what the shirt says.  Yahoo!  Why is that?  Do you know why?  \par
+\par
+Student:  I don't know.  \par
+\par
+Student:  Because we don't have a team?  \par
+\par
+Professor:  What?  We don't have a football team?  I got ripped off when I bought this shirt?  \par
+\par
+Student:  That makes it better.  \par
+\par
+Professor:  RIT hasn't had a football team since 1978.  Completely undefeated.  Number one in not winning -- or not losing.  Whatever.  You need to have a common basis for comparison before understanding this shirt.  So EM is a question about heating things for too long.  Who cares.  High level review . . . we got this down.  \par
+\par
+In the food industry, if you can get a job in the food industry, take it.  I don't care what it is.  Go for it.  The food industry is a 1.25 trillion dollar industry and this is outdated.  People pay ridiculously large amounts of money for coffee.  I pay 25 cents a cup because I make it at home.  People are addicted to food!  They can't do without it.  Army marches on its stomach.  OK?  \par
+\par
+We have, as part of the obtuse quiz, we collected your favorite flavor of ice cream.  Because everybody likes ice cream.  Now here's a question: why?  What do you like about ice cream?  \par
+\par
+Student:  Cold.  \par
+\par
+Professor:  It's cold.  Yeah.  Sometimes you're hot and you want something cold.  Parker?  \par
+\par
+Student:  It's sweet.  \par
+\par
+Professor:  Ian?  Sugary stuff gets your blood going!  Have some ice cream at 11 o'clock and you don't go to bed for hours.  What's your favorite thing about ice cream?  \par
+\par
+Student:  Depends on the flavor.  \par
+\par
+Professor:  There's a special place where we sell special ice cream on campus.  Ben and Jerry's.  What's different about that that makes it worth that extra money?  \par
+\par
+How many of you like prune juice?  Raise your hand.  Nobody?  OK.  Now raise your hand if you've tried it.  3 people out of everybody.  Maybe 4.  Kind of.  Sort of.  You other people don't have a common basis for comparison.  You can't not like it!  \par
+\par
+You can't lose if you're not playing.  \par
+\par
+Student:  The question wasn't whether we don't like it, it's whether we like it.  So we can't raise our hands.  \par
+\par
+Professor:  Do you like it?  \par
+\par
+Student:  I don't know!  But if I raised my hand I'd be lying.  \par
+\par
+Professor:  OK.  Well let's go where I go much of the time.  I'm thinking about decomposing my data and food was often decomposed this way.  When I was growing up they said, here's the parts of the tongue.  Sides are salty, sour and bitter are back towards the middle.  That's the thing I was taught in grade school.  Because in grade school you want an easy answer.  But the truth is these are mixed up and spread across your tongue.  Now, let's look.  \par
+\par
+What part of this likes ice cream?  Sweet, salty, bitter . . . what part of this makes you like Ben and Jerry's more than any other ice cream?  Something about it.  \par
+\par
+Student:  Sweet and salty.  \par
+\par
+Student:  Combination.  \par
+\par
+Professor:  OK.  Marketers went out with surveys.  They gave two cups of ice cream and they asked which one they liked better.  Hundreds of thousands of times for lots of people.  They figured out what was in cup B people liked that was not in cup A.  \i It's fat.  \i0 It's cream.  You want to put cream in there.  People love fat.  They like sugar, salt, and fat.  Those are the 3 things.  You can use a wicked analysis -- I can't remember the name.  It's like bilateral interpolation.  But anyway, upshot is -- 3 things.  Here's the sweet, there's the salty, where's the fat?  \par
+\par
+So obviously we must have a fat sensor.  It's just not on this diagram.  This diagram is wrong.  Out of date.  So data scientists said we must have a fat sensor on the tongue and you have it wrong.  Fix it.  So they finally found a tastebud that detects cream, or fat.  \par
+\par
+Student:  There was a question about what you just said on the midterm and we haven't covered it.  \par
+\par
+Professor:  I know.  It's OK.  We were easy on you.  We didn't cover EM the last lecture.  I could have blown through this.  \par
+\par
+Student:  They were still on the exam.  \par
+\par
+Professor:  Don't worry.  You got all the EM ones right, too.  I'm here to set you up for success.  It's just in my best interest to grade the same thing.  So you got the same test as the grad students.  That's my evil scheme.  \par
+\par
+Anyway, turns out there's a fat sensor, you just can't see it.  Say you're 2 years old and you've never been allowed to have ice cream.  Ever.  In all 2 years of your life.  Finally your mom gives you some and that's because if you have ice cream, you'll never want string beans again.  We didn't give our kid ice cream until she was 2, and then she said, "Oh, mommy!"  That's what the flavor was.  It was called oumami.  It wasn't.  But that's how I remember it.  \par
+\par
+So we know about colorblindness and people see colors differently.  You don't have to be color blind to see colors differently.  Everybody hears sounds differently.  You don't have to be deaf to hear things differently.  But what about food?  Does it taste the same universally?  The answer is no.  There's stuff called PTC paper, and I bought some myself and they all taste different to different people.  About 1 out of 5 people think this stuff tastes bitter.  And the other 4 out of 5 people think, why am I putting this paper in my mouth?  They can't taste a blasted thing.  \par
+\par
+There are clusters of taste.  If you get into doing data science for the coffee industry or wine industry, go for it.  It'll pay your bills forever.  \par
+\par
+So taste differs by different people.  It tastes by different ages.  There are extremely different cases that happen as you're going along.  My buddy Doug does not like green peppers.  To him, he doesn't even want to be in the same room as a green pepper.  Refuses it.  His wife, Bonny, does not like green peppers either.  So he married her.  And that's how he solved that problem.  Can't argue taste.  That's how it goes.  \par
+\par
+So I went to the USDA webpage and I pulled some data off and here's what I got.  I got the energy for these different types of food, for 100g of the substance, how much energy in thousands of calories?  And also I have the amount of protein.  Look at this: this is 100 and that's 0, 5, 10, 20 -- not money.  Grams.  The units are different.  Are these units commensurate?  Can they be equally compared?  Can I just plug them in and use the Euclidean distance?  No.  Can't do that.  But I can pull them apart.  \par
+\par
+So there's milks.  Different types of milk.  Here's raw milk and there's probably whole milk -- oh this is probably whole milk or ice cream or something that has a lot of calories in it.  Let's throw in the potatoes.  Here's raw potatoes and potato chips.  Snack foods are more likely to be on the right.  The purple dots are the apples.  Raw apples -- apple pie.  Whatever.  Apple stuff.  \par
+\par
+You can keep -- oh, look at this.  Look at these 3.  There's a cluster down here.  What is that cluster?  \par
+\par
+Student:  Butter?  \par
+\par
+Professor:  Exactly correct.  Turns out for years and years my mom and dad fought about whether butter or margerine was better for you.  Turns out, neither one.  They have their own cluster.  Butter and margarine.  I don't know what the third one is.  Salad dressing or something.  \par
+\par
+Now I have to normalize my data and do some clustering on it and I'll have some problems.  So somehow I have to normalize it to make the direction.  Right now the diagonal direction makes no sense.  So I want to normalize one versus the other to make it make sense.  I want to use the Euclidean Distance.  I want to make it commensurate.  Commensurate is a key word.  I want to compare one to the other directly.  And I also have to handle strange cases, like the butter clump.  I could set the butter aside or I could develop special models for that or do manual intervention for it.  There's different techniques for oddball cases.  \par
+\par
+It's weird because in terms of calories, when you bump up against 0 calories, you can't have anything that has negative calories.  \par
+\par
+Student:  Celery?  \par
+\par
+Professor:  Boy, that'd be a product.  "Hey, eat this celery!"  \par
+\par
+Anyway.  Upshot is, you have to handle them separately.  So I'll try to normalize -- here's some groups without normalization and I'll run a clustering algorithm and get my clusters back.  If I don't do anything to my data, I get these clusters.  Blob of red, another blob there and there . . . what you end up with is favoring the energy because the amount of a calorie dominates the protein so when you start using the Euclidean distance it goes wonkers.  With me?  \par
+\par
+Cool.  \par
+\par
+So now we're going to normalize and fix it.  Fudge it.  This is a hack.  We'll go through and hack it.  What will I do?  I'll take and model butter as its own butter.  But I have to fix it better than that.  How'd I get back here again?  I went backwards on accident.  Sorry.  \par
+\par
+So here's the EM algorithm.  Bear with me.  OK . . . sorry.  I got lost.  \par
+\par
+Here's the EM algorithm.  What I'll do is eventually divide the calories by a big number, like 200.  So the EM algorithm goes through the process -- it's a lot like k-means.  EM is a subset of k-means.  We classify the points to the nearest cluster and update our cluster prototypes based on the points in the class.  And just like with k-means, I keep going on.  Keep turning the crank.  \par
+\par
+There is, however, some fixing stuff that happens in-between.  Which is why for your homework I asked you to delete some of the points to figure out the Mahalanobis distance of the points and any points there were 3 or more I asked you to delete.  So the expectation says, given the current cluster points, compute the membership of each one.  So each point gets classified with respect to all other points.  \par
+\par
+In our case I'll be exclusive.  I'll be crisp.  Not fuzzy.  It has to be one place or the other.  So crisp, not fuzzy.  Sometimes you have 1 over the distance squared things that come in here.  Then you assign a data point by closest membership and then I update the prototypes again once I have the points back in.  So what's different about this?  \par
+\par
+You could have -- oh, oh, oh . . . consider the probability of anything being in each cluster.  So this is the prior probability.  This is taking into account the probability of each class happening.  The butter, the probability of being in the butter class is very low.  So that'd get a low prior probability.  It'd get pushed away.  That's the big difference here.  There's a prior probability that's going on.  \par
+\par
+Let's run it.  \par
+\par
+So if we run it through a bunch of iterations and I'm starting on the outside and works its way in . . . it's attacking.  As it starts out here it grows in.  When we start it, we start it often using the end members.  Those are the members that are farthest out.  As it grows in, it works its way in.  That's why on the midterm I said the answer was the end members.  You initialize the end aspect with it's members.  \par
+\par
+If you're not careful, these clusters will eat each other out.  It's like \i Space Invaders.  \i0 At some point, I stop it.  Once that happens, now I can take -- so I stopped here at 30 or 32 iterations.  So here's a cluster center and another cluster center and it has a model of the covariance.  Once I have these models, I can take each point and classify it.  Is this likely to be in the green class?  Red class?  Purple class?  Based on the distance and the prior probabilities you'd get these nice mappings.  So these little red squares belong to this one, and so on.  And these lines where it changes color, what do we call those?  \par
+\par
+Student:  Decision boundary.  \par
+\par
+Professor:  Carl, can you decide?  Is it out of the boundaries of your knowledge?  \par
+\par
+Student:  Decision boundaries.  \par
+\par
+Professor:  Good!  So this is without butter.  So that's ideal.  EM without the outliers.  So this EM without the butter.  Here's with butter in.  I wish the animation would animate itself.  Doesn't matter.  You end up with a cluster of butter here but it extends out a ways because the data is out here.  So by stepping in and throwing that point in, you get it.  You get your system.  But I have to stop in as I'm going along.  In my case, I used a manual stopping situation.  I said, "this looks good.  I'll stop here."  You could stop when the prototype stopped changing or some other criteria you might want to dream of.  \par
+\par
+Now there's a neither thing that I'm assuming here.  I'm assuming that I've got 4 or 5 clusters.  And EM could say, try it with 2 clusters, then 3, and then 4 -- there's another loop that says try another cluster and which one gives me the best grouping I'm looking for.  \par
+\par
+OK?  \par
+\par
+There is an interesting problem here.  That is, if I'm not careful, the cluster prototypes will move too quickly and it'll jump very quickly and eat out -- literally take over other clusters.  I don't want that.  So I do a few different steps.  One thing you do is throw out the points that are outliers.  And I analyze this and say the core points are the data points close to the center.  In this case I used 1 and a quarter Mahalanobis distances.  You update that based on those points.  I update my covariance matrix.  This forces the points to not move quickly.  \par
+\par
+The other thing I did to get it to work was used temporal smoothing.  I don't want the values to change too quickly.  So I used the old center value, the old location, times 2 plus the new location that I analyzed that I computed, and I divided by 3.  So the new center is the center that I compute out of this one.  So I have new data.  If I just found the center of mass, I'd use that value there.  \par
+\par
+But that value there can change too quickly.  Oscillate.  Do weird things.  So to get it working, and to keep it from changing to quickly, I used 2 times the old one plus the new one.  That's called temporal smoothing.  Also called a moving average filter.  \par
+\par
+Under the covers, the distance to this cluster is the square root of the data vector times the inverse of the prototype covariance . . . times the data vector transposed -- so this is the Mahalanobis distance -- I'm using the relative probabilities of the clusters.  That's the prior probabilities in the mess.  Got it?  \par
+\par
+Whole point is that EM uses relative probabilities and they're updating the probabilities as they're going along.  It's used to find the best parameters.  And another way to rattle the cage.  That's all I'll cover about EM.  You initialize it using the N members.  It slowly updates the model to keep from overshooting.  OK?  We've covered EM as far as I want.  We won't do an EM homework this year.  We are, however, going to have to cover PCA.  If you ever say you had a course in data science, they'll say, "oh yeah I know PCA."  They think that's the only thing.  \par
+\par
+So to cover that, we'll go to the MATLAB world.  You good?  Able to stay awake?  \par
+\par
+[Class laughing.]  \par
+\par
+OK.  \par
+\par
+Could you grab the lights back there?  Let's blast more photons in here and see if we can keep people awake.  I've got a MATLAB function but you don't have to know all the MATLAB here.  I'll write on the board in a second.  So this sets some variables and there's class A.  That's some data.  Class B is some other data.  And I have 4 points in each.  So I'm going to bring up a figure and set the axis up.  I'll turn on the grid, make it square, hold on, and then plot the first class.  The \i\f1 x\i0\f0  points and then the \i\f1 y\i0\f0  points.  That's the first class.  \par
+\par
+The second class becomes blue circles.  Now, does this look familiar to anybody using Python?  And matplotlive?  They stole the interface.  That's why it's called matplotlive.  They stole it.  So when I teach Computer Vision I teach MATLAB first.  \par
+\par
+It brings up a title, it chose the \i\f1 x\i0\f0 -axis, and I'll pull a vector out of nowhere and plot it up . . . I'll set a breakpoint here . . . we'll cover this in debugger land.  Let's try this.  \par
+\par
+Got it.  \par
+\par
+So I talked about projection.  Some people didn't quite get it so we'll go through this ad nauseam.  You'll need your calculator.  I'll jam up a vector.  The first vector I'm going to invent is 1 over the square root of 2, comma, 1 over the square root of 2.  So let's look at my data.  \par
+\par
+Here's the first data member.  1.5 and 5.0.  OK?  So I've got other vectors.  I have other data off to the right.  Let's just do this one data point at a time.  I want to project onto this vector.  Project means to take the inner product.  And in this Case it's a dot product we're going to use.  If you haven't done projection before, think about it as the dot product.  Ankair back there, I suspect he'll use higher calculus.  For Ankair he needs to know the projection in -- I don't know the \f1 4\i e\i0\f0  domain means there's integration involved.  But for us, it's just taking the dot product.  OK?  Everybody good with that?  \par
+\par
+That means -- I know, this is a repeat for Ian.  It's this times that plus this time that.  So I get 1.5 plus 5 all divided by the square root of 2.  Got it?  \par
+\par
+I realigned that.  Somebody have it?  What do we get?  Whatever we get we should agree on.  I'm seeing values between 2 and 6.  4.59?  I think.  That seems good.  This is like 6.5 divided by 1.7 so that's 4.6.  Good enough?  We've just projected onto a vector.  How far along that unit vector would the closest point fall on that vector?  \par
+\par
+Uh-huh.  Let's see if we visualize this.  I think I need to bring up some vectors.  Ah-ha!  I have a vector.  I brought my yardstick just for this.  We'll use red.  It's red data.  Don't stand up on chairs.  It's not safe.  \par
+\par
+Oh, rats!  Crap.  So up here -- blast.  Um, anybody have a pencil?  I'm kidding.  So up about here -- this is the first point.  If we were to go up 1, that's 1, how many do we have?  4.6.  Two unit vectors, 3, 4 -- .6 would be about there.  This point here -- that is at the right angle.  That's not going to work.  This point here though when projected onto this unit vector will be -- my dad used to be good at this -- 1, 2, 3 . . . he'd say 3.2-ish.  Or 3.3-ish.  That direction.  I'm not very good at just going like this but my dad was good at it.  This last one has to be here somewhere.  Let's say this will be 3. -- if that's a 3.2 this will be a 3.1 to 3.2.  That last point.  Let's go find the last point.  \par
+\par
+The last data point in our data set for class A is 5.7 and I just went out and clicked on a bunch of points.  That's where I got these from.  And a minus 1.6.  So project this data point on to this vector.  What do I get?  Somebody tell me.  \par
+\par
+Is it 3.1?  Somebody who has a calculator.  3.1?  3.2?  \par
+\par
+You didn't bring your calculator class?  OK.  \par
+\par
+Student:  She gave me hers.  \par
+\par
+Professor:  OK.  If I get it before you guys you're in deep trouble . . . 4.1 divided by 1.7-ish.  \par
+\par
+Student:  2.9.  \par
+\par
+Professor:  2.9?  OK so I exaggerated.  It's not 3.1.  OK.  That's the great thing about whiteboards.  2.9, exactly what I predicted.  OK?  As we're going up here, we'd say these data points are projected on.  It's literally a right angle to where you want to get to.  Here's this unit vector that goes on forever and we find the closest point from that unit vector and that's the projection on.  All those red points show up there.  The blue points would show up on the other side.  So this thing goes this way and so I'll get one here, here, one is there . . . so look where they show up.  The blue circles are here and the red circles there.  \par
+\par
+This is a good vector to project on to.  This is a guess for where the fisher liner differentiator is.  Here's a number line.  Doesn't have to be that vector, but it could be anything and anywhere.  For this case, the red blobs, the red data, would show up up here and the blue data shows up over here.  They are well separated.  OK?  Now, I've got this, and I've taken data that's two dimensional and I've modified it so it's now one dimensional.  I projected it down to one dimension.  \par
+\par
+What kind of classifier could I now use to tell the difference between the blue and red class?  What was the third homework on?  We 'twas the one we did after clustering?  We used a classifier.  All these classes . . . you're right on the threshold of going crazy.  What is that classifier called?  Amy?  \par
+\par
+Student:  One rule?  I think.  \par
+\par
+Professor:  Before that!  Speeding -- non-speeding.  It's a threshold classifier, guys!  OK?  Work with me here, OK?  You could take a threshold and start moving it through.  If we set the threshold in here we get good classifications and everything is perfectly classified.  I can take high dimensions and put it on smaller dimensions.  That's is called dimensional reduction.  This is why we want to do this.  OK?  \par
+\par
+So that's a good vector to do.  And I could just do it on the number line, eventually.  I'm basically converting it to a number line.  Here's another vector which I've drawn in black.  It goes up to the left.  It's not a good vector.  You can tell, because it's black.  In the movies the guy wearing black is always the bad guy.  So that's a bad vector.  Bad vector, go back to your origin!  \par
+\par
+If we project onto that vector, all these blue things go up in here and all the red things there.  With me?  Works great in other classes.  But I didn't recalibrate my world.  If I knew ahead of time I could have reshrunk the axis to fit on the whiteboard.  OK.  The whole points is when you project onto this vector, the data gets mixed up.  Let's keep moving through this.  I'm printing off the vectors and here I'll do the projections for 1A.  I'm projecting all of class A onto vector 1.  All of class B onto vector 1 and I get these projections.  It's a single matrix multiply.  \par
+\par
+This is 4.56 -- good.  We've seen that before.  Here's a 3.39, that's the second one.  There's a 4.9 and a 2.9.  Good.  Cool.  Those numbers look familiar.  OK.  We do the same thing for the projection for number 2.  I make noise.  Just to make sure people are awake.  No, that's to wake me up so I know the data is paused.  In case I'm whipping through this as you're going along.  It'll make me go down here and hit return.  \par
+\par
+Now, what we have here is the amount of projections.  That's the amount of each of these points in vector 1.  And this is for the B class in vector 1.  I can reproject them and I get the projected amounts.  I can multiply times that unit vector I had before and get reprojected amounts.  Once I have those amounts, I do it for 1 and 2 and replot out these values.  So I'm replotting those projected values and we'll see what happens.  \par
+\par
+Different noise.  So when I project them, I get the red ones up here in magenta.  And the blue ones here.  Look at that!  They're in different locations.  It'd be easy to classify these differently.  Everybody with me?  \par
+\par
+Let's project on to the other vector.  We get -- I set too many breakpoints.  I forgot I had those set.  I get these points.  Look.  Look at how messed up they are.  Magenta, magenta, cyan, cyan -- they're messed up.  This is a bad projection vector.  With me?  Do that.  Don't do this.  The other thing I can do is this weird thing.  \par
+\par
+I could also take a bunch of those data points and what I'm doing is PCA.  I could take the data points and rotate them and make life -- I don't know what happens if I rotate them?  I take a bunch of dots, class A and B, they're the same data values, but they're just dots.  I'll get a rotation matrix take the upper left hand corner and throw some stuff away.  This is like going from the XY points to the UV points.  I'm doing a rotation and a translation and then we'll plot them again.  When I do that, I get this data.  \par
+\par
+Here's my original data and here's the new data.  I just rotated it left by 45\'b0.  That's it.  Here's the U coordinate and here's the V coordinate.  This would be good.  This technique of pre-processing my data, of rotating the data, that's called principal components analysis.  Check it out.  Here's the output of PCA and here's the input vector.  So suppose I wanted to build a classifier.  I wanted to build a decision tree that tells the difference between the blue and red points.  Which works better?  \par
+\par
+A decision tree on these points or these points?  \par
+\par
+Student:  The second one.  \par
+\par
+Professor:  OK?  Everybody with me?  \par
+\par
+The decision tree here is going to have to go step by step.  \par
+\par
+Student:  That's the PCA?  \par
+\par
+Professor:  This is the modified version of the data.  It's been rotated using PCA.  If I rotate it first, now using this PCA technique, I could use a decision tree that says if you're above this line here, you're probably red.  Below that, it's blue.  I could do that in one decision.  Whereas here I would have to say if you're above this you're red, otherwise if you're below it or to the left then you're blue.  Otherwise you're right, you're red.  And so on.  \par
+\par
+Student:  Where are we doing all of that exactly?  \par
+\par
+Professor:  Imagine I give you the task of building a decision tree.  We're going to get there.  So the next two lectures are how to find the best way to rotate the data.  That's principal component analysis.  And after that will do fisher linear discriminant.  The goal of this discussion right now is to see these are two different things.  PCA is a pre-processing technique that may or may not help you.  It's a rotation of the data.  FLD is a classifier.  Which may or may not help your classification accuracy.  But 80% of the time it does help.  \par
+\par
+Student:  Does rotating the data do anything to the units?  \par
+\par
+Professor:  That's a great question.  I take my data, paying attention to these red points and those red points, and these blue points and those blue points.  All I've done when I rotated the data -- if these were exactly the same scale -- all I've done is taken this piece of paper and rotated it 45\'b0.  Boom.  Does that make the data farther apart from each other?  Does it rescale anything?  No.  \par
+\par
+All it's doing is rearranging the data on a new axis.  Instead of plotting it in \i\f1 x\i0\f0  and \i\f1 y\i0\f0 , we're plotting it in \i\f1 u\i0\f0  and \i\f1 v.\i0\f0   A translation of coordinates.  All there is to it.  There's many people -- write this down -- who think PCA solves your problems.  PCA does not separate your data.  It doesn't make it farther apart.  Excellent question.  Bonus points later on for class participation.  Good questions.  \par
+\par
+Tanner?  \par
+\par
+Student:  So if you are using the second one here, say the fisher classifier, if you were using -- if you want a specific answer for it, would you have to rotate that projected vector then?  \par
+\par
+Professor:  What are the units of this?  Do we know?  I've taken something that might have been in calories and protein and I'm rotating it and coming up with a new feature.  It's a new feature!  I've created a monster!  I have no idea what the units are.  Some fraction of the amount of kilocalories.  And that's another vector, which is the other one.  It might even be meaningless like negative calories.  Units, I don't know.  I'm also doing feature generation as I'm going along.  \par
+\par
+Student:  If there's no units, how do you build the decision tree?  \par
+\par
+Professor:  It doesn't have units, but it has numbers.  Decision trees just look at the numbers.  It doesn't know anything about the units.  It just says, "oh, look at all the values of sugar I have."  But it's not sugar here, it's all the values of \i\f1 v\i0\f0  -- all the possible values of my data.  The threshold classifier says minus 3 doesn't separate them so it works its way up until I get up here where I have good classification.  \par
+\par
+Student:  So once you have that rotation matrix, for classifying new examples, you'd do that rotation and then you'd only base your classification on that one feature?  Basically ignore the original two?  \par
+\par
+Professor:  Class participation points to Kamal!  Excellent.  I assume you made that connection and I appreciate the question so I can come back to Earth.  So let's take a point that's here.  Here's a point.  We'd rotate everything this way.  So now, I'm rotating it 40\'b0.  That point we don't know about here would show up right there.  We'd now classify it.  Is this data point more likely to be the red or the blue?  Depends on where that threshold classifier is.  I would guess that a threshold classifier would probably draw it halfway between there and here.  Oh, it's close!  \par
+\par
+OK?  \par
+\par
+But yes, that's exactly the same thing.  Let's do an easier one.  I have a point here and I rotate it.  It's kind of between these two -- that question mark is between these two points.  It still has to be between these 2.  It'd be here.  So this point would definitely be classified as the red class and not the blue class.  So yes, you rotate the data and we build the classifier here and we use that classifier to go back to our original life to say, "Oh, that's the answer!"  \par
+\par
+Did I lose anybody?  \par
+\par
+OK.  I have 5 minutes.  In the next 5 minutes.  I'll teach you all the mathematics, control theory . . . \par
+\par
+Student:  Professor, what's the difference between projection and reprojection?  \par
+\par
+Professor:  Once I project, I'm somewhere on this number line.  That's the amount of the unit vector.  When I reproject, I multiply it back times the unit vector and I go back into my original space.  So now I can plot a point in my original data.  So these are back in the same space as my original data so I can look at it to see how it'd go.   So these points here are all at 90\'b0 to the original points.  Somewhere.  \par
+\par
+So here's the question, if I give you a quiz on Monday and I say here's a bunch of data points, sketch where the projected data points fall on this vector, can you do that?  You don't need to bring a right triangle.  All pieces of paper have corners on them.  Tear off a corner.  That way we'll know you were here in class.  OK?  \par
+\par
+Here's what's going on under the covers.  I wish somebody had pointed this out to me in grammar school.  What we do is this: we take a problem we don't know -- problem space.  Hard problem.  We transform it to some new space.  Here's a new space.  It's still a hard problem, but there's a known solution.  Apply the solution.  \par
+\par
+Here we have the solution.  The answer.  The problem is that this answer is still in this new space.  So then I de-transform it -- inverse transform -- and I get the answer in my original space.  OK?  You know this phenomenon.  You just don't remember it.  I have points that are in XY space and I want to rotate them by 45\'b0 or some arbitrary amount.  I take my XY points and I get them into a space where it's easy to do rotations.  Adrianna, what's an easy coordinate system to do rotations in?  This is not astronomy!  Something less than that.  2D.  \par
+\par
+Student:  I don't remember what it's called.  \par
+\par
+Professor:  You're looking down at the Earth from the top.  The pole.  What's that called?  Polar coordinates.  That's OK.  So now I have \i\f1 r\i0\f0  and \f3\lang1032\'e8\i\f1\lang1033  \i0\f0 and I want to get that rotated by 30\'b0.  Maybe 33\'b0.  So now I have a new point that's \f3\lang1032\'e8\i\f1\lang1033  \i0 +\i  \i0 33\'b0.\i  \i0\f0  Rotation is easy over here.  Then you do the inverse and you get these \i\f1 u\i0\f0  and \i\f1 v \i0\f0 points and I can plot these back on.  Here's this abstract pattern.  Taking a problem we don't know and converting it and then coming back.  I have a control system and I want to know if it works.  \par
+\par
+I take it and you do a transformation.  You see if there's poles on the right hand side, and if there are, forget it.  \par
+\par
+Fisher couldn't solve the problem in space, but he converted it into another world where he could pose the problem as a Raleigh quotient.  I know that's like PhD stuff but he knew the answer.  But he figured it out and he converted it back so that's how he knows.  You'll see this in all sorts of things.  Onkar is taking my computer vision class and we'll do the same thing where we take a problem we don't understand, convert it into frequencies, do a trick in the frequency world and then you convert it back.  I wish somebody had told me this in 9th grade.  \par
+\par
+This is the answer to all the math and the secret to getting a PhD in math.  You just do these tricks and you do it different ways for different disciplines and it's done all over the place.  Nifty, huh?  Don't tell anybody I spoiled it for you.  OK?  Go forth, be safe, stay warm.  We'll see you later.  \par
+}
+ 

@@ -1,0 +1,416 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Georgia;}{\f1\fnil\fcharset0 Times New Roman;}{\f2\fnil\fcharset1 Cambria Math;}}
+{\*\generator Riched20 10.0.17763}{\*\mmathPr\mmathFont2\mwrapIndent1440 }\viewkind4\uc1 
+\pard\tx440\tx880\tx1320\tx1760\tx2200\tx2640\tx3080\tx3520\tx3960\tx4400\tx4840\tx5280\tx5720\tx6160\tx6600\tx7040\tx7480\tx7920\tx8360\tx8800\tx9240\f0\fs22 Principles of Data Mining\par
+Professor Kinsman\par
+CSCI-420-01\par
+November 4, 2019 \par
+\par
+Professor:  Uh oh, he's here.  Cellphones away.  \par
+\par
+Student:  Were you a Jedi for Halloween?  \par
+\par
+Professor:  Yes.  Somebody said I looked like Luke Skywalker.  So I said I could do that.  \par
+\par
+Give some of these to Amelia and Parker.  \par
+\par
+First question is what is A-clustering?  Not "what is clustering."  A-clustering.  \par
+\par
+OK.  I'm done rearranging things.  [Professor Laughing.]  If this were a real test, you would see these questions again.  But I want to make sure you've seen these questions at least once.  What is A-clustering?  \par
+\par
+Student:  Data that's broken up into clusters?  \par
+\par
+Professor:  I wouldn't say that.  What'd you write, Sean?  \par
+\par
+Student:  The division into parts.  \par
+\par
+Professor:  A way of breaking up the data into groups.  A grouping.  I would call it a partitioning.  What's an alternative approach?  You didn't write anything down?  OK.  It'll stick to you eventually.  Anybody have any ideas?  Hierarchal?  That's a good start.  What's another word to put in there?  Hierarchical agglomerative.  \par
+\par
+What's a prototype?  \par
+\par
+Student:  A cluster that includes a spread of location.  \par
+\par
+Professor:  OK it has a location or center, and a spread.  It has a center and some distance over it.  Why is that important for a computer?  Patrick?  I could just say, "it's in the Penfield range or somewhere near Henrietta . . ." \par
+\par
+But that's not helpful for a computer.  It has to be a mathematical model.  So the computer can do math on it.  I usually say a mathematical model.  What's the difference between a centroid and a medoid?  The point closest to the center is a what?  \par
+\par
+Student:  The point in the set?  A centroid -- no, in the data set a medoid.  \par
+\par
+Professor:  A medoid.  OK.  Yeah.  I got that super magnet in my pocket.  Thankfully it's not too bad.  But it's stuck to everything else in my pocket.  That's how it goes.  [Class laughing.]  \par
+\par
+Yeah.  It has a 62lb pull . . . \par
+\par
+OK.  Give you another chance.  How many clusters does k-means return?  \par
+\par
+Student:  \i\f1 k.\i0\f0   \par
+\par
+Professor:  \i\f1 k\i0\f0 ?  That's right.  Just wanted to make sure you knew.  How do I choose \i\f1 k\i0\f0 ?  Everytime I run k-means with \i\f1 k \i0 =\i  \i0 2\f0 ,\i\f1  \i0\f0 it returns two.  \par
+\par
+I'm going to look for a change point on the inflection point.  Or the point of diminishing returns.  Or whatever.  It's called different things in the business world.  You should be able to sketch that.  I will probably ask you about that next Monday when we have a midterm.  OK?  \par
+\par
+We didn't have a midterm today.  Because somebody is falling asleep.  They think it's like 7 o'clock.  Or whatever that clock says -- that's how it goes.  That's why we don't have midterms after the time change.  \par
+\par
+Emily runs k-means and Erin runs it.  They both get different results, why?  \par
+\par
+Student:  It picks 3 points at the center and it might shift -- \par
+\par
+Professor:  There's a key word I'm looking for.  That's Jonathan so you're not Jonathan.  You're Douglas.  I knew that.  \par
+\par
+Student:  It randomly chooses the first points.  \par
+\par
+Professor:  Yes.  And because of that, you can get different results.  If you randomly don't repeat somebody's results, that makes sense.  Emily, how do I get around that?  \par
+\par
+Student:  Do it more than once.  \par
+\par
+Professor:  Yeah.  Like a thousand times.  \par
+\par
+How do I stop iterating?  \par
+\par
+Student:  A few differences across multiple iterations of the clusters.  \par
+\par
+Professor:  Or the CPU burns up.  List an algorithm that is embarrassingly parallelizable.  \par
+\par
+Student:  Decision tree training?  \par
+\par
+Professor:  That's not what I'm looking for.  Raise your hand if you know what parallel processing is.  Oh, everybody has an opinion.  What algorithms do we have where everybody asks a question and everybody has an opinion?  \par
+\par
+Student:  Random forced.  \par
+\par
+Professor:  Perfect.  That's important because it's a common interview question.  They want to know if you could do that.  This is called embarrassingly parallelizable.  \par
+\par
+Student:  Could you say this for k-means because if you have different iterations, you could distribute each of those.  \par
+\par
+Professor:  Good point.  If I run it a thousand times, I could run it a thousand times on a thousand servers but now I have to have a way to compare the results.  I would entertain the argument.  But there's another algorithm -- random force is a great answer.  But there's another one.  I'm trying to put the thought into your brain.  Can you hear that?  Eric?  Do you feel it?  So random forest works by asking everybody their own opinion.  Ian says, "well, let's look.  It could be a cupcake or a muffin.  The amount of sugar is high, so cupcake."  He's looking at one attribute and one threshold.  \par
+\par
+But Carl says it's a muffin.  Annalee looks at the amount of oil, whatever.  Must be a muffin.  I don't know why that is, but that's the way it is.  Each one has one choice.  But you could make a slightly more important thing where I give you the amount of ingredients, and Nicholas says, "given those 4 things, I'll do something else."  You'll make one answer.  What do you do?  \par
+\par
+Student:  It's a decision tree, right?  \par
+\par
+Professor:  No.  You have one choice to do.  \par
+\par
+Student:  One rule.  \par
+\par
+Professor:  Good guess.  But I'm not looking for that.  The idea isn't getting into your head.  I want to pierce your hard thick heads!  What random question -- if only somebody could raise their hand!  \par
+\par
+Student:  Random projections.  \par
+\par
+Professor:  Yes.  Given the amount of sugar, flour, oil, and anything else, you randomly project it into some projection in your data set.  And then you look at a threshold.  The only difference that and the random forest is you first project it onto your decision vector.  \par
+\par
+So you're sitting there in the interview and they ask what's embarrassingly parallelizable?  I like your answer about k-means.  You could say that if you had an arbitration back end for . . . blah blah blah.  But random projections is what they're looking for.  \par
+\par
+Student:  Is there a reason you wrote embarrassingly?  \par
+\par
+Professor:  That's the official term.  It's an official term in datamining.  It's called embarrassingly parallelizable.  There's a whole wikipedia page on it.  I haven't checked.  But I'm sure it's there.  \par
+\par
+Student:  What makes it that way?  \par
+\par
+Professor:  It's so obvious that you could distribute this process to 100 different servers, each server makes one choice and 100 of them all come back to me and I add up 100 if the number is over 50 saying if it's a cupcake, it's a cupcake.  If it's below 50, it's a muffin.  It's dirt easy.  \par
+\par
+Student:  It's about having that aggregation step at the end?  \par
+\par
+Professor:  When we parallelization you always have to have a controlling server that says, "are we done yet?"  There has to be somebody who does the arbitrary thing.  On the GPU, you have the CPU.  Central processing unit.  And there's other classes -- concept and parallelization and whatever they do.  I assume you can make the connection between this world and that world.  What other questions do we have?  \par
+\par
+Self-organizing.  Quick.  \par
+\par
+Student:  K-means.  \par
+\par
+Professor:  Because the clusters rearrange themselves in terms of size and shape.  And there's problems with that.  What do we usually use for cohesiveness?  \par
+\par
+Student:  Are you asking me again?  \par
+\par
+Professor:  Sure.  Mr. know it all.  \par
+\par
+Student:  I'll have to look into that.  \par
+\par
+Student:  It's the sum of the squared error.  \par
+\par
+Professor:  The SSE.  Common metric.  That's the axis for the k-means.  OK?  Got it?  Was that too boring?  I'm going to collect these at the end of the day.  You can put them on Audriana's desk and I'll look to see who's here.  If you're not here, I won't give you a good grade on this.  I have to take attendance because -- issues.  Whatever.  \par
+\par
+So we did other things last time and we'll do more things today.  More fun.  Yahoo!  Let's check out status.  Decision tree algorithm is due.  OK?  Some people are still fighting with it.  Keep fighting.  I want you to get it done.  It's worth two homeworks.  I do that because historically some people said maybe I'll drop one of the homework and I usually do.  Because accidents happen.  I want to make sure you if you get a zero on this one, that's two zeros.  Because I want to avoid that.  \par
+\par
+Student:  We are allowed to use packages as long as we explain in the documentation -- \par
+\par
+Professor:  Your job is to implement it.  It's like one-rule but recursive.  \par
+\par
+Student:  I'll talk to you after class.  \par
+\par
+Professor:  So, yeah.  We have stuff to do there.  I thought I said explicitly -- \par
+\par
+Student:  I think you had a warning for that.  \par
+\par
+Student:  In the write up it said like example use this but don't explain 50% error -- \par
+\par
+Professor:  So I have some people who submit homework and they have no comments in the code.  Nothing.  At all.  It's like void of comments.  As if they got the code from the internet and they expected it to be -- I don't know.  I want comments in there so when the graders are looking at it they know what you're go.  Make sense?  When the graders take 30 minutes to grade your homework, it costs me money.  [Class laughing.]  \par
+\par
+I'm not kidding!  I pay them by the hour.  Your homework is fine.  I picked on you because you were easy to pick on because you're standing right there.  Were you nervous?  \par
+\par
+Student:  No.  \par
+\par
+Professor:  OK.  Good.  That's my problem.  Why do I do that?  Who cares?  Tanner?  \par
+\par
+Student:  Just good coding practice.  \par
+\par
+Professor:  It's better than that.  Blake?  \par
+\par
+Student:  Because you can make sure -- or at least you have an idea if we're plagiarizing.  \par
+\par
+Student:  So we can get a job.  \par
+\par
+Professor:  So you can get a job.  [Class laughing.]  \par
+\par
+It's my second most important thing.  I have had students go to technical interviews.  They sit down and the interviewer says, "OK you have an hour to write a program."  I don't know what it is.  I want new information back.  So my students will write up a block of comments that says here's my strategy, I'll use this set of features, this plan and this linkage method, blah, blah, blah.  They write out all their thoughts for 10 minutes and then they start to write Java but they don't remember it.  They can't do it in python.  \par
+\par
+But the interview can see their comments and they know their thought processes.  Another person looking at your code knows what you're thinking about when you wrote that code.  They'll hire you.  This really happens.  The code didn't run.  The Java didn't compile.  But the code was well enough commented but they knew that's what they were looking for.  Somebody who can work in a team and they can see what they're thinking.  Not all teams do that.  \par
+\par
+There's some teams where the code is one place and the documentation in another.  It depends on the particular group you end up with.  But as a general rule across the industry, if Douglas writes code and gives it to Jonathan, Jonathan can't read his mind.  It's not telemetry -- what's it called?  Telepathy.  Telemetry.  What's that?  It's signals going back and forth between where you are.  \par
+\par
+Telemetry -- we've heard that before.  What's telemetry data?  \par
+\par
+Student:  It's like logging.  \par
+\par
+Professor:  Oh.  We better review.  OK I have work to do.  We have the decision algorithm coming in.  You have a cheat sheet, just one side.  I want to make sure you have that somewhere in your world you can use.  I'm easily fooled.  I just want to see one side.  You can probably show me one side of last exams cheat sheet and I wouldn't know the difference.  But that won't help you.  \par
+\par
+K-means homework coming up.  We're going to use the -- the plan is this:  You randomly pick -- say we're doing 3 clusters -- and you do \i\f1 k \i0 =\i  \i0 3\f0  and randomly pick 3 and then you assign all the points to the randomly closest point.  Now I think I have you set up to compute the Mahalanobis distance from that point to all the others.  And then reassign.  Of the points in your cluster, the ones beyond 3 Mahalanobis' distances are too far away.  Set them aside and recompute the prototype for that cluster.  How do we do that?  \par
+\par
+I'll show you a see-saw.  Here's a balanced point.  None of you remember what a see-saw is.  You're not allowed to play with them anymore.  Here's a balancing point, we have weight here, most things are near the center of my thing because of normal distribution.  Now we put one person here and this person will tip the scales greatly because they have a lot of leverage.  That leverage idea is literally the same math that's used for computing the center of mass.  \par
+\par
+We call those outliers.  So we'll throw those away for updating your prototype.  That avoids having the computation for the center of mass pulled off from the outliers.  You can graph the data if you want.  You should see there's some nice clusters in there.  So that's k-means.  We have an exam on Monday.  OK?  \par
+\par
+We'll be busy.  \par
+\par
+Agglomeration is due Wednesday and then we have a project that's due.  With me?  This is a lot of work.  It is.  When you're doing your project, you have a bunch of tropes from place to place.  I only care about the ones from Penfield to here.  How do you know what those are?  You have the GPS points.  It's possible I give you one from RIT and goes to Wegmans and then back to RIT.  That doesn't even start at my house!  That's ridiculous!  \par
+\par
+So you might want to write a pre-processing routine, given this GPS data, look for Penfield.  So we use a GPS fence and you'll do extraction.  "This one includes Penfield and I have RIT and we're good to go."  \par
+\par
+Student:  For the first checkpoint, do we have to just get -- \par
+\par
+Professor:  I believe that's true.  I'm being brutal on the other section.  But I think you just need to do one thing to KML.  When you do this, update your resume.  Say, "in this class, we worked on IoT."  That's what these devices are.  They collect lots of data.  That's what I have in my car.  It records where I'm going.  I have it on my phone.  Google says, "Hey, Carl went there, Nikita went there and this is how fast they were going.  Oh, traffic is going slower!"  They do that stuff real time depending on how fast they're moving.  \par
+\par
+If you put your android device in your bike and you move around, does it say slow moving vehicle?  We don't know.  I want you to pretend you're Google and you are doing a cross trip agglomeration -- \par
+\par
+Student:  Usually on a bike it'll show you bike routes.  So you won't get car data.  \par
+\par
+Professor:  Shows you how little I know about the world.  I have gone on the maps and it asks if I want to bike there, but I usually say no.  I'm in the Twilight Zone.  I grew up in Penfiel, I went away, and now I live there again.  I can't escape!  So yes, KML.  It's what we use to look at the data and see if it's working.  There's a little gotcha as you're looking at it.  If you try to put too many data points in one KML file, it stops working.  Google Earth will not render it.  I don't know how many too many is.  You have to figure it out.  I want to see what you're thinking about.  \par
+\par
+Student:  What app do we use to view it?  \par
+\par
+Professor:  Google Earth.  You can download it to everywhere and run it anywhere.  On any MAC or windows.  I know because I'm running it on my Mac so it must run on Windows.   Right?  Maybe not.  \par
+\par
+Other questions about this . . . good.  There's other little things like stickers you might want to stick in.  Audriana might see this is a slow place so avoid that intersection.  Every time you drive through it you waste 5 minutes.  So you might have to generate statistics on an intersection.  Figure it out.  The second checkpoint, which is not too long away, you'll say this is the thing you want to maximize or minimize.  But you have to get moving on this.  For the project you can use a package called Fast KML.  Write that down.  \par
+\par
+I wrote my own parser.  But you'll probably want to use anything you can get your hands on to make life easier.  Make sense?  I'll try to pre-process the files to make sure they only start in Penfield but I can't promise anything.  \par
+\par
+OK.  What else is up?  We have to have projects.  Somebody cleverly pointed out that myCourses was preventing you from getting into a group.  Get in a group.  Get to know somebody else.  Groups of 2.  Is that scary?  \par
+\par
+Get together and decide how you're going to break up the work and who will work on what.  Don't say, "you do it all."  That won't work.  I'll check on you to see who did all the work.  It's possible for two people to do the same project and one person gets an A and the other does not.  \par
+\par
+Student:  In the data you gave us, it has the raw GPS data and it also has a line that has -- \par
+\par
+Professor:  Don't use the comments.  That's debugging stuff.  Just read the RMC.  The recommended minimum coordinates.  \par
+\par
+Student:  We're not using the GGA?  \par
+\par
+Professor:  Why would we need the GGA?  What's in the GGA?  Depends.  If I'm Tyler and being clever . . . Tyler said he wants to figure out up or down hill.  I think the altitude is in the GGA data.  Where did GPS start?  Who cared?  The military.  What branch?  \par
+\par
+Student:  Navy?  \par
+\par
+Professor:  The speed is in knots.  Who cares about speed in knots?  Where did knots come from?  \par
+\par
+Student:  Nautical miles.  \par
+\par
+Student:  You throw a rope behind your boat.  \par
+\par
+Professor:  That's right!  You'd tie knots in a rope and throw it out and you'd see how many knots went away in a given time.  The Navy started this idea of GPS data.  It's really important.  It is.  It's kind of scary important.  So they wanted to be able to know where their ships were at any given time.  It wasn't until later on they said, "oh maybe we need an altitude."  How many feet above sea level is a ship?  \par
+\par
+It's generally zero.  They generally don't care about that.  But then the Air Force said, "you idiots!  We have airplanes!"  \par
+\par
+So they added in the GGA line.  And the altitude tells us whether we're going up or down.  \par
+\par
+Student:  So does that mean RMC and GGA should be a pair?  \par
+\par
+Professor:  Yes.  But sometimes it writes one out and the other out at the same time and you get a garbage line.  It's a dirt stupid little program.  It reads a little bit in form the GPS device, and it writes it to a disk.  That's it.  It doesn't do a good job.  \par
+\par
+Student:  They come in pairs, but when they transmit they're .2 seconds apart.  Are they read at the same time?  \par
+\par
+Professor:  I want you to appreciate how easy it is to ask a very basic question that goes well beyond my knowledge.  I have no idea.  I know all kinds of things about GPS.  But I'm interested in how, how is it possible to be so freakin' accurate?  I look at my data and see when I changed lanes.  I cover that in my more advanced class.  Make sense?  \par
+\par
+[Clapping.] \par
+\par
+Let's go.  Here we go.  Ready?  You awake?  \par
+\par
+Student:  Yup.  \par
+\par
+Professor:  OK.  Wanted to make sure Nick was awake.  Nick, where does that noise come from?  He hears it coming from here.  How did you locate that?  \par
+\par
+Student:  My ear.  \par
+\par
+Professor:  Oh.  You heard it?  OK.  Now I'm not being silly.  It's possible to make a really loud noise that's loud over there but it sounds like it's coming from here.  The way you tell where a noise is is based on the different amount of times that the sound wave hits this ear and this ear at the same time.  GPS does the same thing.  It figures out from that relative distance where you are.  That's what gets it so accurate.  It's not because the speed of light is so fast . . . \par
+\par
+OK.  What's not clustering?  Simple segmentation.  Ready to go?  Put your cellphone away.  Here we go.  \par
+\par
+Query.  Get me a group of stuff -- that's not a cluster.  \par
+\par
+All of this falls into a little thing called CRISP-DM.  That's Cross-Industry Standard Process for Data Mining.  \par
+\par
+So Patrick, we'll give you a billion databytes of where whales go and we want you to analyze where they've been and where they're in a feeding frenzy or whether they're mating -- how will you analyze the data?  \par
+\par
+Student:  Can you repeat that?  \par
+\par
+Professor:  This will happen to you.  They might ask you something that you'll have no idea how to do.  And you'll get out your Judo and you'll say you'll start with a CRSIP-DM.  Doesn't that sound so much better than, "I have no idea?"  That's important to know.  \par
+\par
+Student:  They'll ask you to explain what that is.  \par
+\par
+Professor:  And you'll know!  First you have to consider if you should be analyzing or not.  People use this to deny old people from moving into some regions or apartment areas.  That's not a good thing.  Business understanding.  What's the goal?  Will you make money or gain understanding?  Why do we want to do this?  Who cares?  That's what the second question is.  \par
+\par
+Now I want to understand my data.  I want to know where my lumps are and one of the things I'll do to find that -- how do I find the lumps in my data?  \par
+\par
+Student:  I'll have to look into that more.  \par
+\par
+Professor:  Ian?  \par
+\par
+Student:  Clustering.  \par
+\par
+Professor:  I use clustering!  That's right.  I use it to discover the structure of my data.  For example, I have 5 different clusters of shoppers that come to my site to buy -- and we did this at Kodak.  Kodak built clusters of people who bought cameras.  Some people bought them because of technical things.  Other people bought the camera because it was purple and they wanted a purple camera.  That's ridiculous.  Orange is so much better.  \par
+\par
+I'm joking.  But I bought a camera that was orange because if I can't see it in my backpack it's lost.  \par
+\par
+So we actually did cluster our data to figure out our customers.  We might want to do data cleaning and there's an entire course on that.  Modeling means building decision trees and artificial neural networks.  Things that help us understand and predict data.  \par
+\par
+Once I have this data and I figure out Emily will buy it because it's purple, here's the fashion conscious group.  Then I can start building classifiers once I have names.  Once I'm done, I have to evaluate it using -- I have a classifier, how do I evaluate that?  \par
+\par
+I don't want to pick on you anymore.  You're too easy.  \par
+\par
+Student:  By some metric you probably figured out in step one.  \par
+\par
+Student:  Testing data.  \par
+\par
+Professor:  So I could use testing data, right?  What if I just give you training data?  \par
+\par
+Student:  Generate ROC curves?  \par
+\par
+Professor:  Don't fold up on me now.  What would I do?  \par
+\par
+Student:  You're evaluating classifiers.  \par
+\par
+Professor:  How?  Like the decision tree homework, you were only given training data.  You don't know anything about the testing data, do you?  Oh, yes you do!  \par
+\par
+Student:  N-fold cross validation.  \par
+\par
+Professor:  Yes!  That's a good one for the midterm.  If you're only given training data, how do you estimate your test accuracy?  I have to write that down.  That's a humdinger.  \par
+\par
+OK.  Got it.  So I'm going to evaluate it and once I'm ready I'm going to start shipping it and deploy it.  It'll generate reports and send it back.  We have this copier not far from here.  That copier -- whenever I go in there and I'm making a quiz, I push 45 copies.  And it goes.  The copier says, "Hey, professor Kinsman is making another 45 copies."  It says, "no problems."  If the toner runs out, it'll say it spat out around page 42.  That's when we ran out of toner.  And it sends the reports back to Xerox.  \par
+\par
+Tesla collects all kinds of this data in their cars.  When things go wrong it sends stuff back and they analyze it.  What do we call this data?  It would be silly to pick on you because you just came back in.  Carl?  What's the answer?  \par
+\par
+Student:  Telemetry?  \par
+\par
+Professor:  Exactly!  Think about this as you're designing -- as you're thinking about designing products in the future.  The gaming people build games.  And the games generate telemetry data that says this is how often this person was playing it.  \par
+\par
+It keeps going.  \par
+\par
+Let's keep going.  \par
+\par
+So clustering is there.  We'll be talking about that today.  I don't know why I'm going so slow.  This thing also iterates.  I think we're talking about good stuff.  This is redundant.  Partitioning -- got it.  \par
+\par
+We remember this from last time, right?  I have redundant slides because sometimes I teach this first.  Don't wail on me because I have redundancy in my slides.  Or I'll stop giving PowerPoints back.  Because people write the meanest things on my evaluations.  Wouldn't it be nice to have something that defines how compact or how far away a cluster is?  Something like this?  \par
+\par
+I have a cluster with data points and here's another.  So somebody invented this idea of \i\f1 s.\i0\f0   It's a measure of how good a cluster is and it uses two things.  First off, it says let's compute the average distance to these points within the cluster.  The average distance from each point to every other cluster.  We'll call it \i\f1 a.\i0\f0   For any point here what's the closest distance between this cluster and another cluster?  That's called \i\f1 b.\i0\f0   OK?  \par
+\par
+Above.  Below.  Above.  Below.  I don't know why they call it \i\f1 a \i0\f0 and \i\f1 b.\i0\f0   If we compute this, what happens there?  \par
+\par
+In an ideal world, \i\f1 a\i0\f0  would go to 0.  So it's going to be 1 minus 0 which is 1.  In an ideal world, this thing would be something but \i\f1 b\i0\f0  would be really big.  And in that case, \i\f1 s \i0 =\i  \i0 1\i  \i0\f2\u8722?\i\f1\lang1033  a \i0 /\i  \i0\f0 infinity.  \par
+\par
+When \i\f1 s\i0\f0  goes to 1, that's a good cluster.  This is called the silhouette coefficient.  And it combines the idea of chosen and separation in the same calculation.  The closer to 1, the better.  Questions?  \par
+\par
+I run two different clustering algorithms.  They both spew clusters.  I want to compare the two and I can ask them which has the lowest silhouette coefficient.  Right?  \par
+\par
+Student:  I figured out my own question.  \par
+\par
+Professor:  Do I want the silhouette coefficient to be low?  No.  \par
+\par
+Student:  Since the silhouette coefficient is for an individual point do you try to find the average silhouette coefficient for a cluster or is one point enough?  \par
+\par
+Professor:  Yes.  It'd be the average in that system.  When you run packages that do clustering, it spews out answers at you and this is one of them.  OK.  We've talked about different types of clusters before and one of them is mixture models.  One of the big things between them is some of them are crips, meaning you're in this cluster or that cluster.  Can't be both.  And some are fuzzy.  That means you can be a bit of this part and a bit of that part.  Everybody OK?  All good?  \par
+\par
+Crisp versus fuzzy.  Good thing to remember.  Sometimes I want to do only partial clustering.  Just get the main core things.  And I'll ignore the things that are far out.  So I'll do partial clustering.  Heterogeneous versus homogeneous -- different stuff that comes together.  That's a lot of vocabulary that goes along with this.  How to describe clusters?  \par
+\par
+This is some of the vocabulary.  I'll show you an example of every single one of these as we're going along.  We've done some of these.  This is a prequel to the next 6 pages of slides.  Are they well separated, center based, density based, trying to maximize or minimize an objective function or is it trying to meet some concept?  \par
+\par
+The first one is well separated.  And it's just subjective.  Ian goes and runs and nick goes and runs his program.  They're working on a project together and Ian says, "I think I have well separated clusters."  That means good.  How far is the cluster from another cluster compared to the inside values?  OK?  \par
+\par
+It's subjective.  This is for talking about clusters.  Center based.  Almost all clusters we'll use, except for routes, will be center based.  That means it's surrounding around a center.  You could also have elliptical clusters.  \par
+\par
+As soon as you seen an elliptical clusters, you'll know what causes those.  What causes elliptical clusters?  Ankair says, what distance metric will you use when you see these?  The Mahalanobis distance.  Exactly.  Correct.  I'm not picking on you because you're from India.  Only because you're in two of my classes.  You should know Mahalanobis distance.  It's a hard word.  It took me a week to learn it.  \par
+\par
+Contiguous.  That means touching.  So here's one touching cluster and here's another.  These two blobs are in one touch cluster.  Here's another cluster with two ends like barbells but it's connected.  It's contiguous.  Here's another one.  And here are 3 different clusters that are all contiguous.  This is an important thing.  Legally, some things have to be contiguous.  The city of Rochester has a little 10ft section of land it owns.  It goes up to Lake Ontario and it goes out and forms the beach out there.  It has to be contiguous.  You can't have the city of Rochester that has a park there and there, so it owns a 10ft piece of land that goes up to the beach.  Has to be really strange for the people who live there \par
+\par
+Who's been on an airplane?  Most of you?  I'm thinking about going to California because there's a cool science museum there.  So I'll fly to Chicago, walk to Atlanta, and then fly to California.  Right?  Of course not!  When doing route planning I want contiguous clusters.  Very important for route planning.  Doesn't matter if it's airfare or bus routes.  Contiguous.  Don't want to do a lot of walking in-between.  Do not fly through Chicago O'hare.  It's a pain in the neck.  \par
+\par
+Density based clusters.  You can just draw lines around them.  I did that here.  Boom.  They're like contour maps.  The stuff out here doesn't matter.  That's noise.  They're outliers.  \par
+\par
+OK?  \par
+\par
+There's an algorithm called DB scan and it's used on these.  What does DBScan stand for?  Density based scanning.  We'll get there.  Concept.  I want a house with a roof and a building.  I don't know what this is.  Here's another concept: circles.  I'm looking for donuts.  How do these fill in?  OK?  \par
+\par
+There's piles of them.  Objective functions.  We've already done clustering to maximize an objective function.  Adam, what homework did we do?  Do you remember?  \par
+\par
+Student:  No.  \par
+\par
+Professor:  I can't think -- \par
+\par
+Student:  [Student saying name.]  \par
+\par
+Professor:  OK.  Which homework did we do?  Otsu's method.  Maximize the objective function and the one there was the mixed variance.  You want that as big as possible.  OK?  \par
+\par
+When I'm flying from place to place, I need to make a linkage from one cluster to another.  The question is, how do I link my clusters together.  This concept of linkage is true of airfare and also true when we do agglomerative clusters.  Ones squares and one circles.  If I find the shortest distance between any point and the other, that's termed the single linkage.  Please don't ask me why.  That's just what it's called.  Single linkage.  That's no such thing as double linkage.  No multiple.  Just single.  \par
+\par
+So that is the shortest distance between any point here and any point there.  OK?  So that's easy.  What would be the opposite of the shortest?  Tanner?  \par
+\par
+Student:  The longest?  \par
+\par
+Professor:  Sure!  You could also say you want the distance that gives you the longest.  And sometimes you want to do that for some reason.  I have only used this once and I can't remember why.  So this is called complete linkage.  OK?  These are both nuisances.  I have to search through all the points in one cluster and the other.  That's a nuisance.  A really easy way to go is to just find the average distance between them.  \par
+\par
+Each of my clusters already has an average center.  So that's the central linkage.  I said average.  It's the central linkage.  I misspoke.  It's from the center of one to the center of other.  There's one more.  That's the average distance.  This means I'll find the distance from each point here to all possible points there.  \par
+\par
+I find all possible links and add them all up and divide by the number.  That's the total overall average.  So you're going to do a homework.  Which one do you want to do?  This which requires a search, this that uses the prototype center, or this one?  Eric?  \par
+\par
+Student:  The third one.  The center.  \par
+\par
+Professor:  Not this one, not that one, but this one.  Central linkage.  OK.  That's what we'll do.  It gets our homework done in time.  This takes forever.  Mental note -- not mental note.  Write that down.  Why don't people use the average linkage?  It takes forever.  It's a lot of computations.  Especially with big data.  This is obnoxious.  Do not do this!  \par
+\par
+A good question you might have is, why don't we use the average linkage?  Because it's obnoxious to compute.  Got it.  \par
+\par
+Student:  Is there a case where you would want to use that?  Like an example?  \par
+\par
+Professor:  I have staunchly avoided ever implementing that.  I've avoided having to use lisp outside of my homework and this.  So I can't give you an answer.  I can easily imagine there is an answer, but I don't know it.  \par
+\par
+We can ask the internet.  Why would anybody ever do this?  I can only think that it would be a case where you need high reliability.  And then, I'm just making up an answer for you.  I don't know the name.  OK?  \par
+\par
+So here's the prototype that's repetitious, got it.  This is the algorithm!  Got it!  The only page you need to write down if you understand all the other vocabulary.  We have to make some design decisions.  It is possible we might ignore some features but that's it.  \par
+\par
+So, steps.  \par
+\par
+[Professor reading: Step 1] \par
+\par
+We start off and everybody is in their own cluster.  We have a cluster of 40 students here.  Andy is in his own.  So is Adam.  Everybody is.  Now, we go to see -- find the most similar pair.  \par
+\par
+Andy, Adam . . . they sound similar.  Those are similar so maybe if I'm linkage whatever -- you merge them into one new cluster.  I now update the cluster prototype.  Andy . . . Adam . . . whatever.  However you merge them.  You update the cluster prototype.  Now I have to update all the distances between everything and everywhere.  In reality, if you're working for a big company, you only update the ones that change.  \par
+\par
+OK?  For us, who cares.  We've only got a couple hundred data points.  Update them all.  Don't try to be very high performance here.  Just get the homework done.  You keep repeating that until they're all merged together into one big cluster.  OK.  So.  Very often I ask, what design decisions do you need for agglomeration?  People will say you need things and a stopping criteria.  There's no stopping criteria.  You go until you get one giant cluster.  OK?  \par
+\par
+Here's an example.  So this takes a bunch of data points and measures the difference between them.  It says the distance between two and four is closer than any other points.  So these two merge together first.  And then these two are this far apart.  So this height is proportional to how far apart the clusters are and these two merge.  And then 1 and 5.  And that merges in with 6.  As you're going up the distance goes up.  And 1, 5, and 6 merge together with 2 and 4 and that forms this cluster that has a cluster of 5 things.  At any point across this graph, anytime I find a point here I can see what it connects to.  \par
+\par
+This represents a cluster of 10 and 13.  This one represents a cluster of 11 and 12.  This one a cluster of 8, 10, 14, 11, 12 and 13.  How many data points are there in here?  6.  9 is not in that cluster until you go on.  \par
+\par
+This figure is called a dendrogram.  And you should know all about those.  It's how we solve the problem.  It solves the problem of ambiguity of clusters.  Which is always a problem.  \par
+\par
+There's something called the theory of generalized clustering and in essence, it says, don't worry.  Just try clustering and see what happens.  In theory it doesn't matter.  OK?  \par
+\par
+Here's another dendrogram.  This is what I wanted to get to, here.  Give me 3 seconds.  Actually 2 minutes.  Here's how to read one of these.  I have a bunch of data here.  This is the dendrogram that goes with it.  Now, I did not graph all of the data that's on here I just said give me the top 20 clusters.  OK.  Here's a merge point here, and here . . . here's another one . . . down here . . . \par
+\par
+OK so there's a merge here.  Where's the next merge?  OK.  Another one here and from there on we're all in one.  So now, I want to find the natural biggest jump between any point and any other point.  Literally.  This is what I want you to do.  I'll give you a dendrogram next Monday.  You're going to draw these lines and analyze them.  It's OK.  It's a piece of paper.  We'll recycle it eventually.  They recycle well.  \par
+\par
+When you look at this distance, that's OK, but this is even bigger.  This is a bigger jump.  So this is probably the biggest natural clustering you could have.  This would be the good place to break things up.  And if I break things up here I'll cross through one cluster and everything out there is one cluster of data.  And here's the second.  And here's the third.  So given this dendrogram, you could take your exam question, turn it sideways, draw the lines, and figure out that there are 3 clusters underneath without plotting the data.  \par
+\par
+If it's 102 dimensional data, you can't plot it easily.  But you can use a dendrogram on high dimensional data.  Write that data.  Dendrogram.  High dimensional data.  OK?  Good.  I've gone over and I'll see you on Wednesday.  In the meantime, leave your quiz for me please.  On Audriana's desk.  Because of politics.  Get sleep.  Be safe.  \par
+}
+ 

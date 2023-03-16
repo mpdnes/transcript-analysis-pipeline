@@ -1,0 +1,330 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Georgia;}{\f1\fnil\fcharset0 Times New Roman;}{\f2\fnil\fcharset1 Cambria Math;}{\f3\fnil\fcharset161 Times New Roman;}}
+{\*\generator Riched20 10.0.17763}{\*\mmathPr\mmathFont2\mwrapIndent1440 }\viewkind4\uc1 
+\pard\tx440\tx880\tx1320\tx1760\tx2200\tx2640\tx3080\tx3520\tx3960\tx4400\tx4840\tx5280\tx5720\tx6160\tx6600\tx7040\tx7480\tx7920\tx8360\tx8800\tx9240\f0\fs22 Principles of Data Mining\par
+Professor Kinsman\par
+CSCI-420-01\par
+September 30, 2019 \par
+\par
+Professor:  Thank goodness.  I'm here before the professor.  \par
+\par
+Student:  Is it possible for you to get here before the professor?  \par
+\par
+Professor:  I can see the other students poke their heads in.  They go, "Is the professor here yet or not?" \par
+\par
+Are you OK?  \par
+\par
+Oh, I was there last week.  I was just a little bit getting over it.  My buddy said, "How are you feeling?"  I said I'm between colds and he said we're always between colds.  \par
+\par
+I said to another friend of mine, "I'm growing a beard."  He said, "We're always growing a beard!  Some of us just shave them!" \par
+\par
+So we have the cold coming on already.  Is everybody ready with Kleenex?  \par
+\par
+How are you Amelia?  \par
+\par
+Student:  Can I ask what the foam block is for?  \par
+\par
+Professor:  It's for a physics demonstration.  I want you to go sit in the back.  When we meet again, on Wednesday . . . right?  And then on Sunday at 1pm, we're supposed to have a midterm on Monday.  That wouldn't be fair.  OK.  Now listen.  I have good data.  It says if we have the midterm on a Monday, people do better than if we have it on Wednesday.  Do you believe that?  People study on Saturday.  But I want you to come to workshop.  Make sense?  Do you agree?  What would I have to do to bribe you to come to workshop on Sunday?  \par
+\par
+Student:  Pizza would go a good distance.  \par
+\par
+Professor:  I can't afford pizza.  I didn't write that on my grant.  \par
+\par
+Student:  M&Ms?  \par
+\par
+Professor:  I don't know about that either.  But I can give you a bonus point if you go.  \par
+\par
+Student:  Where would that go?  \par
+\par
+Professor:  When push comes to shove -- you're not Liam.  You're the other Nick.  The bonus point would be at the end of everything.  You get to the end and you have an 89.9.  The bonus makes you at 90.9 and you go from a B+ to an A-.  \par
+\par
+Student:  What is the workshop again this weekend?  \par
+\par
+Professor:  We'll learn how to do jigsaw puzzles.  But how to do them from a data science way of doing them.  \par
+\par
+Student:  Is it on Saturday or Sunday?  \par
+\par
+Professor:  Sunday at 1pm.  \par
+\par
+Student:  Which room?  \par
+\par
+Professor:  First floor . . . 1435.  So it's basically downstairs.  It's the room with the guy there with a bunch of boxes of jigsaw puzzles.  It will be ridiculously obvious.  Emily, you're sick.  Is it OK with you if I postpone the midterm until Wednesday instead of Monday?  I know you're sick, Carl is sick . . . \par
+\par
+Student:  Can we do it this Wednesday?  \par
+\par
+Professor:  No.  Because she's sick now.  Do you have another midterm?  \par
+\par
+Student:  No.  \par
+\par
+Professor:  I want these people who are trying so hard to be healthy to be healthy.  And I want people to go to workshop because it's fun.  There's several ulterior motives to workshop.  I want you to meet people and have fun.  Some people don't interact enough.  There's a couple of ulterior motives.  Learning feature selection using jigsaw puzzles . . . are we ready?  Do we have everybody?  Alright, hot dog.  Hot diggity.  \par
+\par
+Whenever I get ill, my gyroscope goes out and I start to fall over so sometimes you'll see me holding on to things to make sure I don't fall over.  \par
+\par
+Let's see, where was we . . . \par
+\par
+No, we don't have too much English in this class.  The other section where a lot of people are from India there's a lot of things where we need to cross check the English.  But we have people who like to write all the answers out all in one big paragraph.  The purpose of paragraphs is to break up your thoughts, folks.  This is not one big texting thing.  So don't compose it on your phone and get a real editor and pull some blank lines or indents on there or something.  \par
+\par
+Some people are writing out way too many significant digits.  If you print things out in python, for example, this implies you measured something to the billionth of a . . . which is not true.  It also makes it hard to look at the numbers and say, "Hmm . . . what does that mean?"  So I want to encourage you to limit the amount of significant digits.  In the world of physics and chemistry and statistics, they'll say which of these digits are significant?  Billionsth are not it.  \par
+\par
+They said the mode changed and the mean changed by .00001.  Which is not changing.  It's insignificant.  In python you can say, here's what I'll print out and then I say single tick, single quote, % dot 1f.  f stands for floating point, % sign means take this thing and merge it, and here's the variable I'll print to one significant digit.  Not 9.  Please use common sense.  One problem with that was when people printed out the mystery data, they missed the point.  We all know that some values that are from far the mean will pull it off.  It's just like balancing.  \par
+\par
+So here's a yardstick.  It's 36 inches long.  I won't make you do the math.  18 inches is the balance point.  Half of 36 . . . 18.  Woohoo!  It does balance there.  If I put this thing here, it will fall on the ground very quickly because it will pull the balance point off and I'd have to move it over here.  I won't do that because it would be too much drama for me.  But if I put this point here, right?  And it were to not move, I'm not going to change the balance point.  I could add 5 pounds of clay here and it would still balance at 18 inches.  It's the inverse of saying if you add something far from the mean, it will pull the mean off.  \par
+\par
+The inverse is if you add something at the mean, it doesn't change the mean value -- the balance point.  Understand?  So yes the mean value changed from 16.0 to 15.99 something but it didn't really change much in the mystery data.  So I was hoping you would say this center of measure changed by the mean didn't change much.  OK?  \par
+\par
+With me?  I know it's Monday and in the afternoon.  We're all . . . our blood is coagulating.  But wait, I have something to share.  \par
+\par
+People who come to my office, sometimes they do, it's nice to have visitors . . . they see this!  They think, are you into guitar?  What in the world is that?  The purpose of this is to be a piece of foam that's not a regular shape.  It's not in a regular polygon shape.  I don't know what it is.  At Target for $5 I got one of these little lights.  Yahoo!  That's exciting.  I like lights.  I may never have graduated from show and tell.  That's why I'm doing this.  \par
+\par
+If I can stick those into the holes I carefully put in the foam, here's the wicked cool stuff.  This looks better if I dim the lights to increase the contrast.  When I throw this up in the air, like a boomerang -- that's why I do this with foam.  Don't do this with bricks.  But you'll notice the pattern of the lights.  Notice one of them goes around in circles and the other doesn't.  Exactly the same as the boomerang.  The one that was in the middle is where?  \par
+\par
+Student:  In the center.  \par
+\par
+Professor:  No, it's not in the center!  It's somewhere in this oblong shape!  There's no particular shape.  Physics!  Come on!  We all had that, right?  \par
+\par
+Student:  No.  [Class laughing.]  \par
+\par
+Professor:  What!  They left you in without physics?  Holy cow!  Send you all back!  It's the center point.  That's the thing you rotate around.  If we put you on a pole vault and send you over a pole, you're still rotating around the center of mass.  The trick for pole vaulters is to get them so that as they go over the pole their feet and body go over the top and the center of mass goes after.  Physics doesn't change.  No laws of physics are violated when they jump over the vault.  The center of mass does its thing.  Which is good for pole vaulters because they like to be long and skinny.  \par
+\par
+Things rotate around their center of mass.  It's a wonderful, wonderful math that gets used everywhere.  Anything else?  Oh!  We're going to talk about a project.  I'm going to give you IOT stuff.  Used to be about 5 years ago, we talked about having little computers everywhere.  Like a computer in your hat that said you have been exposed to too much UV light so you need more sunblock.  Or a computer in your feet that tells you that you walked too far.  Or something that told you to take a break in the shade.  This is called pervasive computing.  \par
+\par
+The marketeers changed it to IoT.  The Internet of Things.  So you'll find a partner.  Partners of 2.  You'll need to work with somebody else.  Keep each other on task to make sure you get the work done.  Good?  I would like to encourage -- if appropriate -- women to work with other women.  That way you don't have some of the strange phenomena that happen.  It's a nice change sometimes.  \par
+\par
+Annalee, is that your name?  \par
+\par
+Student:  Yes.  \par
+\par
+Professor:  Have you had problems working with guys?  Good.  No problems.  You don't have to.  It's up to you.  But if you want to work with a woman, you could say, "I'm sorry sir but the professor says I should work with a woman."  We have had problems in the past where men and women worked together and afterwards, the woman says that people say she didn't do programming.  And I know our woman are smarter than that.  \par
+\par
+And sometimes the guys like to program so much they take the keyboard away from the women.  I want to make sure, regardless of gender, that my students can program when they leave here.  I want things to be fair.  So we need to find a partner.  Pick one.  I'm going to put up -- pick only one -- the 3 musketeers up here will have to do some arbitration.  I don't know how they'll figure that out.  \par
+\par
+You'll be given GPS data.  You know when you go on Google maps, you get a map.  You could take that route and drag it and it changes, right?  But it doesn't change arbitrarily, it changes with waypoints.  Certain points change but others don't.  It rotates around the waypoints.  Imagine you were Google or iPhone or working with Apple and you had to figure out what the maps were with the waypoints.  You have to figure that out.  I won't tell you how to do it.  \par
+\par
+My son and I went to do the -- to fix some of the downspouts this weekend.  If I had been working with my dad, he would have gone up on the roof and asked me to hand him the tools and done all the work.  I wouldn't have learned anything.  I promised I wouldn't do that.  I told my son, "You're in driver's ed time to drive."  So we drove to the store and got the tools and he got the learning data.  \par
+\par
+You'll have to figure out where the stop and go points are.  It's worse than that.  Remember we talked about metrics for measuring things?  You'll have to figure out the best metrics for the task at hand.  My task is to get the best fuel mileage going from place to place but not get pulled over or cause accidents.  So I have to maintain something.  And you'll have to figure out the best mixture of distance metric is.  You'll build your own.  \par
+\par
+You may have to build GPS fences.  Which is a way of saying, when have I left this area?  Or you'll be given a file and say, am I in that area -- does this file go through that area?  If you get a file you may want a quick way to analyze it.  It starts off at the house and then goes to the grocery store but you only care about getting to RIT and back.  So you and your partner have to look at the files and see which files make sense to look at and which don't.  I'll give you a lot of data.  You'll pretend you're the person behind the Android app that tells you what way to go.  \par
+\par
+So we have to keep going.  That's the end of that.  The current homework is 10 questions.  Shouldn't be hard.  I just want to make sure you're thinking about things.  OK?  \par
+\par
+Any questions about the homework?  Why did somebody say they only shaved on May 6th?  \par
+\par
+Student:  I think it was for sleeping, right?  \par
+\par
+Professor:  Whatever it was.  \par
+\par
+Student:  They put 7 slash 8 and then excel as a date.  \par
+\par
+Professor:  Excel!  Microsoft!  Thinking so you don't need to.  And the problem was somebody put in 5-6 and it says, "Oh, May 6th!"  It does the auto-conversion for you.  In case you missed that, I think it's due tonight.  That happens a lot.  I hate when that happens.  We have to go finish off some decision -- some PowerPoint . . . let's finish off our distance metrics.  Hot dog.  \par
+\par
+I'm sorry, I say that too much.  Let's go to where we were.  We were just about to go into the horrible distance metric . . . we did all the norms.  We did this . . . \par
+\par
+This is Pearson's Cross-Correlation.  It says when something goes up and something else goes up and they go up together, you have a positive cross-correlation coefficient.  When variable \i\f1 s\i0\f0  is above its average, is the variable \i\f1 t\i0\f0  above its average?  That's what this means.  For curly fries, if you watch the TED talk, they say we notice people who like curly fries tend to be intelligent.  This doesn't mean it's a cause.  Cholesterol does not make you intelligent.  But there's a correlation there.  \par
+\par
+So you can use the fact that people like this thing based on your data set to guess the person is intelligent.  OK?  \par
+\par
+Wow.  You got short socks.  Nick has short socks.  It turns out if you have really short socks, you also tend to be intelligent.  So . . . \par
+\par
+[Class laughing.]  \par
+\par
+I'm not doing too well.  It's OK because I put my socks on before I put my pants on.  So I'm good.  \par
+\par
+So a cross-correlation coefficient says if you have short socks, you have high intelligence.  That's a cross-correlation coefficient -- is it positive or negative?  The socks go down, the intelligence goes up.  They're going in opposite directions.  OK?  \par
+\par
+So . . . what's the cross-correlation coefficient going to be?  It's going to be towards -1.  Key point to remember here.  It's the absolute value of the cross-correlation coefficient that says this feature -- attribute \i\f1 s\i0\f0  is helpful is predicting the target variable.  Whatever that is.  What else?  \par
+\par
+So we looked at that . . . this is key.  It's also between minus 1 and 1.  Sometimes we divide by \f1 N\f0  and sometimes \f1 N\i  \i0\f2\u8722?\i\f1\lang1033  \i0 1\i  \i0\f0 depending on the department we're in . . . and it's normalized by the standard deviation.  Excellent.  It's these normalizations by the standard deviation that make sure it's between minus 1 and 1.  That makes it an inter-product.  The math happens.  You just go, "Math!  Thank God it works!"  \par
+\par
+You'll see it later without the standard deviations and you'll have to have it burned into your mind.  This is very convenient to remember.  I use it all the time.  It shows those things in action.  If it's -1, when \i\f1 x\i0\f0  goes up \i\f1 y\i0\f0  goes up, if it's 1 \i\f1 x\i0\f0  goes up and \i\f1 y\i0\f0  goes up, and if it's 0 nothing happens.  \par
+\par
+What did we skip over?  Doesn't matter.  We're not going to compute that one.  We may visit it later on.  But I can't teach about mutual information if you don't know the theory.  But for today, let's talk about the Mahalanobis Distance.  \par
+\par
+This is some data in some space.  This is how long your socks are and how frizzy your hair is.  Whatever it is.  I don't know what it is.  If I compute the average frizzy hairiness of everybody I'll get somewhere in the middle.  \par
+\par
+This is exactly like the normal distribution except instead of having only one parameter, there's two going in there.  It's a multi-dimensional statistical measurement.  The key point about this is the further from the center you are, the less probable it is have happening.  It's exactly analogous to the normal distribution.  This is the normal distribution.  The Gaussian distribution.  What's today?  September 30th?  Know what happens a month from now?  \par
+\par
+Student:  Halloween.  \par
+\par
+Professor:  The paranormal distribution.  [Class laughing.]  \par
+\par
+So we have the normal distribution and if we know about this, in normal space, what's the center?  Of Gaussian distribution?  Not you, not me . . . mu!  That's the average.  Mu.  That is the center.  It's always centered on mu.  It could be 10,000 we don't know but that's the center.  As you get further away the probability drops off.  The further from the center, less likely it is to happen.  More drops off.  \par
+\par
+Same thing with Mahalanobis Distribution.  If I want to see how eccentric that data point is, I can measure the Mahalanobis Distance.  That's the formula for the Mahalanobis Distance and it came right out of the book.  We'll talk about that for a second.  One thing the book forgets, and almost all books forget, is to take the square root of it over there.  How would that -- let's . . . this is better done with an example.  Suppose -- this is the distance between two points but I really care about how far they are from the origin.  So you can say whatever \i\f1 q\i0\f0  is but we can shift the axis so the \i\f1 q\i0\f0  becomes 0.  \i\f1 r\i0\f0  is the distance over.  \i\f1 r\i0\f0  would be like a vector.  Like \f3\lang1032\'c4\i\f1\lang1033  x \i0\f0 and \f3\lang1032\'c4\i\f1\lang1033  y\i0\f0 , good, and there's a matrix involved and on the right hand side there's delta \i\f1 x\i0\f0  and delta \i\f1 y.\i0\f0   How far over and up it is . . . let's see if I did this right.  This is a 1 by 2.  We can multiply that by a 2 by 2 in the middle there's a C matrix.  This is a 2 by 1 . . . \par
+\par
+So when I multiply this whole mess together, that cancels and this cancels and I get a 1 by 1 which is a fancy way to say 1 number.  A scalar.  \par
+\par
+I take that to the \f1\'bd\i  \i0\f0 power.  Following me?  Imagine this matrix was 1,0,1.  That gets me \f3\lang1032\'c4\i\f1\lang1033  x\super\i0 2\nosupersub\i  \i0\f0 and \f3\lang1032\'c4\i\f1\lang1033  y\super\i0 2\nosupersub\i  \i0\f0 and I'm taking the square root.  What's that the formula for?  If C inverse equals the identity matrix, this formula is equal to \f3\lang1032\'c4\i\f1\lang1033  x\super\i0 2\nosupersub\i  \i0 +\i  \i0\f3\lang1032\'c4\i\f1\lang1033  y\super\i0 2\nosupersub\i  \i0\f0 square root.  Where have we seen this before?  It's the regular distance formula.  What do we call that in this class?  Want me to pick on Parker?  \par
+\par
+Student:  It's the norm of the vector.  \par
+\par
+Professor:  It's the L\sub 2\nosupersub  norm or the Euclidean distance we all know and love.  But we have to be careful because we'll use the L\sub 1\nosupersub  norm which is called the city block distance.  One of the distances we'll use is the Mahalanobis distance.  It's a statistical distance that tells us how far out those points are.  Questions?  \par
+\par
+Student:  Assuming that the distribution -- if you wanted to use the distance in trig, the solution of the data is normal.  That's the assumption.  \par
+\par
+Professor:  We're assuming.  We assume it's a Gaussian distance.  There's some elliptical shape to the data which means C is not equal to I.  That C matrix is something else.  If that inverse of C was I, this becomes the -- what was the L\sub 2\nosupersub  norm called?  \par
+\par
+Student:  Euclidean distance.  \par
+\par
+Professor:  Remember that.  Euclid would be afraid if we forgot that because he's famous for coming up with it.  So I this elliptical sphere.  I'm taking a circle and if C inverse is I then it's Euclidean.  \par
+\par
+Student:  Is the information saying that these points are 6 standard deviations from the origin?  \par
+\par
+Professor:  They both have a Mahalanobis distance of 6.  6 standard deviations out.  We're going to hit this -- this is incredibly powerful.  Much of machine learning is based on statistics.  How often things occur.  So ones, that means those are very unlikely to happen.  So what's C?  Where does it come from?  The values that go into the C matrix are computed like this.  So \i\f1 jk\i0\f0 , this formula here, which is the average value of \i\f1 r\i0\f0 , minus all the \i\f1 r\i0\f0  values, times \i\f1 q\i0\f0  minus the average of all of \i\f1 q\i0\f0  values.  Does this look familiar?  That's just for one of them.  \par
+\par
+That gets me what's missing.  You're not Nick.  He's Nick.  \par
+\par
+Student:  Alex.  \par
+\par
+Professor:  I have to pick on you because you're sitting in the front row.  What's missing?  There's a 1 over \i\f1 n \i0\f2\u8722?\i\f1\lang1033  \i0 1\i  \i0\f0 which is almost like N.  In our data we have a gigabyte of data.  What's that minus 1?  I don't care.  It's the same.  Andrew what is different between this and the cross correlation coefficient?  \par
+\par
+Student:  There's no standard deviations.  \par
+\par
+Professor:  They're normalizing coefficients that keep it from going to infinity.  But with covariance it can be really big.  That takes -- alright.  These numbers could be big.  Are you with me?  OK.  Second thing, when I multiply by the inverse, it's essentially taking this ellipse of data and shrinking it to a circular distance.  The Euclidean distance you know and love.  Then we use the \f1\'bd\i  \i0\f0 so we can relate to it.  Mostly this is used to identify outliers.  Data that is abnormal.  We want to set that aside when we compute a new center.  \par
+\par
+Then you get a better estimate for what the center should be because we said before, those things that are far off pull the outside off.  So I set my outliers aside and I recompute my center of data as I go along.  Here's an example of a covariance matrix.  Some examples as you're going through -- when I was learning this we had to do this by hand.  I'm not saying I had to walk 5 miles through snow to get to school but it was like that.  Just use a package.  You can use NumPi or whatever it is to compute the Mahalanobis distance.  \par
+\par
+Here's basically the same process I talked about.  We use it for outlier removal.  We care about the Mahalanobis distance from the center.  We set those aside and recompute the new center.  That gives us a more accurate estimate of what is really normal there.  Sometimes we iterate until it becomes perfectly stable.  That's the idea.  \par
+\par
+Under the covers here is the idea that I'm climbing some -- that I have some distribution and I can describe it as a bunch of contour intervals.  This summer I climbed Owl's Head Mountain with my wife.  It took me a week for the blisters to go away.  That mountain has a contour profile that looks like this.  There's a really high tower you can go up here.  Each one of these lines was 200ft.  OK?  So if you were to go from the fire tower and go on this path, without a rope, it would it be really bad.  Use a repelling rope and have a climbing harness on if you take that route.  \par
+\par
+We went this way which was 3 miles but we could just walk and didn't have to climb.  It was easier to go up.  Each time we pass a contour line, we're going up a couple hundred feet.  You all remember Earth science, right?  I'm from New York State and we were required to have Earth Science in high school.  Yeah!  This is why we require you had high school before you come to college folks!  Don't skip high school!  \par
+\par
+Good.  Got it.  Here's a circle -- there's a circular distribution.  Each contour is some amount of probability to go up and down.  No big deal.  Here's the smear.  A variable \i\f1 x\i0\f0  and a variable \i\f1 y.\i0\f0   Here's the point numbers and here's the Mahalanobis distance.  Point A is just as far away as .1 in the Mahalanobis distance in terms of this smear.  We changed the smear.  This is what I spend weekends doing.  "I wonder if I can do it this way!"  I just pushed in on the statistics this way.  When I do that, it has to go someplace else.  It's like a balloon and goes out the other direction.  \par
+\par
+Each one of these lines is like one Z score or a sigma OA.  If I look at D and 4, which were both the same before, now D is within 1 contour interval . . . that's pretty probable.  It's not even one standard deviation away.  But the line 4 is almost 2 away.  So . . . I erased it.  Which is more probable?  1 or 2 standard deviations?  1.  They're inversely proportional.  Which is more probable?  D or 4?  \par
+\par
+But if I shift it this way now 4 is less than that.  Depending on how you squish your data -- depends on where the outliers are.  This one, A, doesn't have contour lines.  I got lazy.  I didn't want to have to count them.  \par
+\par
+There was no mention of the coefficient I could see.  In the world of social network analytics, if you ever take 529 -- and I'm offering it again next Fall -- social network analytics you have to know about here too because we want to figure out different things about people.  How much they like each other.  Whether they have a lot of mutual friends.  How often does one person like the other's posts?  How long have they been friends on Facebook?  All these things can go in there.  One of the things they compute we guess.  This is a distance metric that somebody dreamt up called "trust" that they invent based on their modeling.  \par
+\par
+Thus tenth idea that there's different analysis that goes on to compute how much people like each other.  OK?  I think these 2 people like each other because of their distance.  They always sit within a certain distance of each other.  OK?  If I made one of them sit in the back, the other one would -- I don't know.  Not implying anything romantic.  Here's another weird thing.  Homophones.  They're evil!  \par
+\par
+If you have a hard time spelling, these are tough.  To, too, two.  Be, bee, and then b -- they're tough.  Another example.  The Levenshtein distance that's used in spell checkers.  The Levenshtein distance measures that I have two words measured out and I have to figure out the distance between them based on characters inserted and how many do you have to transpose to make it like another.  \par
+\par
+I like spell checkers.  What's my worst spelling mistake?  Emerson?  \par
+\par
+Student:  What?  \par
+\par
+Professor:  What's my worst spelling mistake?  I'll own it.  Do you know it?  I have a hard time with double letters.  I always check to make sure.  I know those all have a lot of double letters.  So I have a fun hack.  If you can't spell accommodate, I can't remember if there's one or two c's, I put in 3!  \par
+\par
+Here's another one.  "Oops Distance."  This happens when you're late at night and you're typing in your homework and you look at you find that your fingers were not in the home keys.  It's hello world without your fingers on the right keys.  You can find out this is likely as you go along.  Someday you'll be good enough that you'll figure this out.  It's also used in swipe patterns.  Let's keep pressing on.  \par
+\par
+We talked about the distance to money.  It's a psychological distance.  Those are not something that's easy to measure.  We're making things farther away from each other so you don't know it's happening.  There's a new application where you swipe your phone over the terminal and automatically sucks the money out of your bank account.  It doesn't hurt at all!  It's really painless.  You don't even see the numbers as they go away and you don't even have to sign.  \par
+\par
+It is to increase your distance between you and the money that's going on.  Grey codes are important for the robotics world.  \par
+\par
+Here's set differences.  [Professor reading: PowerPoint.]  \par
+\par
+That's the odd ones, that's all of them, \f1 A\i  \i0\f2\u8722?\i\f1\lang1033  \i0 B\i  \i0\f0 is all of those minus those and you get 2 and 4.  The even ones.  But the opposite is not true.  They are not well behaved.  Another thing that's not well behaved is hours.  You have to define what is 2pm minus 1pm, obviously that's 1 hour.  But 1pm minus 2pm, is that one hour different or 23 hours different?  You have to figure that out.  Which means you'll probably need an if statement in there.  When you're working on databases and money is changing hands, that will be very important as to what time it is and what day of the week it is.  \par
+\par
+Degrees are a pain in the neck.  You have to figure out whether you care about 1\'b0 when you go from 359 to 360, that's 1\'b0.  Or is it 359\'b0?  Your application will determine that.  If you're doing GPS data and you go from 0\'b0 to 359\'b0 on the Earth, chances are you're only 1\'b0 different.  Got it?  \par
+\par
+There's a solution to that and it's called the haversine distance.  For your project, with the GPS data, you don't need to use the haversine distance.  Rochester is here and not close to the equator.  If we were close to the north pole, that'd be a problem.  But in Monroe county we're almost linear.  We ignore the haversine distance.  I don't ever drive more than 30 miles from home.  \par
+\par
+To make life fun, we can combine them.  You can come up with your own scale --  your own favorite scale and your own weight for what you think is important.  You can dream them up as you're going along.  Very often, you have the weights and you divide by the sum of the weights so the effect is that all the weights that get multiplied out add to 1.  That makes life nice.  They all sum to 1.  \par
+\par
+OK?  \par
+\par
+So suppose I was doing some route planning from place to place.  I might weight left turns as a 0.7.  GPS doesn't do that.  But they'll make 7 right turns before they make 1 right turn.  A right turn is 0.1.  Mileage is important but not too important, and time is important but not too important.  So they can build those up as they go along.  OK?  Good.  \par
+\par
+You can do this for recipes.  More recipes!  You can combine them and build your own as you're wading along.  Good.  Here's the essence of what we've covered in this section.  We covered a lot of Minkowski norms.  We covered the Mahalanobis distance.  Very important.  We talked about non-standard forms.  We talked about duality.  We covered some general properties and nice things.  Here's some strange things to look out for.  \par
+\par
+Non-normal, non-numeric distance.  Psychological distances.  What else is there?  What do you use here at RIT?  To distance ourselves from our money?  Tiger bucks!  You don't even have to think about it!  If you need more, there's an entire encyclopedia of distances that have been written.  You can look at those.  \par
+\par
+Now, I've been talking for 50 minutes and your blood has coagulated.  Stand up, go get a drink of water, but don't fall in love with your cellphone.  When you come back we'll get going on other things.  \par
+\par
+[Break.]  \par
+\par
+OK Amelia.  Let's go.  \par
+\par
+I'm going to give you GPS data.  You're going to have to convert it into KML files.  You can put this on your resume and people will contact you because you've been playing with geospatial information.  That happened to some students last year.  \par
+\par
+So a KML file is what you'll write that comes out of the GPS that does you the best path.  The KML file has 3 parts to it.  It has a header, body, and end.  Tail end.  Sets up stuff, does all the work, and it says OK do it.  We'll see this pattern over and over.  You can Google for lots of information.  Google has lots of information for Google because Google invented the language we're using.  \par
+\par
+Yes.  I really did drive around in this silly path.  This path is a path around a familiar place.  We've been here.  This is -- I started here, went here, around . . . did a loop . . . loop detection is really tough.  You should think about how hard you would have to do if you had a loop.  Used to be you found a loop in the internet.  Where do you have a situation where a page points to another page and then another which points back to the first.  Google had to resolve this all the time.  This isn't webpages though.  \par
+\par
+That's the front oval there.  If you zoom in you can see the lane changes.  The GPS system is very accurate.  I'm really surprised at how accurate it is.  This is on the way home.  Normally a KML file has longitude, latitude -- I know where I am when I'm driving.  I don't care about altitude.  So I hacked it to show my speed!  So this said I went fast and stopped, repeating until I got to here and then I went VROOM!  OK?  \par
+\par
+So what do you suppose was sitting here that was so important?  \par
+\par
+Student:  Stop sign.  \par
+\par
+Professor:  Yes.  And the key indicator for a stop sign is?  I stopped.  Yes.  No!  That would be too obvious.  You can look for this pattern as you're going to through.  You could do that.  But it's hard to do that.  To find that.  Much easier to detect the VROOM.  OK?  The sudden acceleration means you're through that danger zone and you can now speed up and go away.  It's not intuitive but it's a lot -- I will tell you the cheater way to do this is to find where you accelerated away from the stop sign consistently from a period of distance and you're going in a straight line than it is to do this.  \par
+\par
+Analyzing this and catching this is tricky because you have to do a state transition diagram and -- I'm not telling you how to do it but you can figure it out.  It's wicked fun.  Yeah.  I actually did this once.  This is RIT, you went in here, you go over here, over here, you wave at the security guard who is parked there and looking at me like what are you doing?  And I said, "It's OK!  I'm a professor!"  \par
+\par
+He said, "OK I understand."  \par
+\par
+Student:  What time did you do this?  \par
+\par
+Professor:  Summer time.  Oh, Emily, I didn't actually drive through cars.  No cars were damaged in the process.  It was empty and one summer sometime.  It was probably a weekend because I come in way too often.  So here's a KML header.  Yahoo!  This says KML, basically.  The second one says this is the particular flavor of KML.  We'll use open GIS.  Here's the beginning of a style argument.  Here's a place marker and I'll draw it with a line and here's a description, I'll extrude it, blah blah blah . . . so this was the beginning of one of my yellow lines.  \par
+\par
+It was a pain in the neck to figure this out.  You can copy and paste it.  That gets your header out.  I don't care.  You will probably want to do something a little different but you can start with this.  And then the rest of it, well most of the rest of it, is a bunch of coordinates you can draw.  You can use too many coordinates in which case it won't render.  I haven't figured out the limit but 10,000 is probably not good to go beyond.  At some point it stops.  \par
+\par
+This is a bunch of latitude and longitude and something else.  It likes to think it is altitude.  You can do acceleration.  And then there's a trailer.  The trailer end says end of coordinates, lineString, Placemark, document, KML, boom.  OK.  With me?  \par
+\par
+Somehow I have to write this program out.  Oh there's like other stuff that I skipped.  See these other pages?  This is the introduction, this is the agenda, and in the real world you're given files but the cool thing is if I figure out how to write a program that writes me a program and I make a program that takes my KML and writes a program, I only have to do it once.  And the resulting code can be a lot more complicated.  \par
+\par
+There's two styles of programming.  Object oriented programmers hate me.  But in theory, in terms of data processing, we only have two ways to process data.  One thing is you read in all the data and store it in memory and then you process it all, and then you write it all out.  Got it?  That's one pure way of thinking about processing.  Here's another way.  I read in one line of data, process that one line.  I write that one line out.  These are the two end members.  The two extreme cases.  In reality, you often do something in-between.  It's not uncommon to do something where you read it in and ask if it's important or if you can ignore it.  \par
+\par
+That's how it goes.  You write out the header, the body, the trailer, and boom, this goes.  OK.  We did this.  I'll skip over the rest of this.  You saw all these.  Boom.  \par
+\par
+So now where does the GPS data come from?  That's an interesting problem.  I'll get an IOT device that collects all the data.  Where does time come from?  \par
+\par
+Student:  Good question.  \par
+\par
+Professor:  \i Time.\i0   I'm not being metaphysical.  Where is the origin of time.  Where is the 0?  \par
+\par
+Student:  Big Bang.  \par
+\par
+Professor:  On the Earth.  Not the universe.  Yeah there's a line that goes through -- \par
+\par
+Here's a picture.  I built this.  Soldering stuff.  There's the GPS thing and it records and writes to this SD card and when it's working, that light blinks once a second and when it doesn't, that beeper beeps to tell me it needs attention.  It concerts to this antennae and it's driven by this cell phone charger.  It goes on the top of the car and stuck on with a magnet.  Yes, I drive a red car because that's what I could find.  \par
+\par
+Inside the GPS file, there are two types of lines you'll see.  One line is called RMC.  It has nothing to do with Rochester.  It's the recommended minimum coordinates.  The origin for GPS was boats.  Not rowboats.  Military boats.  Rowboats could not afford this process.  There are a lot of satellites up there going around -- here's a line.  [Professor reading: PowerPoint.]  \par
+\par
+This is the time in GMT or UTC.  It's sometimes called universal coordinated time.  It's a French acronym!  I don't know why the French do this backwards.  I'm not even going to try.  A means it's valid.  What is this?  It's 43\'b0 and 5.1517 minutes.  Minutes.  That's divide by 60 to get the fractional degrees.  This is probably from Rochester because I have been nowhere else.  \par
+\par
+This is how many minutes in Rochester.  That's north, this is east, got it.  East or west . . . north or south . . . you have to do the plus or minus signs as you're going along.  Rochester is 77 west.  So that's where I am.  Here's my speed in knots.  Do you know what knots are?  You're going along in a sailboat and you throw a knot out.  There's knots in the rope and you see how many knots get pulled out.  There's where it came from.  Anyway . . . [Class laughing.]  \par
+\par
+Here's the time.  Tracking angle.  Oh, this is good.  If I have two tracking angles and I want to see whether it's a right or left turn, you look for that.  But watch out because it goes around the corner.  Are you Douglas?  \par
+\par
+Student:  What's 0\'b0?  Is it east or north?  \par
+\par
+Professor:  It's all relative.  I don't care.  I don't know where it comes from.  I won't tell you, you have to look it up.  [Professor Laughing.] \par
+\par
+Student:  What does it mean for the first one?  What are the minutes referencing?  \par
+\par
+Professor:  There's two different systems for angles.  One angle is certain number of whole degrees from 0 to 360.  And the next part could be decimal.  That's the part you know and love.  The old style, that nautical people used to use, said the next part was how many minutes.  As in, when going around a clock, you have 60 minutes.  The bad news is -- in order to go from this -- this is the format in the file.  But the KML wants it converted.  So you have to do the conversion.  So that's a bad thing.  And there's a check sum and other things that go on with the other end.  \par
+\par
+Got it . . . couple other things . . . OK.  So that's the RMC.  There's also a GGA.  I need that.  Why?  I don't know what GGA stands for.  I don't care.  What does it tell me?  It tells me something else.  Oh!  This is the same -- I don't care about that.  This is beyond the recommended minimum coordinates.  It is if you have a fix or not.  Are you looking at a satellite or not?  That's important.  The other thing is the number of satellites you have.  This has to do with the dilution of precision.  \par
+\par
+You might need to pull these out of a GGA line.  You might care about altitude because I want to get from place A to B and spend a minimum amount of gas.  Downhill, I get that for free.  Uphill, not good.  Downhill is a good thing.  \par
+\par
+These fields, if they show up, the GSA and the VTG, that means the system has got haywire.  Reboot it.  This is the dilution of precision.  This is important for all of computer science.  You used to have to take a class called numerical analysis.  It was wonderful but there were too many classes and you can't teach them all.  These two it's hard to tell exactly where those two lines cross.  \par
+\par
+These lines -- it's really obvious where they cross.  This is why cartesian coordinates are at right angles.  You know exactly where to put the point on the paper.  That's for lines.  Two sets of lines that intersect -- \par
+\par
+Now satellites use another system.  If you take computer science 731 I'll teach you about GPS there but the point is there are arcs that are involved.  These arcs, it's not obvious where they intersect.  Here, much more obvious.  And satellites have spheres of arcs and you need at least 4 to do it.  \par
+\par
+This is looking out the window.  This is one GPS receiver looking out a window.  All the satellites it could see are right next to each other.  There's a huge dilution of precision.  All of the arcs are like that.  Very close.  They're all coming from satellites very close to each other.  That's lousy.  The system was not moving and sitting there recording where it was but it went haywire.  It was not very accurate.  Here's another situation.  \par
+\par
+So that's my house.  You'll see it on google Earth.  Here I am coming in.  And I parked right there.  That wasn't the same car.  I don't know where the picture of that car came form.  I parked in the garage.  In the garage the satellites do not show up well.  So the system said, "Oh, I think you're in the back yard!"  It went crazy.  So that's where you go.  We'll cover more about this later on.  \par
+\par
+If you came in late, there's some announcements.  What's going on Sunday at 1pm?  Workshop puzzle on how to do jigsaw puzzles and other nefarious things like feature selection and how to do features in selection.  \par
+\par
+What's the other announcement?  We're moving the test to Wednesday so Emily can get over it.  Do you want to not do it on Wednesday?  \par
+\par
+Fine.  We'll delay it by a week.  Who cares?  OK?  I didn't want to grade this anyway because I have two other sections.  Fine.  Sure.  OK.  That's OK.  Anything else we want to avoid?  \par
+\par
+Student:  The next week is a Wednesday?  \par
+\par
+Professor:  Is that?  Oh no, Ramadan?  \par
+\par
+Student:  It's October break.  \par
+\par
+Professor:  Are you going to study over the break for the madtom or do you want it first?  \par
+\par
+That stinks!  I have to remember to watch our for that.  Let's not do that.  I don't want you showing up empty.  Should we just make -- do you want to take it separately?  I don't want you to feel -- I don't care.  We'll do it after the break.  We'll have more to cover!  That's great!  And I'm behind anyway!  It's OK!  You'll be fine!  You can handle it.  Get out of here.  I'll see you on Wednesday.  Get better.  \par
+}
+ 

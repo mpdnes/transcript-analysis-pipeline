@@ -1,0 +1,247 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Georgia;}{\f1\fnil\fcharset0 Times New Roman;}{\f2\fnil Times New Roman;}{\f3\fnil\fcharset161 Times New Roman;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\tx440\tx880\tx1320\tx1760\tx2200\tx2640\tx3080\tx3520\tx3960\tx4400\tx4840\tx5280\tx5720\tx6160\tx6600\tx7040\tx7480\tx7920\tx8360\tx8800\tx9240\f0\fs22\par
+\par
+Professor:  What do you think folks?  Can you see that?  The inner circle, does the inner circle include 68% of the data?  \par
+\par
+OK?  \par
+\par
+I spent weeks on this.  To make sure you could see this exact point here.  That it does not.  OK?  In fact, that inside is only about 40%.  \par
+\par
+OK?  \par
+\par
+Sam, good guess.  \par
+\par
+So yeah.  Less than -- it's less than 68%.  And I want to drill this into you.  Because this is one of the biggest principles of data science.  When you get more features, your data spreads out in data space.  OK?  \par
+\par
+So, I can actually do this experimentally.  I'm going allocate Gaussian distributions of data.  And then I'm going to measure it.  Here we go.  \par
+\par
+That is data and it's only in one dimension.  It's how far up and left it goes.  There's really only one dimension there.  And then I say, of that data, what fraction of it is within one Mahalanobis distance?  The Mahalanobis distance in one dimension is called the Z score and we know it's 68%.  And we can see experimentally that two standard deviations plus or minus two standard deviations there gives me two Mahalanobis distances and it's 95%.  And 3 gets me 99%.  \par
+\par
+99.7.  It's there.  And I did this for 7000 data points.  You can do more.  It's an easy program to do.  You generate a bunch of data and see what you get.  That's 1D.  We've done that.  You should be intimately familiar with 1D.  What do we get in 2D?  We do the same experiment in two dimensions.  Let's do it.  \par
+\par
+In 2 dimensions, it's 39% of the data.  But roughly 40%.  If you're going to remember a number, 40 is a good number to remember.  The red circle in the center is about 40% of the data.  When it's allocated in 2 dimensions.  \par
+\par
+For two Mahalanobis distances, you get 86 or 87%.  And then 3 you got most of it again.  Alright.  That's two dimensions.  We're going to go to 3 dimensions.  Look at the 1D numbers here.  So we went from 68% down to about 40%.  What would you guess in 3D the Mahalanobis distance is going to be?  One Mahalanobis distance is . . . just think to yourself.  What's it going to be?  It turns out it's about 20%.  \par
+\par
+Shocking.  \par
+\par
+And the red is that values.  And it's shown in 3D so there's other data in front of it.  You can't see the red.  You start to see speckles there.  Here's 4 dimensions.  Let's see . . . we went about 40%, 20%, and now it's about 10%.  Guess what it's going to be in 5D?  Right?  It's almost as a rule of thumb you can think of it as going down by half, when you go from 2D to 3D to 4D to 5D, it goes down by half-ish.  60 it goes down even worse.  \par
+\par
+One of the fundamental things you must remember is that plus or minus one standard deviation works and that gets you 68% or most of your data in one dimension.  If I am here in 6 dimensions, that means if I'm measuring 6 features of my data, and I want to get \super\f1 2\nosupersub\f2\u8260?\sub\f1 3\nosupersub\i  \i0\f0 of my data, how many Mahalanobis distances out from the average do I need to go to get \super\f1 2\nosupersub\f2\u8260?\sub\f1 3\nosupersub\i  \i0\f0 of my data?  You can look at the numbers and say it has to be more than 2, but less than 3.  \par
+\par
+OK.  Alright.  So hopefully this has driven home the idea that you need more data further from the center when you're in high dimensions.  Why is that important?  It's important because some day you'll be out working with other people.  You'll be working with business managers.  Making business decisions.  Even if you're not working with data science directly, somebody is going to say, "We need to make sure we have most of our data and we have 10 dimensional data so we go out one standard deviation from the center and that's 68% of our data."  \par
+\par
+No, that's not right.  I want my students to get it right.  And by the way, there's a lot of other students on campus taking statistics and they don't get this.  They don't understand this curse of dimensionality thing.  So here's some numbers to remember.  \par
+\par
+I have to warn you that one of the graders made up a quiz last semester and the quiz said, "In 4D, what fraction of the data is within plus or minus one Mahalanobis distance?"  \par
+\par
+And that grader accidentally made a typo.  Instead of typing in the answer as 9%, the grader accidentally typed in 99%.  Well, that's OK!  We all make mistakes.  And the problem is it's lost in the bank of questions.  Someday I'll find it and fix it.  The mean time, it's wrong.  \par
+\par
+And so last semester I had a bunch of students who took the quiz, looked at it, and the computer was telling them it's 99%.  But that's not right.  Use your heads folks.  \par
+\par
+OK.  So a bunch of people memorized that answer as 99% with 4D.  When they took the exam, that question came up and everybody copying it and remembered the answers put 99%.  And we fixed it later on and they didn't get credit for that.  Because it's wrong.  You don't get credit for memorizing the answers.  You have to understand the point.  \par
+\par
+So I'm warning you ahead of time you may want to have more guidance and do your own work or maybe it was that everybody was taking the quiz together on a Discord server.  And they were all, "Oh, we're going to cheat off each other!"  And somebody was wrong.  And then everybody was wrong.  So don't do that.  \par
+\par
+Do not do that.  \par
+\par
+Think for yourselves.  \par
+\par
+Well, it's a computer and I am good at computer programming so I let the computer go.  I let it generate all of these curves.  Let me annotate this a little bit.  Here's a line that's at about 68% of the data.  Or roughly \super\f1 2\nosupersub\f2\u8260?\sub\f1 3\nosupersub\i  \i0\f0 of the data there.  \par
+\par
+And as we've seen before, if we were going at 68% of the data, if we're limiting ourselves to one Mahalanobis distance -- so the distance across the bottom is how many Mahalanobis distances are we using.  The vertical axis is -- the vertical axis here is how much of the data is incorporated.  So I drew a line at 68%.  Got it?  \par
+\par
+So what we've done before is this.  We went down from 68% down to 40%, then 20%, then 9%, then 4% -- that's what we just did.  Now we're going to go across.  Let's undo that . . . \par
+\par
+Now we want to go from one dimension at 68% to two dimensions at 68%, and three dimensions at 68% and four dimensions at 68% . . . and so on.  So let's see how many Mahalanobis distances it takes.  \par
+\par
+So I have one dimension at 68%.  We know that.  If I go to 2D and I want 68% of my data, I now have to go one dimension out plus a bunch more.  I have to go out to roughly one and a half Mahalanobis distances.  In 3D if I want 68% of my data, I want almost 2.  For 4D I need like 2 and a quarter.  For 5D I need two and a half Mahalanobis distances.  And on and on.  There's 6, 7, 8.  Oh! \b  So, a completely valid question on the final exam might but . . . given what you know about data distributions, if I've got dimensional data that's in 8 dimensions and I want to get 68% of my data, how many Mahalanobis distances do I need to get to?  And that would be at least 3.  Or 3.1.  Or 3.2.  \par
+\b0\par
+The whole point is you might be asked questions about this graph.  Can you interpret this graph?  You don't actually have to do the computations.  It's all graphed out for you.  If you want half the data and I'm in 10 dimensions, how far out do I need to go to get half of my data?  1, 2, 3, 4, 5, 6, 7, 8, 9, 10 . . . I'm in this region here . . . oh!  Half of the data is still 3.  OK?  \par
+\par
+If I want 68%, and I'm in 10 dimensions, oh!  68% goes over this way . . . and I'm in 10 dimensions, that's this curve . . . that would be -- oh!  Like 3.4.  Roughly.  OK?  \par
+\par
+Questions?  \par
+\par
+OK.  \par
+\par
+You've seen it.  The whole point of this is as you go further out in Mahalanobis -- as you get more features, you need to go further out to get a majority of your data.  The combinatorics becomes difficult.  \par
+\par
+This is just review.  Other ways of looking at it as we go along.  We've seen this before.  Here's the definition of the Mahalanobis distance.  Remember the book forgets to take the square root.  My students need to take the square root.  Because when you go into a Euclidean space, instead of having things distributed with some sort of covariance, some sort of smear -- if it's not smeared, the covariance matrix becomes the identity matrix.  And the inverse covariance matrix becomes \i\f1 i\i0\f0  and you get the Euclidean distance.  I want the square root there so this things devolves back into Euclidean distance.  \par
+\par
+OK.  \par
+\par
+Mahalanobis distance.  We use it for Gaussian distributions.  Inlier identification, outlier removal, deciding which class to classify a data point . . . and when classifying the unknown data -- sure.  All of this.  We can use it for Mahalanobis distance classifiers.  OK.  \par
+\par
+So you see that in 1D, 2D, 3D, 4D for circularly symmetrical systems.  This is the Mahalanobis distance when we have some variance in there.  I allocated this data and then went and looked at it.  Within one Mahalanobis distance is roughly 40% of our data.  OK.  \par
+\par
+Oh, here's an interesting question.  \par
+\par
+I have an ellipse here and I want to convert it into a circle.  Can I just like scale the x-axis and the y-axis and make it into a circle?  \par
+\par
+So, no.  The answer is no.  \par
+\par
+I wonder what I did differently.  Usually when I ask this, everybody in class says, "Yeah, we can do that!"  But the answer is no.  And here's why.  If I shrink the x-axis, as it gets lower together, it gets compressed but the angle of the ellipse also goes up.  \par
+\par
+So it's still not circular.  And then it goes up.  If I spread it out and stretch it out, now the angle drops down but the ellipse becomes stretched out more.  So I can't fix this by just rescaling the \i\f1 x\i0\f0  or \i\f1 y\i0\f0  axis, the horizontal or vertical axis.  I have to rotate it somehow.  I have to run it through a rotation matrix.  OK?  \par
+\par
+This is a special plot.  What I did was I allocated data.  I basically generated a Mahalanobis distance spread.  I generated that multivariate Gaussian distribution that describes the spread of this data.  And then I said where the data points are concentrated, we'll put 7 data points in there close to each other.  As they get further spread out, I'll drop down to 6 data points.  And then 5, 4, 3, 2, and 1 until eventually we get no data points.  So the concentration of the data points here is proportional to the probability of data occurring at that position.  \par
+\par
+Um, yeah.  It's a very special plot.  This plot took me a week to generate.  OK.  So that's a multivariate Gaussian distribution.  And from that, I can generate -- I can actually measure experimentally the Mahalanobis distance and I can add the Mahalanobis distance onto that.  \par
+\par
+OK?  \par
+\par
+Hmm . . . \par
+\par
+Oh!  Yeah it's just spread out as you would expect.  These are elliptical.  Sure.  Because I know the covariance matrix and how things are spread out -- I have taken the data from a circular Euclidean space, stretched it out and then rotated it.  Because I know how much I stretched it out I can stretch it mathematically.  I can also rotate it mathematically and plot those curves on top of this one.  Not all of them, just every other one.  So this is the estimated amount.  \par
+\par
+And what I want to show you is that basically that covariance matrix, that Mahalanobis distance, is a Euclidean distance that's been stretched out and rotated.  And so those contour plots show me what I'm doing there.  \par
+\par
+Alright.  That's in terms of one dimension or two dimensions -- we can look at this in 3D.  This is the surface plot that goes along with that map.  OK?  \par
+\par
+Alrighty.  Got it.  \par
+\par
+Yeah.  Questions?  You've got that.  \par
+\par
+Let's see, I need to talk about also something called logistic regression.  \par
+\par
+Uhh, yeah.  My notes.  I'm going to go over here.  I'm going to talk long and hard about this.  Until the end of the time.  The question is, where does logistic regression come from?  Where does it come in?  Remember we were talking about artificial neural networks.  OK?  \par
+\par
+[Recording stopped.]  \par
+\par
+[Recording in progress.]  \par
+\par
+Here we're talking about logistic regression.  Which is a horrible name.  As names go, this is lousy.  It's not really regression and it's not logical.  Well, really not logical.  It uses the lowjet function and yadda yadda . . . horrible name.  Logistic regression is used as a 0 or 1 classifier.  Class 0 or class 1.  OK?  \par
+\par
+I'm going to walk you through some of the diagrams here and talk about them and then I'm going to post this up and you'll have to read through it.   Sorry.  That's how it goes.  \par
+\par
+So, I've got some inputs in the \i\f1 x\i0\f0  value.  I have some weights in the \i\f1 w.\i0\f0   I'm going to multiply them together using the dot product.  I project the inputs onto the input vector \i\f1 w.\i0\f0   I add them up and that's the dot product, the projection process.  And then I run them through some activation function.  \par
+\par
+Now, in this terminology there's something called a bias.  The idea of bias comes from the days when there were tubes.  Like tubes in radios.  And vacuum tubes were replaced with transistors.  And you bias the transistor which makes it kind of get ready to go.  Bias is like the tendency for it to come on.  To turn on.  \par
+\par
+So that really is the term bias that's used.  It's the terminology.  OK?  So we're doing this math.  \i\f1 w\i0\f0  transpose \i\f1 t\i0\f0 , that's the dot product.  Plus some offset.  That's the bias term we're adding in there.  You will see this also written as \i\f1 w\i0\f0  transpose times \i\f1 x\i0\f0  plus \f3\lang1032\'c2\i\f1\lang1033  \i0\f0 where beta is the bias term, or \i\f1 w \i0\'b7\i  x.\i0\f0   We can simplify this math if we include the bias term into our set of weights.  \par
+\par
+Instead of having a bias term I now have \f1 B\sub 0\nosupersub\f0  as our first weights.  And we lock one of the inputs to always be the value of 1.  \par
+\par
+So now it's still a vector multiplication done on a GPU very quickly.  Got it.  Alright.  Cool?  \par
+\par
+Here is a very simple artificial neural network.  If I look at this very simple artificial neural network, that's \f1 B\sub 1\nosupersub\i  \i0\f0 times \i\f1 x\sub\i0 1\nosupersub\i  \i0\f0 plus \f1 B\sub 0\nosupersub\i  \i0\f0 times 1.  Many students think, what is that?  That's a complicated function.  What is this the equation of?  \par
+\par
+Exactly correct.  \par
+\par
+Owen gets it right.  \par
+\par
+That's just a line.  That's just a slope and an offset.  OK?  \par
+\par
+Just because someone has changed it so it's not \i\f1 x\i0\f0  and \i\f1 y\i0\f0 , don't get confused.  That's just the equation of a line.  They're not using the same variables we learned in algebra.  Nothing scary about math, really.  It's all there.  OK?  \par
+\par
+Now the original perceptron, the original one looked like this.  It was off all the way and then at one point it jumps off and goes.  It wasn't always stable.  What's that mean?  Simple examples of stableness.  We should get to that.  \par
+\par
+We adjust the weights until we get everything classified correctly.  Here I have a negative sign and I want to get all the negatives on one side, and I have a positive -- that's not right.  Some of these are misclassified.  You can look at the ones that are misclassified and figure out how much do you need to rotate the decision boundary?  \par
+\par
+OK.  So we go and rotate the decision boundary a little bit.  When you get to the point in an artificial neural network it stops learning.  It says everything is classified.  Nothing is wrong.  There's no need to rotate the boundary anymore.  OK?  \par
+\par
+And we've talked about this problem many times.  That's not perfect.  A better solution would be one that goes right down the middle.  And what classifier would get us one that goes right down the middle?  \par
+\par
+Owen is awake.  Good for Owen.  \par
+\par
+Yes, Alice, a support vector machine.  I don't care if you type it and you're the 30th person.  It helps if you type SVM and actually remember the answer.  I don't care if you -- it just helps you learn and practice doing the work.  \par
+\par
+So we can do an SVM and we can get the SVM.  That's what we're looking for.  \par
+\par
+OK.  So now, the original perceptron looked like this.  Oh, this is the original mcCullagh-Pitts perceptron.  It wasn't particularly stable.  On the left we see a ball suspended from a pendulum.  And it's positively stable.  \par
+\par
+A small perturbation -- a small deviation will create a force that makes it stable again.  On the right hand side we show a bar of steel and a bowling ball set on top of that.  That's also stable.  But it's negatively stable.  A slight variation from being stable will cause that whole thing to fall over.  \par
+\par
+The force amplifies.  It and becomes unstable.  You can think of a cup inside a cup being stable, compared to a ball under a cop.  That's negatively stable.  The one on the right is negatively stable.  Or unstable.  OK?  \par
+\par
+It's true, you could actually balance a ball on the bottom of a cup upside down.  But the slightest variation would make it go and get worse.  \par
+\par
+Oh, so the perceptron when it went off, it stayed off.  It didn't recover.  So why do we use this sigma function?  Here's the sigmoid function.  [Equation on Screen.]  \par
+\par
+It's great.  And the beauty of this is it's smooth everywhere.  Yahoo!  And because it's smooth everywhere, we can find the derivative.  When we're doing gradient descent and artificial neural networks are learning through gradient descent.  Support vector machines learn through gradient descent.  You'll solve the bird bath problem using gradient descent.  Same idea.  Ascent, descent, same thing.  \par
+\par
+You want to be able to guess the derivative.  Here's the sigmoid function.  Here's the derivative.  Wouldn't it be neat if there was a fast way to get from the from the activation function to the derivative?  What is that?  Oh, golly.  Look at this.  Would you look at this?  Holy crow!  Look at this!  This says the derivative of the sigmoid function is equal to the sigmoid function times one minus the sigmoid function.  Hallelujah.  Start a new religion.  \par
+\par
+This is fabulous.  If you have the sigmoid function at \i\f1 z\i0\f0 , you can get the derivative almost instantly.  That's wonderful.  That's why people use the sigmoid function.  The hyperbolic tangent function works -- all kinds work.  But holy how is that easy to evaluate.  \par
+\par
+Got it.  \par
+\par
+Here I have some things that I want to classify.  I want to have a function that goes through these data points.  \par
+\par
+So on the left I have a bunch of data points down at 0.  And oh let's say I go take a bag of popcorn and I throw it in the microwave and I hit the popcorn button.  Then I say, "Popcorn, if I need more time, I put popcorn plus 1."  And it goes up.  Or if it's the type that pops quickly, I say popcorn minus 2.  \par
+\par
+Here's popcorn and it's set for popcorn -- look at this.  All these cases of popcorn did not pop.  On the right there's popcorn that did pop.  I want my curve to go right through my data points so I can easily evaluate what's going to happen.  I can guess whether it's going to pop or not.  \par
+\par
+That's not the right curve.  I want to shift this curve further to the right.  Beta 0 is 6 here and I'll shift it further to the right.  Beta 0 is 4 here.  It's not perfect.  I don't remember exactly how all the math worked out but there you go.  \par
+\par
+I'm going to keep shifting -- oh.  This looks good.  Really good.  It looks like it goes right through all the points.  It's not perfect.  You can see some slight error if the zoom in.  OK?  \par
+\par
+Oh yeah so what I can do here is use another beta function.  So beta 1 is kind of like the slope.  Beta 1 is like the slope at this point.  As you're going up.  That's beta 1 -- I'm just going to leave that drawn right there on the screen.  That's a certain beta 1.  Oh, look at this.  This has a higher beta.  OK?  \par
+\par
+Here's one with a much higher beta.  A much higher slope.  OK?  \par
+\par
+So here's one of the secrets I want my students to know.  When we use a sigmoid function, there are actually many, many different ones.  You have a whole family of sigmoid functions we could use.  \par
+\par
+And usually people just use whatever somebody else programmed last.  But since you're computer scientists we hope you know how to do it right.  You can actually make it stronger or less as you need to.  OK?  \par
+\par
+So, OK.  This causes a dilemma here.  I have this problem.  I have a whole bunch of different sigmoid functions that will answer that.  These all go through my data points.  How do I decide on the best one?  I dial in some regularization.  That's what I call it.  That regularization.  That stuff that would be nice if it was 0 but it doesn't have to be 0.  Or something I want to minimize or control.  \par
+\par
+So, alright.  If it was 0, the slope would be flat.  No, that's not perfect.  That's not what we're looking at.  OK.  \par
+\par
+So I'm going to use regularization to resolve the ties.  I have an objective function and regularization and I add those together to get a cost function.  My overall value I need to minimize.  Or maximize.  Depending on what the case is.  \par
+\par
+And I have to be careful because sometimes they will cancel each other out.  Yeah, OK.  You go read through this.  I'm carefully setting my regularization to make sure they don't cancel each other out.  Here's a contrived example.  \par
+\par
+What I did was I took my known set of solutions and I explicitly switched two on the left and two on the right so they're classified wrong.  By doing that, I know the answer I had before that was stable is still the best answer.  \par
+\par
+So I can now go find the answer.  And here's the answer overall.  This is the cost function based on my set of regularization and my objective function.  And I can actually look at the contour plot going on underneath this function.  OK?  \par
+\par
+Oh, hey, look at that!  That's concave!  That will hold water!  If I put a drop of water, it'll hold water.  That's just like the birdbath!  Yahoo!  \par
+\par
+That means we can use what's called convex optimization.  We can use gradient descent to solve this problem.  OK?  So that's the contour map on the bottom.  Yeah.  So what I'm doing here is showing you what if there was no regularization?  If there was no regularization, a drop of water that was placed on this surface here would drop down and just keep going.  It would never stop.  \par
+\par
+So, yeah.  That doesn't help me.  I want to have an answer for which beta 0 is small and beta 1 is small.  So that's the contour plot you get alone.  \par
+\par
+Here's another regularization.  This is the technique I'm dialing in.  I'm designing this regularization.  This regularization is set up so the regularization tends to make the curve go towards beta 0 equals 0 and beta 1 equals 0.  I want them both to be down to 0.  I want them to be low.  But the amount of them, the slope on those is really low so that the other terms that are appropriate can dominate.  \par
+\par
+Alright.  \par
+\par
+So adding that in we get contour maps that look like this and you can actually find a best solution.  And you would train it through feedback.  OK?  \par
+\par
+So, hang on.  I'm going to jump ahead.  You can actually have it go up and down and find the best answer.  \par
+\par
+Now the other thing we do, the other reason we use the sigmoid function is this: using a sigmoid function, we can build artificial neural networks that are universal approximators.  Here's some data I want to model.  OK?  \par
+\par
+If I have one data point I need to go through I can do that with a delta function.  The delta function is 1 at 0 and 0 everywhere else.  Sometimes this is called an impulse function.  It's 1 at 0, and 0 everywhere else.  Because of this, I can add those together to form new functions.  \par
+\par
+So here's a function, this function I can like doodle on here.  This might be a polynomial and it might go like this.  \par
+\par
+[On board.]  \par
+\par
+OK?  \par
+\par
+And I can approximate that with this collection of -- [Equation on Screen.]  \par
+\par
+That combination gives me functions that for these values goes right through the values I want.  So any function can be approximated with a Chronicer delta functions.  [sp?]  \par
+\par
+All I need to show to do to show that an artificial neural network is a universal approximator is to find a way to get my artificial neural network to do a delta function or something close to it.  And I do it this way.  I create one delta function -- let's do it here in black if I can get this graphed out.  \par
+\par
+Here's one delta function that goes up and then goes on.  Here's another one.  \par
+\par
+This one -- I'll draw it just off center.  That goes up and it rises up later on.  And if you subtract one from the other, you get a delta function.  Or something that's closely approximating a delta function.  \par
+\par
+OK?  This is monumental.  This says if I can simulate a delta function with an artificial neural network just using two sigmoid functions, that with enough neurons, I can get an artificial neural network to simulate any mathematical model I want.  \par
+\par
+OK?  \par
+\par
+Cool!  \par
+\par
+Alright.  I'm going to let you reread this.  And print it out, highlight it and so on as you see fit.  There's a derivation here for people who really want to see how that derivative happens.  And I wrote that down mostly for myself because if anybody ever asks me that I would never be able to remember it off the cuff.  So there it is.  \par
+\par
+Alright.  I've gone over time.  Thank you for your attention.  We will not be meeting on Thursday.  Which is why I covered so much.  So go forth, take care of yourselves, and take care of each other.  \par
+\par
+And I'll talk to you later on.  Bye bye!  \par
+}
+ 

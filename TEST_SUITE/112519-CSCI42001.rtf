@@ -1,0 +1,380 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Georgia;}{\f1\fnil\fcharset0 Times New Roman;}{\f2\fnil Times New Roman;}}
+{\*\generator Riched20 10.0.17763}\viewkind4\uc1 
+\pard\tx440\tx880\tx1320\tx1760\tx2200\tx2640\tx3080\tx3520\tx3960\tx4400\tx4840\tx5280\tx5720\tx6160\tx6600\tx7040\tx7480\tx7920\tx8360\tx8800\tx9240\f0\fs22 Principles of Data Mining\par
+Professor Kinsman\par
+CSCI-420-01\par
+November 25, 2019 \par
+\par
+Professor:  The problem I've had in the past is that students who try to do that who aren't the best programmers will spend all their time trying to update the right ones.  \par
+\par
+It took you an hour to run it?  \par
+\par
+Student:  It's 850 rows!  \par
+\par
+Professor:  What about the first time?  \par
+\par
+Student:  The first time -- like one iteration?  Which thing are you asking?  \par
+\par
+Professor:  OK so we'll talk about test suites.  Because you don't ever test your initial run on all of your data.  \par
+\par
+Student:  We didn't do that.  \par
+\par
+Professor:  Once it was working?  \par
+\par
+Student:  We stopped it after like two.  \par
+\par
+Student:  We did it on like 50 at first.  \par
+\par
+Student:  We did two.  \par
+\par
+Student:  If you do like 50 rows it doesn't take long.  \par
+\par
+Professor:  Onkar, are you OK?  You look very melancholy.  \par
+\par
+I saw somebody wearing this shirt that says, "Sleep is for the weak."  \par
+\par
+I would say this.  \par
+\par
+Wouldn't that be nice?  That's my plan.  As soon as I have the chance I'll take up a new hobby called sleep.  \par
+\par
+Student:  I know, right?  \par
+\par
+Professor:  OK.  Let's go.  So -- you OK?  Are you feeling better?  Status check.  We'll have today's lecture and take the rest of the week off.  Here, take the quiz.  You should be able to do this one without any trouble.  You will see these questions some other day.  \par
+\par
+Next week we'll be going into ensemble classifiers.  Like as in the singing.  When you all get together and sing, that's an ensemble choir.  And then a few people are special and they get to do solos.  \par
+\par
+I'm thinking maybe we should have a -- OK.  Let's go.  Let's get this projector hot.  First of all, status check.  How are we?  Are you alive?  \par
+\par
+Student:  Barely.  \par
+\par
+Professor:  OK.  Douglas?  Do it later, you don't have to hand it in today.  OK?  We're working on it.  But definitely be able to do those questions some other time.  I'm going to take attendance another way.  At the end of the class I'll hand back exams and I'll know who's not there because they won't have their exam.  That's how that will work.  Got it.  \par
+\par
+The class average for the midterm -- I will entertain you while I'm pulling up the PowerPoint -- was about a 75.  So if you did better than a 75 you did better than average.  I talked about learning through failure.  I love learning through failure.  I think it's really fun when I Brekka algorithms.  But then I have this endorphin rush.  I think, "Ha!  I must be smarter than the people who wrote this!"  Because they didn't mention the fact that it breaks when you do this and such.  I like it.  It gets me high on serotonin or something.  My brain says I could probably do better than that.  OK?  \par
+\par
+Oh, yeah.  OK.  \par
+\par
+Power failure.  You don't know something works until you know how it fails, really.  So we'll talk about that as we go through.  At the end of the day you'll be able to answer the question about how Canis Major [maybe?]  Fails.  \par
+\par
+Huffman wrote this.  He was a weird guy.  Shannon was his advisor and say he couldn't do better than his case.  So Shannon, who was a mean professor, assigned as homework for his students to go home and do better than his theoretical case.  And Huffman did.  Not knowing any better, he did.  So that's how that happened.  \par
+\par
+But Huffman was smart and broke the algorithm and he learned something.  And I broke his algorithm.  So I was posting to Facebook.  I posted a cantaloupe and they asked if I wanted to tag it.  I broke their face detector.  I'm going to make the world's best pizza today.  We'll learn how.  We'll run experiments.  I love experiments.  Do you remember when we played with different flavors of ice cream?  And we discovered people liked fat.  \par
+\par
+From that we know there must be a fat sensor.  So we will play with pizza and learn about pizza and the curse of dimensionality.  I'm going to make 10 pizzas.  But it takes me about 3 hours per pizza and I have one stove -- it's going to be a long time.  I'll only allocate 30 pizzas.  So now I have 10 different pizzas.  So I have 10 different levels of pizza-ness I can check.  Annalee, what's your favorite attribute of pizza?  \par
+\par
+Student:  Cheese.  \par
+\par
+Professor:  Cheese?  OK.  So I'm going to try a whole different range of cheeses.  It says zero here, but you know . . . we're always thrown a little bit.  So maybe there's some people with lactose intolerance but anyway I try 10 different flavors and I'll cook them and hand them out and people will check them to see how they are.  We'll find the best amount of cheese to put on there.  What's your favorite attribute of pizza?  \par
+\par
+Student:  Cheese.  Nothing else.  \par
+\par
+Professor:  OK Parker, other than cheese . . . Ian.  What do you like?  \par
+\par
+Student:  Sauce.  \par
+\par
+Professor:  \i Sauce!  \i0 Good!  Now we have two attributes we can play with.  So I have 10 different levels of cheese and 10 different levels of sauce.  So now I can only make 10.  What fraction of my data space am I sampling?  \super\f1 1\nosupersub\f2\u8260?\sub\f1 10\nosupersub .\i  \i0\f0  Got it?  Understand?  \par
+\par
+Now Michael in the back, you look like a crust guy.  He looks like -- a little crusty.  Sometimes.  [Class laughing.]  \par
+\par
+So now we have cheese, sauce, and crust.  So now I've got 3D data.  With 3 attributes.  Just 3 attributes.  That's it.  Now, Michael, what fraction of data do I have?  \par
+\par
+Student:  A lot.  \par
+\par
+Professor:  100th of them.  There's 10 times 10 times 10.  That's 1000.  And I only have 10 data points.  This gets to the idea of the curse of dimensionality.  We want to know which is the best place in space.  I can't actually sample all of this data.  I can only sample \super\f1 1\nosupersub\f2\u8260?\sub\f1 100\nosupersub\i  \i0\f0 of it.  Because I can only make 10 pizzas in a reasonable amount of time.  Do these things interact?  \par
+\par
+Carl, have you cooked your own pizza?  \par
+\par
+Student:  Yes.  \par
+\par
+Professor:  You have?  Have you ever tried to put a ton of cheese on it?  Annalee loves it.  She'll pile it on.  What makes this break?  Imagine picking up the pizza with a mound of cheese and roll it up and slide it in your mouth.  What goes wrong?  \par
+\par
+Student:  Too much cheese.  \par
+\par
+Professor:  Obviously you need to make more pizza.  What could go wrong?  \par
+\par
+Student:  The cheese would fall off.  \par
+\par
+Professor:  It could but it's worse than that.  \par
+\par
+Student:  Burns your mouth.  \par
+\par
+Professor:  This attribute is how much cheese, how much sauce, and how thick the crust is.  What if I have a thin crust and a lot of cheese?  Not going to work.  There's interaction between these parameters.  This is a simple example but hopefully you can relate to it.  So we have 3D data and I once won an award for best talk.  Explaining the curse of dimensionality using pizzas.  So there we go.  Floating data points!  \par
+\par
+That's just 3 attributes.  We can get more than that.  Suppose as you go up the number of dimensions increases linearly but the amount of data needed to fill that space goes up geometrically.  \par
+\par
+This is why big data is becoming more and more important.  In high dimensions, data becomes very sparse and spread out.  It's what we call the curse of dimensionality.  It goes by many names but that's the big thing.  \par
+\par
+Suppose, for example, somebody gave you a quiz and asked you a lot of information about yourself, like the obtuse quiz.  We asked all these questions.  Those aren't really -- those are categorical.  I need it to be in data space.  So I take those categorical things and make it a binary variable.  What do we call that, Tanner?  Do you know what that's called?  I have some \i hot coffee \i0 here to drink.  \par
+\par
+Student:  One hot coding.  \par
+\par
+Professor:  It's almost like one hot cookie.  It's one hot coding where I make it binary with the exception where you can't have a favorite cookie as chocolate chip and oatmeal.  What is that word?  Antithetical.  \par
+\par
+OK so we have 149 different attributes now.  What's the data space?  It's like 2 to 149.  That shouldn't be too hard to do.  I went into mathematica because it's too big for MATLAB.  That's it.  That's 2 the 149th right there.  It's big.  We can very quickly get data that spans the data space well beyond anything you can possibly do in your lifetime.  Want proof?  Here's a good rule of thumb.  The universe is about 13.8 billion years old.  If you're going to do anything that takes longer than that, don't start.  \par
+\par
+This many seconds is not even as big as 2 to the 149th.  That's how big it is.  It's a big gargantuan number.  I had programs that would tell me how fast they're running and when they'll be done.  So I wrote a program that would search a bunch of stuff, I said try all possible combinations, and it said it would finish in 14 years.  It said it in terms of minutes and I did the math and I said nevermind.  \par
+\par
+Here's this problem, the more dimensions you get, you need a lot more data to fill the space.  Otherwise it becomes very sparse.  We haven't even mentioned the amount of saffron to add.  This is why big data is important.  That's one way to look at the curse of dimensionality.  \par
+\par
+Let's go onto other things.  \par
+\par
+Do not crash on me!  That would be bad.  It must be updating or something.  Bear with me.  \par
+\par
+[Growling.]  \par
+\par
+Sorry that's an old kids joke.  I deal with kids all the time.  \par
+\par
+Adobe reader?  I have no idea what I was reading there.  Quit you.  That should free up some space.  Force quit . . . who's not responding?  I have Firefox going?  I know what was going on!  We don't need Grab going on either.  Force that to quit.  But I killed PowerPoint somehow.  But that's OK.  We'll be back in a shake.  Mahalanobis review.  Got it.  We can do this.  \par
+\par
+OK.  Do you remember how to normalize data?  \par
+\par
+Remember that?  Data normalization?  What are the different flavors of data normalization?  \par
+\par
+Student:  Zero centered.  \par
+\par
+Professor:  Good.  What else?  \par
+\par
+Student:  Zero to one.  \par
+\par
+Professor:  That's called dynamic ranging.  Everybody remember this?  And there's a 3rd one called computing the z-score.  If I have two different people and I want to compare them but I want the points to be commensurate and it's a nice Gaussian distribution, you could subtract the mean and divide by the standard deviation.  Do you remember this?  I'll review for the people out there.  I have this lump -- this is just 1D.  I subtract the mean so now it's zero centered and then I divide by the standard deviation.  The whole thing goes out to infinity.  But most of the time, minus 3 to 3 gets you 99% of your data.  \par
+\par
+Usually 3 standard deviations plus or minus works fine in 1D.  But there's this curse of dimensionality thing that goes on.  \par
+\par
+So that's 1D.  The Mahalanobis distance is similar, but it's 2D.  So -- right.  Here.  I'll show you this.  Don't quit on me now.  So you have a BB gun and it shoots at a target.  Piles and piles of BBs at a target.  Like a pea shooter but they're BBs and not peas.  In this dimension you get a Gaussian distribution.  In two dimensions, it's a Mahalanobis distribution.  If you get to be a bad shot it gets wider.  A good shot, smaller.  \par
+\par
+This is off by a bit, but it depends on how good you are with a peashooter or a BB gun.  Oh, this is somebody who is good.  OK.  Let's go back to our 2D distribution and pretend it's on teflon.  Like, if it could fall off, like on teflon.  So now, ah!  Look!  It's a Gaussian distribution!  See it?  From minus 1 to 1 that's one standard deviation.  OK?  \par
+\par
+One standard deviation -- that's 68% of all the data that's on the target.  With me?  Remember the circles are the Mahalanobis distance.  So ask yourself the question, does 68% of the data fit in one Mahalanobis distance the center?  \par
+\par
+Nikita.  What do you think?  \par
+\par
+Student:  Most of it is within two circles.  \par
+\par
+Professor:  What fraction do you think is within this one circle?  \par
+\par
+Student:  34%.  \par
+\par
+Professor:  34%.  Good guess.  Really close.  So, this is 1D and I have it spread out back and forth.  And I ran a simulation because I'm not good at computing integrals.  I let the computer do it.  That's what lunch is for.  Take lunch, come back, figure out the answer.  So this is in two dimensions and I add it up and say what fraction of these 7000 points are within one Mahalanobis distance of the center.  It turns out to be 39.86%.  So good guess.  \par
+\par
+Within two Mahalanobis distances I have 86% and 3 I have most of the data there.  OK?  Good.  \par
+\par
+So that's 1, 2, 3.  OK.  Now, let's go to 3D.  Now you see the stuff in front is not 2D anymore.  This is a sphere and can rotate.  In 3D, if I go within the first spherical distance, the first Mahalanobis distance, instead of 39% I only have 20%.  That's like half.  I go from 1 dimensions to 2 dimensions I go from 68 to 40 and 40 to 20, guess what happens when you go to 4?  \par
+\par
+Student:  12.  \par
+\par
+Professor:  10%.  Good guess.  It's like 40, 20 -- kind of like 10, it's 9 plus something and the next is 4 and the next one -- so 6 dimensions, it goes down to about 2.  Roughly.  Keeps getting half as much data within one Mahalanobis distance from the center.  This is another way to show the curse of dimensionality.  The more dimensions I have, the harder it is to play with.  The more dimensions it has, the further it spreads out in space.  The more attributes, the more sparse the data is.  The more dimensions you have the further out you have to go to get that 68% majority of your data.  OK?  So that's the numbers we talked about already.  \par
+\par
+This is the -- oh man, I was fascinated.  Anytime somebody gives me a function I want to see if I can graph it or do data visualization with it.  So here I computed the distance for all of these points within each of the different Mahalanobis distances and for 1D that's just the z-score.  For 2D -- now we've got the Mahalanobis distance in 2D.  So let's see, how did that work?  If I went out one Mahalanobis distance in 2D, that's about 40%.  See that?  \par
+\par
+For one Mahalanobis distance in 3D, I'm down around 20.  One Mahalanobis distance in 4, I'm down around 10.  5 gets me around 4.  And so on.  I keep getting smaller until it gets harder to point at the different values.  The other way is to say, "Gee, I wish I had a laser pointer."  Oh wait, I have one.  \par
+\par
+How many Mahalanobis distances do I have to go out?  Less than one.  For 2D, I have to go out more than one.  It's like 1 and a half.  For 3D it's one and a half.  For 4D, you have to go out almost two.  For 5D, you have to go out two.  10 is this dark blue line Mahalanobis distances out.  I'm sorry, that's 10 dimensions.  50% of my data, Mahalanobis distances for 10 dimensions is more than 3.  \par
+\par
+Pretty wild.  \par
+\par
+So this is a common mistake that people say.  They will say, "I've got 20 dimensional data and I need to go out one Mahalanobis distance and I'll have 68% of my data!"  No you don't.  Really important.  Some day you will be in some meeting somewhere and somebody will say that and you have to say, "Hm, I would like to politely disagree."  OK?  \par
+\par
+How far did I go out?  This is like 50 features.  Yeah.  It's big.  It goes a way.  \par
+\par
+Again the curse of dimensionality says the more attributes you have the harder it is to play with.  It's tough.  And it gets tougher and tougher.  I want to show you some data visualizations of the Mahalanobis distances because I'm fascinated by it.  So here's the formula.  The Mahalanobis distance has this inverse covariance in it.  It takes into account the data has been squashed out.  So you can fix that data by multiplying it in there with an inverse covariance so the long skinny part becomes in and vice versa, like a balloon.  \par
+\par
+So that inverse covariance converts that Mahalanobis distance back into a Euclidean space.  OK?  \par
+\par
+It's used for outlier removal, multidimensional Gaussian distributions.  \par
+\par
+I'll ask you more questions about the homework later towards the end of the semester.  Like right at the end we'll ask you all kinds of questions about the homework.  But we also have to cover the theory.  \par
+\par
+Oh!  I've got all these lumps.  As I'm going through the process I find my lumps.  I figure them out and I start giving them names.  This one is named like Andy -- or like vegetarians or that type of eater or that type of shopper.  Family people.  Students.  People who are way too tired.  Or whatever it is.  \par
+\par
+Once I've given them names I can clean them up and form prototypes and use them as classifiers.  Somebody new walks in the store and buys a bunch of rice and fish and I can say based on my past knowledge I'll bet that person is Japanese.  Or something.  Based on your prior experience.  \par
+\par
+Oh!  Here's another mistake.  Remember this is a learning by failure so I like to point out the mistakes.  Somebody said they have an ellipse but they wanted it circular so they divided this data by the standard deviation up and down and then they'll get a circle.  Can you do these separable?  Is this separable?  Are they linked?  Are they statistically independent?  What's the opposite of statistically independent?  Some change in \i\f1 x\i0\f0  would indicate a change in \i\f1 y\i0\f0  so you can see that liner relationship.  \par
+\par
+You can't divide one by the other.  You need to use the inverse covariance matrix to fix it.  I like to think of the Mahalanobis distance as probabilities.  It's like climbing a hill and these contour lines are the Mahalanobis distances.  As you go in towards the center the probability of being there goes up.  That's one hard hill to climb.  Like a shark fin.  It's not like some fuzzy thing.  It's the density of the data points as you get closer and closer.  You're more likely to have those data points.  It's not a continuum.  So I just wanted to look at that another way.  \par
+\par
+OK.  Mahalanobis distances . . . curse of dimensionality, how would you use the Mahalanobis distance for k-means?  We could do that . . . OK.  I'm skipping this.  \par
+\par
+Let's go to this other window I had up just a few minutes ago before my system quit.  I wanted to talk about \i\f1 k\i0\f0  nearest neighbors.  But Emerson is already asleep.  Take 5 minutes, get up, walk around, do the bathroom break thing and then we'll talk about \i\f1 k\i0\f0  nearest neighbors and how to make it fast and run.  Get up and use those muscles.  \par
+\par
+Ladies and gentlemen.  It's time to meet your nearest neighbors!  [Professor Laughing.] see what I did there?  There used to be a case when people were dealing with very small amounts of data.  You would just remember everything.  \par
+\par
+That was called route learning.  When you were a kid you had to do route learning where you repeat it over and over again, like learning the alphabet.  Forwards and backwards.  You never learned it backwards?  \par
+\par
+You're kidding!  Kids these days . . . let's see if I can still do it.  \par
+\par
+[Singing Alphabet Backwards.]  \par
+\par
+You didn't learn this?  What kind of students do you call yourselves?  \par
+\par
+Student:  Bad.  \par
+\par
+Professor:  Route learners.  You just memorize it.  That's the answer.  What comes before S?  Uhh . . . yeah.  Right.  That's for all possible data points.  You can't do that if I get high dimensionality.  I start having to use just a few data points.  I might have to have -- I'm just going to use the closest ones because I don't have a full data set.  I have sparse data.  So closest means most similar to.  That means I have a distance metric.  So with k-nearest neighbors I have to figure out what my distance metric is.  I have already normalized my data somehow, right?  \par
+\par
+So here's a whole bunch of cases.  You go compute the distance to all of them and then figure out which is the closest.  So here's an unseen data case and you look at all the attributes and then you find out there's a B nearby and a C nearby and a B nearby.  BCB.  CBB?  Sorry, that's a different joke.  BCB.  Of those, the most common one is B.  So it's a type B.  Whatever that is.  \par
+\par
+Still with us?  \par
+\par
+I'm just seeing if Emerson falls asleep again.  If it walks like a duck, talks like a duck, it's probably a duck.  Easy.  I have a bunch of different birds.  These are my training records.  Chicken, chicken, chick, goose, duck swan.  Now the question is, here's the test case.  See?  It's kind of a rubber duck.  They have those.  Do you do rubber duck coding?  Do you explain it to a duck?  Have you heard these?  \par
+\par
+Student:  I know what it is but I don't have a physical duck.  \par
+\par
+Professor:  Kids these days!  Don't even have rubber ducks!  What is going on?  I don't know.  So I compare the distances.  When I compare the distances, I have to compare the distance to every single data point.  This is bad.  This is what makes k-nearest neighbors slow.  Two things that really make it slow: one is that you have to compute all the distances so the more data I have, it's a big problem.  In this case.  And if I have high dimensional data I have to compute all the differences.  If I have 148 dimensional data, I have to compute 148 differences as I'm going along.  \par
+\par
+Now I ask which of these are closest.  Chooses these two that are closest and of those two, it looks duckish.  OK?  That's the idea.  That's the simplest -- that would be nice.  \par
+\par
+Oh.  Here's a problem.  What's the value of \i\f1 k\i0\f0 ?  We have two here.  Is it a duck or a swan?  Well we know it's a duck because the bill.  You can see -- I don't know.  Let's get on with it.  \par
+\par
+Here's an interesting problem.  Here I'm using the 3 nearest neighbor.  We have this red spot and we want to know if it's a red plus or is supposed to be a blue minus.  So it's the plus or minus class as you're going along.  Right?  Get it?  \par
+\par
+If we look at this data point here and the neighbors around it, they're all in the plus class.  So you'd classify this point, using the k-nearest neighbor as the plus class.  Get it?  I need a set of data stored.  I need my distance metric, and we're using the Euclidean distance here, and I have to know this value of \i\f1 k.\i0\f0   How do I pick the value of \i\f1 k\i0\f0 ?  \par
+\par
+What's the best way -- so \i\f1 k\i0\f0  is like a parameter right?  \i\f1 k\i0\f0  is a parameter for my model.  What's the best way to choose a parameter for my classifier model?  \par
+\par
+Student:  Cross validation.  \par
+\par
+Professor:  Cross validation.  Something cross validation.  Either 10 fold or \i\f1 n\i0\f0  fold.  \par
+\par
+Student:  Is that of the known data points?  \par
+\par
+Professor:  Yep.  You'd check it and say how well does it work for the data points you know about.  I pretend I don't know this data point and then I pretend I don't know this one -- and you go through in order and try the different classifiers.  \par
+\par
+Student:  How would that get you a single number \i\f1 k\i0\f0 ?  \par
+\par
+Professor:  Pretend I don't know this data point.  I don't know what it is.  I know it's a plus, but I'm going to pretend I don't know.  Now I run all over and I classify this one with a first nearest neighbor.  First nearest neighbor might be this one here.  So one nearest neighbor works for this one.  Then we try with this one and this one.  We do it all for nearest neighbor and I get some error rate.  And then you try 3 nearest neighbor.  And then 5.  As you're going through.  But I never -- I personally never use 2 nearest neighbors.  What am I avoiding?  \par
+\par
+Student:  A tie.  \par
+\par
+Professor:  I'm avoiding my ties!  Yes.  Ties constrict your blood flow -- no.  Because the system gets confused and doesn't know what to do.  So we have to figure out how to break a tie.  There can be even numbers.  \par
+\par
+Student:  If there are more than 2 classes, you could always get a tie.  Even with an odd number.  \par
+\par
+Professor:  You can have a tie with an odd number, too.  3 different types of apples, or whatever.  You could be in trouble.  How do I break a tie?  \par
+\par
+OK!  Anybody here have siblings?  Do you have to fight with them?  \par
+\par
+"I got here first."  \par
+\par
+"No me!"  \par
+\par
+I was just looking for the high-pitched voice.  Intonation.  \par
+\par
+How do you break a tie with your siblings?  You just kept fighting?  \par
+\par
+[Class laughing.]  \par
+\par
+Kids these days!  How did you -- I won't ask Lucas because he's bigger and taller than his siblings.  Carl, how did you break a tie?  You didn't learn tie breaking strategies?  Have you heard of rock paper scissors or flipping a coin?  This is important.  Write this down.  Real programs use flipping a coin to randomly pick between the closest ones in case they're using an even classifier.  \par
+\par
+It's a nuisance because you have to test if you have an even number.  You avoid having to test for the case if you use an odd number and you're using a two class classifier.  Onkar, is that OK?  Do you have questions?  \par
+\par
+Student:  No.  \par
+\par
+Professor:  OK.  So now the question is, what do we use for \i\f1 n\i0\f0 ?  Here is the problem.  I if use one nearest neighbor, it's going to give me 1.  So that makes this a blue minus sign.  With a 2 nearest neighbor, I go out past this plus sign and now I don't know anymore.  With 3 nearest neighbors, I go out past this sign and this sign, so now I've got 3 and two pluses and 1 minus.  So that's showing some issues we'll face here the actual choice of \i\f1 k\i0\f0  will make it work or fail.  \par
+\par
+This is a special case.  These are called Voronoi diagrams.  This is the graphical solution to the one nearest neighbor.  How's this work?  Oh!  I have this point and that point.  This data point and that data point.  Where are you closest to?  Well, the perpendicular bisector between these two -- remember geometry you had once upon a time?  -- is right here.  And it would go this way or that way but it doesn't matter.  Anything on this side of the line is closer to this data point than that data point.  And anything that's now between these two and closer to that point is on that side of the line -- this is like the decision boundaries.  The equal distance line between different data points.  \par
+\par
+If you take one data point and find all the equal distance points around it, you get a weirdo shaped thing in the middle.  That's called the Voronoi diagram.  Everything inside this is closest to this data point than any other data point.  When does this happen automatically?  When would you have something connect to the nearest thing automatically?  \par
+\par
+Student:  One nearest neighbor?  \par
+\par
+Professor:  Do you want to phone a friend and ask?  \par
+\par
+Student:  What about WiFi networks.  \par
+\par
+Professor:  WiFi networks.  Sure.  They'll find the closest one that works.  Cellphones.  Technically cellphones are supposed to be line of sight, but radio waves bounce all over the place.  But needless to say, it's the closest one.  Carl?  \par
+\par
+Student:  Banking for like finding an associated branch or something?  \par
+\par
+Professor:  I was thinking of cellphones.  [Class laughing.]  \par
+\par
+We don't need to work on this too hard.  This diagram -- you would actually create this kind of diagram if you were trying to find the coverage for a cellphone tower.  \par
+\par
+Student:  The bottom two, why are they the same?  \par
+\par
+Professor:  Because they're degenerate cases.  We don't know what's out here.  We had to budget.  [Class laughing.]  It depends on the triangles.  \par
+\par
+Oh this is distances, who cares?  Here's an interesting problem.  We get to this problem with picking \i\f1 k.\i0\f0   Here's the issue.  If \i\f1 k\i0\f0  is too small, like in here you'd get sucked into this little region.  If it's bigger than that, you'll miss that region.  That's the tradeoff.  It's a tradeoff between having enough samples to have a good sample size versus following close -- following small details.  \par
+\par
+OK?  \par
+\par
+So it's a tradeoff.  And that's a big deal.  Scaling issues . . . let me jump ahead.  \par
+\par
+So, scaling.  I may have to rescale all my data.  Good.  That makes things comparable to each other.  This gets to us remember using data ranging, from putting them in the range of 0 to 1 for every attribute, or using z-score, or centering.  There are some counter-intuitive examples that show up in the world.  The distance between these two is the square root of 2.  The distance between these two is also the square root of two.  \par
+\par
+But these people bought Coca-Cola and peanuts and chips and other fattening foods and shrimp and they're ready for the fancy feast.  Those people didn't buy any of this stuff but they have two things together.  How do we solve this problem?  \par
+\par
+How do we solve this problem?  You're sitting in the front row, you're fair game!  Sean, what do we do?  \par
+\par
+Student:  Hamming distance?  \par
+\par
+Professor:  Instead of that, we have to use something similar.  Kind of ties into the curse of dimensionality.  Remember the Jaccard coefficient or some other measure that only takes in the 1s and ignores the 00s.  So here's our big choices.  \par
+\par
+We've got to make these design parameters.  \i\f1 n\i0 -\f0 fold cross validation.  If you don't know what to guess on the exam, guess that.  \par
+\par
+If you're asked about the best way or the only way to know, the answer is probably \i\f1 n\i0\f0 -fold cross validation.  Do we have an example on the last exam?  Sort of.  I know.  It was a long time ago.  Remember this thing when you had Impossibilium and Beserkium?  They're not real.  That's why I have the red lines.  \par
+\par
+So you have an alloy with different amounts and you build the distance table for agglomeration?  Which was closest together?  1 and 5.  So now here's the thing.  All of the blue data points -- see them?  Those all glow in the dark.  These other ones over here do not.  So the question is, what does that point do?  That point is the closest of those others.  So using agglomeration, you find these two points are closest and you find those.  \par
+\par
+The question on the exam asked if it glowed or not.  And what I was expecting you to do was say it was made out of this glowing compound and that glowing compound so when you make the amalgamated alloy, it would probably glow.  That's what I was looking for.  \par
+\par
+When I was at Kodak they wanted to know if this particular combination of chemicals is going to look like the right color.  Is it yellow or gold?  I do experiments all the time.  I have discovered if you take a computer chip, like an Arduino, and you plug it in upside down and turn on the power, it smells bad.  Don't ask me how I know.  Just take my word for it.  That's like $5 or $6.  Not a big deal.  \par
+\par
+In Kodak they had to make the film -- like the whole film -- and the film was as long as a football field and they had to make a batch.  Coatings.  Each experiment was about $100,000.  \super\f1 1\nosupersub\f2\u8260?\sub\f1 10\nosupersub\i  \i0\f0 of a million dollars per experiment.  So it was helpful to know what was going to work ahead of time.  They used things similar to this.  Dirt easy.  And a lot of times it works.  \par
+\par
+One of my friends Bruce would design the experiments and he got it right the first time and he saved $100,000.  So it was a big deal.  Here's our trade-offs.  [Professor reading: PowerPoint.]  \par
+\par
+Problems.  It's slow for a lot of data and attributes.  Those are the two big things that slow it down.  I'll talk quickly on how to get around those.  So the distances have to be normalized -- yeah.  Sure.  Then you have pick the best distance metric and value of \i\f1 k.\i0\f0   \par
+\par
+So here's an optimization.  You know you'll use 3 nearest neighbors so you go through your data points and delete the points that are uniform for 5 nearest neighbors.  \par
+\par
+Everything in this thing, everything in that 5 nearest neighbor is all the same class and in those cases I'll throw them out.  That leaves only those regions that are near decision boundaries.  So here's a synthetic example.  We have a bunch of blue stuff and red stuff.  Tanner, what's the problem?  \par
+\par
+Student:  There's too much data.  \par
+\par
+Professor:  I had the same problem.  I have acne.  I hate it.  But there you go.  It comes with the territory.  But those might be real data points.  I don't know if they're outliers -- they're just weird.  So I go look through my whole data set and out of all my data, this is uniform.  All this data in here is uniform.  This doesn't help me classify things.  Only points near that decision boundary help out.  So I can delete all the other data that doesn't help me figure out a decision.  \par
+\par
+Student:  When you're saying that go by point, are you actually just taking like every possible coordinate or going to individual data points that exist and saying if it's uniform -- \par
+\par
+Professor:  So I have to use data points that exist.  If I had all this data, and I'd look at this data point and see it's blue and then look at the color of the 4 nearest neighbors.  They're also blue, so you're in a uniform region and we'd mark it for deletion.  Don't delete it right away.  Mark it and keep checking.  If you delete it right away you get into a race condition where things don't work.  Audrianna?  \par
+\par
+Student:  How much time do you save doing that?  \par
+\par
+Professor:  It depends on the application.  Very application dependent.  And depends on the amount of data.  It makes sense to think about this ahead of time, if it will help you and if you want to do it or not.  \par
+\par
+So here's some data and this shows some of the problems.  We've got some things out here that get really skinny.  And if I want to know the skinny stuff, I need a value of \i\f1 k.\i0\f0   But if there's noise, I could have problem.  In a perfect world you know where the decision boundaries are, but you don't always do that.  And everything would be nice and homogenous and smooth.  But oftentimes there's acne that shows up.  So now you could use a classifier that says that all these data points here are in uniform regions.  These are the cyan data points, the magenta squares . . . and they can all be deleted.  So you go from this situation to that situation.  \par
+\par
+I'm showing this in 2D.  In 3, 4, or 5 dimensions it could be much better.  OK?  \par
+\par
+So that's one way to get it to go faster.  Let's see . . . so what's the problem?  You have to remember all the data and this is called memo-ization.  \par
+\par
+One method to make it faster, we just talked about.  Another one is like a decision tree.  If I could use a decision tree that asks who the nearest neighbors are, and the decision tree guided me to them, but it wasn't perfect but got me into the right neighborhood that's called a k-d ball.  I think about this as a decision tree that's perfectly trained and then pruned back.  So it gets you into the right area that you can check and test.  \par
+\par
+So ties.  They actually do happen.  The one nearest neighbor could produce 5 different records.  So you might need to flip a coin.  Or you might need to switch to a higher value of \i\f1 k.\i0\f0   So if one nearest neighbor doesn't work, you could switch to 3.  Or 5.  So on the fly you go to a bigger thing.  You can imagine all kinds of different ways to break ties as you go along.  Another technique to handle this is fuzzy \i\f1 k\i0\f0 -nearest neighbors.  This gives more weight to the factors that are closer.  \par
+\par
+OK.  Summary.  You have to select \i\f1 k.\i0\f0   You have to retain that training data to compare.  It's not necessarily fast.  The nice thing is you don't have to compute it all the time, just every so often.  So it's a lazy learner.  But it's slow for lots of attributes and data.  What are two techniques for making it faster?  One is delete points that don't help me make a decision.  And another one is using something like k-D balls that helps throw things out.  \par
+\par
+OK.  Let's see how fast I can get these back to people who are here.  These have staples on them.  Watch out.  \par
+\par
+Did you get a haircut?  \par
+\par
+Student:  I did indeed.  \par
+\par
+Anybody I missed?  \par
+\par
+Listen up.  Here's how you got graded.  We threw them -- I'm sorry.  I shouldn't joke about -- but we went through, page by page and every page was graded individually by an individual grader and I'm sitting next to them if they have questions.  They ask me how to grade properly.  \par
+\par
+When we're done we total up for each page, which has a total on the bottom, and we add these up and I added 10% and that's my measurement error.  Because sometimes I just forget to teach stuff.  This time there were some reasons I gave the exam sooner than usual.  So that's how it goes.  There were some things there like expectation maximization that we didn't know back then.  \par
+\par
+So if you, when you're all done, look at your exam and you'll find you got more credit than what is really due.  You can come ask me questions about how you would compute something -- what's your question?  \par
+\par
+Student:  What is this?  \par
+\par
+Professor:  You have a cluster inside a cluster, you could not have used \i\f1 k\i0\f0 -means for that.  It has to be found using some flavor -- so the donut inside the donut has to be found using agglomeration with a single linkage.  \par
+\par
+Student:  I put that and got it wrong.  \par
+\par
+Professor:  See?  That's why we add measurement error.  If you want to fight about that, you can.  Make sure that it's worth fighting for.  Jonathan, I think you're OK.  I handed back an exam recently and an honorable person came up and said there may have been a mistake because I got over 100.  But that's OK.  That measurement error got added on.  OK?  Is that OK?  If anybody has problem, I can back that up.  \par
+\par
+Questions we like to hear -- what should I put down here or something you don't understand.  Questions we don't like are, "I only got a 97 so I think this should have been --."  Sometimes we make mistakes.  We graded all the exams with 6 people in about 2 hours.  Otherwise you weren't going to get them back until Christmas.  OK.  Go forth.  Be careful.  We'll be going into ensemble classifiers.  \par
+\par
+\par
+}
+ 

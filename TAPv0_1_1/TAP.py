@@ -63,7 +63,8 @@ def main():
     #define file to read
     file = 'CSCI420-021821.docx'
     # file = '/Users/thomask/TBK_TAP/DATA/CSCI_420_2221/CS420_2022_10_26.docx'
-    file = '/Users/thomask/TBK_TAP/DATA/CSCI_420_2221/CS420_2022_09_12.docx'
+    # file = '/Users/thomask/TBK_TAP/DATA/CSCI_420_2221/CS420_2022_09_12.docx'
+    file = '../TEST_SUITE/CS420_2022_09_12.docx'
 
     # read in text file for processing
     tokenized = docxpy.process(file)
