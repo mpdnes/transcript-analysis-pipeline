@@ -37,6 +37,10 @@ from nltk.collocations import *			# Use everything in collocations.  Why???
 # The frequency distributions are how often each word is used in each corpus.
 from nltk.probability import FreqDist
 
+#
+#  My own code to sort a dictionary from Most common to least common:
+#
+from Sort_Dict_of_Integers import Sort_Dict_of_Integers
 
 #
 #  Here is the main module.
@@ -246,11 +250,13 @@ def main():
     for idx in range( 0, len(common_frequencies)) :
         print( "index={:3d}".format(idx), "\tcount=", common_frequencies[idx][1])
 
-    for key_in_dictionary, vvv in fdist.items():
-        print("key_in_dict={:15s}".format( key_in_dictionary), 'vvv=', vvv)
+    sorted_dict = Sort_Dict_of_Integers( dict(common_frequencies) )
+    for key_in_dictionary, vvv in sorted_dict.items():
+        numeric_value = sorted_dict[ key_in_dictionary ]
+        print("key_in_dict={:15s}".format( key_in_dictionary ), 'value=', numeric_value)
 
     # Print the tabulated list
-    print(fdist.tabulate(20))
+    # print(fdist.tabulate(20))
 
     print("break here")
 

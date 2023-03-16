@@ -37,7 +37,7 @@ def Sort_Dict_of_Integers(dict_param,sort_order=-1):
     return sorted_dict
 
 def main_test() :
-    print("Testing the function Soft_Dict_of_Integers.")
+    print("Testing the function Sort_Dict_of_Integers.")
     Random_Dict = {}
     Random_Dict['Doughnut']    = 50
     Random_Dict['EggPlant']    = 20
