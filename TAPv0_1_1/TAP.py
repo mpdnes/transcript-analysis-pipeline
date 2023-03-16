@@ -247,7 +247,7 @@ def main():
         print( "index={:3d}".format(idx), "\tcount=", common_frequencies[idx][1])
 
     for key_in_dictionary, vvv in fdist.items():
-        print("key_in_dictionary={:12s}".format( key_in_dictionary), 'vvv=', vvv)
+        print("key_in_dict={:15s}".format( key_in_dictionary), 'vvv=', vvv)
 
     # Print the tabulated list
     print(fdist.tabulate(20))
