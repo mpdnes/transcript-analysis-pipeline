@@ -12,9 +12,19 @@ Current Authors: Thomas Kinsman, Mike Donovan
 
 # Version Control History:
 
-Version .1 - 03/01/23
+Version 0.1 - 03/01/23
 
 	Uploaded current TAP project file to GitHub. 
 	
-    Synchronized Git and Githup.  Taught Thomas how to use this blasted thing.
+	Synchronized Git and Githup.  Taught Thomas how to use this blasted thing.
+
+Version 0.1.1 - 03/16/23
+	
+	Had to create entirely new project file due to errors in setting up GitHub Repo.
+
+	Repo should be correct. 
+
+	Invited Thomas back onto GitHub Repo.
+
+	
     
