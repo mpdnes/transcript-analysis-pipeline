@@ -29,6 +29,14 @@ from nltk.tokenize import sent_tokenize		# ??? Sentence Tokenizer??
 
 from collections import Counter			# Types of collections.
 
+# tokenize document by sentence, under regular expression control.
+from nltk import regexp_tokenize
+
+# Get a list of common stopwords.
+from nltk.corpus import stopwords
+nltk.download( 'stopwords' )                            # Unknown reason why.
+stop_words = sorted( stopwords.words('english') )       # Global variable.
+
 #find collocations in text
 #NOTE works better without removing stopwords first
 from nltk.collocations import *			# Use everything in collocations.  Why???
@@ -42,12 +50,15 @@ from nltk.probability import FreqDist
 #
 from Sort_Dict_of_Integers import Sort_Dict_of_Integers
 
+# Number of unique words to get for one document, before the 180 stop words are removed.
+N_SINGLE_TUPLES_TO_GET_PER_DOC = 200
+
 #
 #  Here is the main module.
 #
 def main():
     print("main() called.")
-    doc = []
+    tokenized = []
 
     #define file to read
     file = 'CSCI420-021821.docx'
@@ -55,10 +66,10 @@ def main():
     file = '/Users/thomask/TBK_TAP/DATA/CSCI_420_2221/CS420_2022_09_12.docx'
 
     # read in text file for processing
-    doc = docxpy.process(file)
+    tokenized = docxpy.process(file)
 
     # expand contractions to remove noise:
-    doc = contractions.fix(doc)
+    tokenized = contractions.fix(tokenized)
 
     #
     # This is a loop inserted before the rest of the processing.
@@ -69,7 +80,7 @@ def main():
     #
     print( "Before we do anything else, or tokenize the strings, analyze the file as a string of known characters.")
     print( "Find the first line, and process that. ")
-    separate_input_lines = doc.splitlines( )
+    separate_input_lines = tokenized.splitlines( )
     print( "Document has: ", len(separate_input_lines), " lines" )
 
     main_speaker = ""
@@ -147,32 +158,31 @@ def main():
     # stopwords = set(stop_words.words('english'))
     #
     # #Clean up data
-    # doc = re.sub("\t", "" , doc)
-    # doc = re.sub("\n\n\n", "\n\n", doc)
+    # tokenized = re.sub("\t", "" , tokenized)
+    # tokenized = re.sub("\n\n\n", "\n\n", tokenized)
 
-    #tokenize document by sentence and delete header
-    from nltk import regexp_tokenize
-    # tokenized = regexp_tokenize(doc, r'([^\n]+)')
-    tokenized = regexp_tokenize(main_text, r'\S+')
+    # Tokenize document by sentence and delete header
+    #
+    # The second parameter gives a regular expression to use to match
+    # a "word".  So, in this case, a word can contain a hypen, or an underscore,
+    # but NOT a period.
+    tokenized = regexp_tokenize(main_text, r'[-a-zA-Z0-9_]+')       # No periods.
     # Debug:
     print( 'Number of tokens = ', end='')
     print( len( tokenized  ))
-    print("DELETING:", end='')
-    print( tokenized[0] )       # Debugging code
-    del tokenized[0]
-    del tokenized[0]
-    # TODO:
-    #  www = regexp_tokenize(main_text, r'\S+')
+    # print("DELETING:", end='')
+    # print( tokenized[0] )       # Debugging code
+    # del tokenized[0]
+    # del tokenized[0]
+    # TODO: Add back the idea of deleting the header lines.
+    #
 
     #convert document to lowercase
-    #tokenized = [w.lower() for w in doc]
+    #tokenized = [w.lower() for w in tokenized]
     # tagged = []
 
-    # This splits the words into syllables
-    doc 	= nltk.word_tokenize(doc)
-
     # Label each word with the parts of speech (POS):
-    # tagged 	= nltk.pos_tag(doc)
+    # tagged 	= nltk.pos_tag(tokenized)
     #
     # #
     # counts 	= Counter(tag for word, tag in tagged)
@@ -191,9 +201,9 @@ def main():
     # This explains why words like "Obi-Wan", which is not frequent at any level, pops to the top.
     # This compares the probabilitiy of two events occurring together,
     # compared to chance.
-    finder2 = BigramCollocationFinder.from_words(doc)
-    finder3 = TrigramCollocationFinder.from_words(doc)
-    finder4 = QuadgramCollocationFinder.from_words(doc)
+    finder2 = BigramCollocationFinder.from_words(tokenized)
+    finder3 = TrigramCollocationFinder.from_words(tokenized)
+    finder4 = QuadgramCollocationFinder.from_words(tokenized)
 
     #measured using Pointwise Mutual Information ()
     #
@@ -234,7 +244,7 @@ def main():
     print("Done testing different methods....")
 
     # converts the words in word_tokens to lower case
-    filtered_doc = [x.lower() for x in doc]
+    filtered_doc = [x.lower() for x in tokenized]
 
     # create a frequency distribution to get top words:
     fdist = FreqDist(filtered_doc)
@@ -245,13 +255,20 @@ def main():
     # The method most_common( ) returns the N numbers.
     # But NOT the strings themselves.
     #
-    common_frequencies = fdist.most_common(15)
-    # Print the tabulated list that resulted:
-    for idx in range( 0, len(common_frequencies)) :
-        print( "index={:3d}".format(idx), "\tcount=", common_frequencies[idx][1])
+    # Now we could use a list comprehension...
+    # tokens_without_sw = [ word for word in text_tokens if not word in all stopwords]
+    #
+    common_tuples               = fdist.most_common(N_SINGLE_TUPLES_TO_GET_PER_DOC)
 
-    sorted_dict = Sort_Dict_of_Integers( dict(common_frequencies) )
-    for key_in_dictionary, vvv in sorted_dict.items():
+    sorted_dict = Sort_Dict_of_Integers( dict(common_tuples) )
+
+    # There are only about 180 stop words.
+    # So, for each stop word, delete it from the dictionary:
+    for sw in stop_words:
+        if ( sw in sorted_dict.keys()):
+            del sorted_dict[ sw ]
+
+    for key_in_dictionary in sorted_dict.keys():
         numeric_value = sorted_dict[ key_in_dictionary ]
         print("key_in_dict={:15s}".format( key_in_dictionary ), 'value=', numeric_value)
 
