@@ -1,8 +1,6 @@
 # TAP
 
-test
-
-Transcript Analysis Project
+# Transcript Analysis Project
 
 The goal of this project is to analyze typed transcripts produced by Real-Time Captionists at RTC/NT at the Rochester Institute of Technology.
 
