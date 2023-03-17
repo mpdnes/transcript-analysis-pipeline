@@ -51,7 +51,7 @@ from nltk.probability import FreqDist
 from Sort_Dict_of_Integers import Sort_Dict_of_Integers
 
 # Number of unique words to get for one document, before the 180 stop words are removed.
-N_SINGLE_TUPLES_TO_GET_PER_DOC = 200
+N_SINGLE_TUPLES_TO_GET_PER_DOC = 500
 
 #
 #  Here is the main module.
@@ -64,7 +64,12 @@ def main():
     file = 'CSCI420-021821.docx'
     # file = '/Users/thomask/TBK_TAP/DATA/CSCI_420_2221/CS420_2022_10_26.docx'
     # file = '/Users/thomask/TBK_TAP/DATA/CSCI_420_2221/CS420_2022_09_12.docx'
-    file = '../TEST_SUITE/CS420_2022_09_12.docx'
+    # file = '../TEST_SUITE/CS420_2221_10117_2022-10-24.docx'          # Mahalanobis DOES NOT OCCUR IN THIS.
+    # file = '../TEST_SUITE/CS420_2221_10117_2022-10-31.docx'          # Mahalanobis DOES NOT OCCUR IN THIS.
+    # file = '../TEST_SUITE/CS420_2022_09_12.docx'                     # Regularization
+    # file = '../TEST_SUITE/CS420_2221_10117_2022-10-03.docx'          # Mahalanobis happens 4 times.
+    # file = '../TEST_SUITE/CS420_2221_10117_2022-10-17.docx'          # Mahalanobis happens twice.
+    file = '../TEST_SUITE/CS420_2221_10117_2022-11-16.docx'            # Mahalanobis happens 6 times.
 
     # read in text file for processing
     tokenized = docxpy.process(file)
@@ -97,6 +102,9 @@ def main():
         #
         print('Working on line ',  line_idx )
         print('Input = ',          the_input_line )
+
+        if re.search('mahalanobis', the_input_line, re.IGNORECASE ):
+            print('this line contains the word mahalanobis')
 
         # ########################################################
         #
@@ -275,6 +283,13 @@ def main():
 
     # Print the tabulated list
     # print(fdist.tabulate(20))
+    print('=== DEBUGGING:')
+    print('mahalanobis occurs: ')
+    if ( 'mahalanobis' in sorted_dict.keys() ):
+        print('mahalanobis occurs: {:3d} times'.format(sorted_dict['mahalanobis']) )
+    else:
+        print('mahalanobis does not occur in this set of words.')
+    print('=== DEBUGGING:')
 
     print("break here")
 
