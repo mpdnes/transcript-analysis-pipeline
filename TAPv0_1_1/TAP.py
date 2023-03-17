@@ -105,6 +105,8 @@ def main():
 
         if re.search('mahalanobis', the_input_line, re.IGNORECASE ):
             print('this line contains the word mahalanobis')
+        if re.search('regularization', the_input_line, re.IGNORECASE ):
+            print('this line contains the word regularization')
 
         # ########################################################
         #
@@ -284,11 +286,15 @@ def main():
     # Print the tabulated list
     # print(fdist.tabulate(20))
     print('=== DEBUGGING:')
-    print('mahalanobis occurs: ')
     if ( 'mahalanobis' in sorted_dict.keys() ):
         print('mahalanobis occurs: {:3d} times'.format(sorted_dict['mahalanobis']) )
     else:
         print('mahalanobis does not occur in this set of words.')
+    if ( 'regularization' in sorted_dict.keys() ):
+        print('regularization occurs: {:3d} times'.format(sorted_dict['regularization']) )
+    else:
+        print('regularization does not occur in this set of words.')
+
     print('=== DEBUGGING:')
 
     print("break here")
