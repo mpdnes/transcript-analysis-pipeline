@@ -32,6 +32,17 @@ from collections import Counter			# Types of collections.
 # tokenize document by sentence, under regular expression control.
 from nltk import regexp_tokenize
 
+import ssl
+
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
+
+nltk.download()
+
 # Get a list of common stopwords.
 from nltk.corpus import stopwords
 nltk.download( 'stopwords' )                            # Unknown reason why.
