@@ -62,16 +62,9 @@ from nltk.probability import FreqDist
 #
 #  My own code to sort a dictionary from Most common to least common:
 #
-from Sort_Dict_of_Integers                import Sort_Dict_of_Integers
-from pre_filter_to_remove_known_phrases   import *
-from analyze_speaker_frequency_and_xfers  import *
+from Sort_Dict_of_Integers import Sort_Dict_of_Integers
 
-from unigram_analysis                     import *
-from bigram_analysis                      import *
-from trigram_analysis                     import *
-from quadgram_analysis                    import *
-
-from report_these_words                   import *
+from pre_filter_to_remove_known_phrases import *
 
 
 # Number of unique words to get for one document, before the 180 stop words are removed.
@@ -99,65 +92,65 @@ N_SINGLE_TUPLES_TO_GET_PER_DOC = 500
 #      tokenized = tokenized
 #      return tokenized
 
-# # ##############################################################################
-# #
-# # Find number of speaker transitions:
-# #
-# # 1.  There is a dictionary entry for each speaker, 
-# #     with the number of words that they speak.
-# #
-# # 2.  The number of times that the speaker changes is also returned.
-# def analyze_speaker_frequency_and_xfers( tokenized ):
-#     dict_of_speakers      = dict()
-#     n_transitions         = 0
-#     return [dict_of_speakers, n_transitions]
-# 
+# ##############################################################################
+#
+# Find number of speaker transitions:
+#
+# 1.  There is a dictionary entry for each speaker, 
+#     with the number of words that they speak.
+#
+# 2.  The number of times that the speaker changes is also returned.
+def analyze_speaker_frequency_and_xfers( tokenized ):
+    dict_of_speakers      = dict()
+    n_transitions         = 0
+    return [dict_of_speakers, n_transitions]
 
-# # ##############################################################################
-# #
-# #  Unigram Analysis:
-# #
-# def unigram_analysis( tokenized ):
-#     unigrams = []
-#     return unigrams
-# 
 
-# # ##############################################################################
-# #
-# #  bigram Analysis:
-# #
-# def bigram_analysis( tokenized ):
-#     bigrams = []
-#     return bigrams
-# 
-# 
-# # ##############################################################################
-# #
-# #  Trigram Analysis:
-# #
-# def trigram_analysis( tokenized ):
-#     trigrams = []
-#     return trigrams
-# 
-# 
-# # ##############################################################################
-# #
-# #  quadgram Analysis:
-# #
-# def quadgram_analysis( tokenized ):
-#     quadgrams = []
-#     return quadgrams
-# 
-# 
-# 
-# # ##############################################################################
-# #
-# #  Create a report:
-# #
-# def report_these_words( all_words ):
-#      print( all_words )
-# 
-# 
+# ##############################################################################
+#
+#  Unigram Analysis:
+#
+def unigram_analysis( tokenized ):
+    unigrams = []
+    return unigrams
+
+
+# ##############################################################################
+#
+#  bigram Analysis:
+#
+def bigram_analysis( tokenized ):
+    bigrams = []
+    return bigrams
+
+
+# ##############################################################################
+#
+#  Trigram Analysis:
+#
+def trigram_analysis( tokenized ):
+    trigrams = []
+    return trigrams
+
+
+# ##############################################################################
+#
+#  quadgram Analysis:
+#
+def quadgram_analysis( tokenized ):
+    quadgrams = []
+    return quadgrams
+
+
+
+# ##############################################################################
+#
+#  Create a report:
+#
+def report_these_words( all_words ):
+     print( all_words )
+
+
 # ##############################################################################
 #
 #  Here is the main module.
@@ -169,7 +162,6 @@ def main( transcript_file, comparison_file_or_stats ):
     tokenized = []
     # read in text file for processing
     tokenized = docxpy.process(file)
-    print( 'docxpy returns tokenized as a type :', type(tokenized) )  	# Debugging
 
     # expand contractions to remove noise:
     tokenized = contractions.fix(tokenized)
@@ -189,18 +181,15 @@ def main( transcript_file, comparison_file_or_stats ):
 
 
     unitary_words_and_abbreviations     = unigram_analysis( tokenized )
-    # bigrams 	 			= bigram_analysis( tokenized )
-    # trigrams 				= trigram_analysis( tokenized )
-    # quadgrams 			= quadgram_analysis( tokenized )
+    bigrams 	 			= bigram_analysis( tokenized )
+    trigrams 				= trigram_analysis( tokenized )
+    quadgrams 				= quadgram_analysis( tokenized )
 
-    #
-    #  For a given python list, the '+' operator is concatenation.
-    #  Here we concatenate all the words we need to report.
-    #
-    all_words = unitary_words_and_abbreviations
-    # all_words = all_words + bigrams
-    # all_words = all_words + trigrams
-    # all_words = all_words + quadgrams
+    all_words = []
+    all_words.append( unitary_words_and_abbreviations )
+    all_words.append( bigrams )
+    all_words.append( trigrams )
+    all_words.append( quadgrams )
  
  
     #
@@ -213,7 +202,6 @@ def main( transcript_file, comparison_file_or_stats ):
 #
 #  EPILOG -- CALL MAIN
 #
-#  TODO: add argument parsing.
 #
 
 if ( __name__ == "__main__" ) :
