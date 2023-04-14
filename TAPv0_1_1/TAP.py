@@ -35,18 +35,6 @@ from collections import Counter			# Types of collections.
 # tokenize document by sentence, under regular expression control.
 from nltk import regexp_tokenize
 
-# import ssl
-#
-# try:
-#     _create_unverified_https_context = ssl._create_unverified_context
-# except AttributeError:
-#     pass
-# else:
-#     ssl._create_default_https_context = _create_unverified_https_context
-#
-# nltk.download()
-
-# Get a list of the usual stopwords:
 from nltk.corpus import stopwords
 nltk.download( 'stopwords' )                            # Unknown reason why.
 stop_words = sorted( stopwords.words('english') )       # Global variable.
@@ -60,7 +48,7 @@ from nltk.collocations import *			# Use everything in collocations.  Why???
 from nltk.probability import FreqDist
 
 #
-#  My own code to sort a dictionary from Most common to least common:
+#  DrKinsman code to sort a dictionary from Most common to least common:
 #
 from Sort_Dict_of_Integers                import Sort_Dict_of_Integers
 from pre_filter_to_remove_known_phrases   import *
@@ -75,103 +63,21 @@ from report_these_words                   import *
 
 
 # Number of unique words to get for one document, before the 180 stop words are removed.
-# 
-# Notice:
-# The typical analysis only wants the "usual" words.  We don't care about them.
-# We want :
-#    A.  Unusually long words, OR
-#    B.  Unusually words which are not frequently found.
-#
-N_SINGLE_TUPLES_TO_GET_PER_DOC = 500
+N_SINGLE_TUPLES_TO_GET_PER_DOC = 600
 
-
-
-# ##############################################################################
-#
-#       FUNCTION DEFINITIONS
-# 
-# ##############################################################################
-
-#  #
-#  # Remove the "typewell does this... " line.
-#  #
-#  def pre_filter_to_remove_known_phrases( tokenized ):
-#      tokenized = tokenized
-#      return tokenized
-
-# # ##############################################################################
-# #
-# # Find number of speaker transitions:
-# #
-# # 1.  There is a dictionary entry for each speaker, 
-# #     with the number of words that they speak.
-# #
-# # 2.  The number of times that the speaker changes is also returned.
-# def analyze_speaker_frequency_and_xfers( tokenized ):
-#     dict_of_speakers      = dict()
-#     n_transitions         = 0
-#     return [dict_of_speakers, n_transitions]
-# 
-
-# # ##############################################################################
-# #
-# #  Unigram Analysis:
-# #
-# def unigram_analysis( tokenized ):
-#     unigrams = []
-#     return unigrams
-# 
-
-# # ##############################################################################
-# #
-# #  bigram Analysis:
-# #
-# def bigram_analysis( tokenized ):
-#     bigrams = []
-#     return bigrams
-# 
-# 
-# # ##############################################################################
-# #
-# #  Trigram Analysis:
-# #
-# def trigram_analysis( tokenized ):
-#     trigrams = []
-#     return trigrams
-# 
-# 
-# # ##############################################################################
-# #
-# #  quadgram Analysis:
-# #
-# def quadgram_analysis( tokenized ):
-#     quadgrams = []
-#     return quadgrams
-# 
-# 
-# 
-# # ##############################################################################
-# #
-# #  Create a report:
-# #
-# def report_these_words( all_words ):
-#      print( all_words )
-# 
-# 
 # ##############################################################################
 #
 #  Here is the main module.
 #
 def main( transcript_file, comparison_file_or_stats ):
-    print("main() called.")
     file = transcript_file
 
-    tokenized = []
-    # read in text file for processing
+    # Read in text from a Microsoft DOCX file.
     tokenized = docxpy.process(file)
     print( 'docxpy returns tokenized as a type :', type(tokenized) )  	# Debugging
 
-    # expand contractions to remove noise:
+    # Expand contractions to remove noise:
+    # We do not want "don't" to matter.
     tokenized = contractions.fix(tokenized)
 
     #
@@ -215,7 +121,6 @@ def main( transcript_file, comparison_file_or_stats ):
 #
 #  TODO: add argument parsing.
 #
-
 if ( __name__ == "__main__" ) :
     transcript_file = '../TEST_SUITE/CS420_2221_10117_2022-11-16.docx'          # "Mahalanobis" happens 6 times.
     comparison_file_or_stats = '../TEST_SUITE/Baseline_Words.docx'        	# For comparison
@@ -224,7 +129,4 @@ if ( __name__ == "__main__" ) :
     main( transcript_file, comparison_file_or_stats )
 else:
     print("This is NOT main.  Nevermind.  Quitting.")
-
-
-
 
