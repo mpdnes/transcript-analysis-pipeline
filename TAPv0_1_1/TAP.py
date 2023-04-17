@@ -22,6 +22,8 @@
 import re 				        # Regular expression matching.
 import docxpy			    		# Handling *.docx file in python.
 
+import matplotlib.pyplot as plt      #Graphing tool needed for word cloud generation
+
 import nltk			                # Natural Language Toolkit
 from nltk.corpus import stopwords		# Common stopwords.
 import contractions			        # Common language contractions.
@@ -115,7 +117,7 @@ def main( transcript_file, comparison_file_or_stats ):
     # all_words = all_words + quadgrams
  
     #
-    #  Generate a word cloud, create reports for interpretors, etc...
+    #  Generate a word cloud, create reports for interpreters, etc...
     # 
     # print("All words = ", end='');
     # print( all_words ) 
@@ -125,7 +127,15 @@ def main( transcript_file, comparison_file_or_stats ):
     # print('\n\n')
     # for key in dict.keys(all_words):
         # print("key = ", key )
-    report_these_words( all_words ) 
+
+    #Generating word cloud from wordcloud package
+    Word_Cloud = report_these_words( all_words )
+    print( "*****************************************" )
+    print( "Printing Word Cloud in separate pop out window..." )
+    print( "*****************************************" )
+    #generate image from matplotlib.pyplot
+    plt.imshow( Word_Cloud )
+    plt.show()
 
 
 # ##############################################################################
