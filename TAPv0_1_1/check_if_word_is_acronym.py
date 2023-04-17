@@ -7,9 +7,7 @@ import re 				# regular expressions
 #  Acronyms must be three to seven characters.
 #
 def check_if_word_is_acronym( only_one_string ) :
-
     rc = False		# Default return code
-
     # Check for names: Mahalanobis:
     if ( re.match( '^[A-Z][a-z][a-z]+', only_one_string ) ) :
         rc = False				# Is a name

@@ -10,3 +10,4 @@ def analyze_speaker_frequency_and_xfers( tokenized ):
     dict_of_speakers      = dict()
     n_transitions         = 0
     return [dict_of_speakers, n_transitions]
+
