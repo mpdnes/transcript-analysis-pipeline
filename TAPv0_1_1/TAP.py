@@ -21,6 +21,9 @@
 
 import re 				        # Regular expression matching.
 import docxpy			    		# Handling *.docx file in python.
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+import PIL as img
 
 import nltk			                # Natural Language Toolkit
 from nltk.corpus import stopwords		# Common stopwords.
@@ -125,8 +128,11 @@ def main( transcript_file, comparison_file_or_stats ):
     # print('\n\n')
     # for key in dict.keys(all_words):
         # print("key = ", key )
-    report_these_words( all_words ) 
-
+    word_cloud = report_these_words( all_words )
+    print("Printing word cloud...")
+    plt.figure(figsize=(15,8))
+    plt.imshow(word_cloud)
+    plt.show()
 
 # ##############################################################################
 #
