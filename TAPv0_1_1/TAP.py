@@ -51,6 +51,8 @@ from nltk.probability import FreqDist
 #  DrKinsman code to sort a dictionary from Most common to least common:
 #
 from Sort_Dict_of_Integers                import Sort_Dict_of_Integers
+
+
 from pre_filter_to_remove_known_phrases   import *
 from analyze_speaker_frequency_and_xfers  import *
 
@@ -74,16 +76,18 @@ def main( transcript_file, comparison_file_or_stats ):
 
     # Read in text from a Microsoft DOCX file.
     tokenized = docxpy.process(file)
-    print( 'docxpy returns tokenized as a type :', type(tokenized) )  	# Debugging
+    print( 'DEBUGGING:  docxpy returns tokenized as a type :', type(tokenized) )  	# Debugging
 
     # Expand contractions to remove noise:
     # We do not want "don't" to matter.
     tokenized = contractions.fix(tokenized)
+    print( 'CONTRACTIONS EXPANDED:  docxpy returns tokenized as a type :', type(tokenized) )  	# Debugging
 
     #
     #  Remove the "typewell does this... " line.
     #
-    tokenized = pre_filter_to_remove_known_phrases( tokenized )
+    print('WARNING ... skipping pre_filter in file', __file__  )
+    # tokenized = pre_filter_to_remove_known_phrases( tokenized )
 
     #  Find number of speaker transitions:
     #
@@ -95,6 +99,8 @@ def main( transcript_file, comparison_file_or_stats ):
 
 
     unitary_words_and_abbreviations     = unigram_analysis( tokenized )
+    print("unitary_words_and_abbreviations = ", end='');
+    print( type( unitary_words_and_abbreviations ) ) 
     # bigrams 	 			= bigram_analysis( tokenized )
     # trigrams 				= trigram_analysis( tokenized )
     # quadgrams 			= quadgram_analysis( tokenized )
@@ -103,16 +109,23 @@ def main( transcript_file, comparison_file_or_stats ):
     #  For a given python list, the '+' operator is concatenation.
     #  Here we concatenate all the words we need to report.
     #
-    all_words = unitary_words_and_abbreviations
+    all_words   = unitary_words_and_abbreviations
     # all_words = all_words + bigrams
     # all_words = all_words + trigrams
     # all_words = all_words + quadgrams
  
- 
     #
     #  Generate a word cloud, create reports for interpretors, etc...
     # 
-    report_these_words( all_words )  
+    # print("All words = ", end='');
+    # print( all_words ) 
+    # for word, freq in all_words.items() :
+    #    print('word=', word, ' freq=', freq )
+    #
+    # print('\n\n')
+    # for key in dict.keys(all_words):
+        # print("key = ", key )
+    report_these_words( all_words ) 
 
 
 # ##############################################################################
@@ -127,6 +140,7 @@ if ( __name__ == "__main__" ) :
     print("Later on we will add argument parsing here.")
     print("This IS main.  Calling the main routine.")
     main( transcript_file, comparison_file_or_stats )
+    print('done')
 else:
     print("This is NOT main.  Nevermind.  Quitting.")
 
