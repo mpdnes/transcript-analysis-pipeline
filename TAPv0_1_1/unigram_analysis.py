@@ -151,14 +151,44 @@ def unigram_analysis( tokenized ):
     # The second parameter gives a regular expression to use to match a "word"
     # So, in this case, a word can contain a hypen, or an underscore, but NOT a period.
     #
-    list_of_str__of_sep_words    = regexp_tokenize(all_text_in_doc_str, r'[-a-zA-Z0-9_]+')       # No periods.
+
+    from pluralizer import Pluralizer
+    pluralizer = Pluralizer()
+
+    assert pluralizer.pluralize('apple', 1, False) == 'apple'
+    assert pluralizer.pluralize('apple', 1, True) == '1 apple'
+    assert pluralizer.pluralize('apple', 2, False) == 'apples'
+    assert pluralizer.pluralize('apple', 2, True) == '2 apples'
+
+    assert pluralizer.plural('apple') == 'apples'
+    assert pluralizer.singular('apples') == 'apple'
+
+    assert pluralizer.isPlural('apples') == True
+    assert pluralizer.isPlural('apple') == False
+    assert pluralizer.isSingular('apples') == False
+    assert pluralizer.isSingular('apple') == True
+
+    list_of_str__of_sep_words    = regexp_tokenize(all_text_in_doc_str, r'[-a-zA-Z0-9_]+')
+
+    list_of_singular_sep_words=[]
+    for single_words in list_of_str__of_sep_words:
+        list_of_singular_sep_words.append(pluralizer.singular(single_words))
+
+    from nltk.corpus import stopwords
+    stop_words = set(stopwords.words('english'))
+
+    filtered_list_of_singular_sep_words = []
+    for w in list_of_singular_sep_words:
+        if w not in stop_words:
+            filtered_list_of_singular_sep_words.append(w)
+
     #note to self:   print('DEVELOPMENT: regexp_tokenize returns : ', type(list_of_str__of_sep_words) )
     #note to self:   print( list_of_str__of_sep_words )
     #note to self:   print('DEVELOPMENT: regexp_tokenize returns : a list of separate strings')
 
     # for all_items_in_list_of_strings 
-    for idx in range(0,len(list_of_str__of_sep_words)):
-        this_word = list_of_str__of_sep_words[ idx ]
+    for idx in range(0,len(filtered_list_of_singular_sep_words)):
+        this_word = filtered_list_of_singular_sep_words[ idx ]
 
         # uniquely add to dict of acronyms
         # If it was already identified as an acronym,

@@ -1,0 +1,7 @@
+docxpy~=0.8.5
+matplotlib~=3.7.0
+pillow~=9.4.0
+nltk~=3.7
+contractions~=0.1.73
+wordcloud~=1.8.2.2
+pluralizer~=1.2.0

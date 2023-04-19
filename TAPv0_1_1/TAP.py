@@ -41,6 +41,8 @@ from nltk import regexp_tokenize
 from nltk.corpus import stopwords
 nltk.download( 'stopwords' )                            # Unknown reason why.
 stop_words = sorted( stopwords.words('english') )       # Global variable.
+from pluralizer import Pluralizer
+
 
 #find collocations in text
 #NOTE works better without removing stopwords first
@@ -84,6 +86,24 @@ def main( transcript_file, comparison_file_or_stats ):
     # Expand contractions to remove noise:
     # We do not want "don't" to matter.
     tokenized = contractions.fix(tokenized)
+
+    pluralizer = Pluralizer()
+
+    assert pluralizer.pluralize('apple', 1, False) == 'apple'
+    assert pluralizer.pluralize('apple', 1, True) == '1 apple'
+    assert pluralizer.pluralize('apple', 2, False) == 'apples'
+    assert pluralizer.pluralize('apple', 2, True) == '2 apples'
+
+    assert pluralizer.plural('apple') == 'apples'
+    assert pluralizer.singular('apples') == 'apple'
+
+    assert pluralizer.isPlural('apples') == True
+    assert pluralizer.isPlural('apple') == False
+    assert pluralizer.isSingular('apples') == False
+    assert pluralizer.isSingular('apple') == True
+
+
+
     print( 'CONTRACTIONS EXPANDED:  docxpy returns tokenized as a type :', type(tokenized) )  	# Debugging
 
     #
