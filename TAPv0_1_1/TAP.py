@@ -87,21 +87,6 @@ def main( transcript_file, comparison_file_or_stats ):
     # We do not want "don't" to matter.
     tokenized = contractions.fix(tokenized)
 
-    pluralizer = Pluralizer()
-
-    assert pluralizer.pluralize('apple', 1, False) == 'apple'
-    assert pluralizer.pluralize('apple', 1, True) == '1 apple'
-    assert pluralizer.pluralize('apple', 2, False) == 'apples'
-    assert pluralizer.pluralize('apple', 2, True) == '2 apples'
-
-    assert pluralizer.plural('apple') == 'apples'
-    assert pluralizer.singular('apples') == 'apple'
-
-    assert pluralizer.isPlural('apples') == True
-    assert pluralizer.isPlural('apple') == False
-    assert pluralizer.isSingular('apples') == False
-    assert pluralizer.isSingular('apple') == True
-
 
 
     print( 'CONTRACTIONS EXPANDED:  docxpy returns tokenized as a type :', type(tokenized) )  	# Debugging
@@ -121,7 +106,12 @@ def main( transcript_file, comparison_file_or_stats ):
     [dict_of_speakers, n_transitions] = analyze_speaker_frequency_and_xfers( tokenized )
 
 
-    unitary_words_and_abbreviations     = unigram_analysis( tokenized )
+    #import common_basis_for_comparison
+
+    #comparison = common_basis_for_comparison.common_basis_for_comparison(rootdir)
+
+    #unitary_words_and_abbreviations_DUMP = unigram_analysis( comparison )
+    unitary_words_and_abbreviations      = unigram_analysis( tokenized )
     print("unitary_words_and_abbreviations = ", end='');
     print( type( unitary_words_and_abbreviations ) ) 
     # bigrams 	 			= bigram_analysis( tokenized )
