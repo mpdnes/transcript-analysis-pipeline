@@ -70,8 +70,8 @@ for subdir, dirs, files in tqdm(os.walk(rootdir)):
                     read_doc = docxpy.process(key_path)
                     resulting_dict = dict()
                     ACK_dict = dict()  # Acronym dictionary
-                    all_text_in_doc_str = '';
-                    words_said = '';
+                    all_text_in_doc_str = ''
+                    words_said = ''
 
 
 
@@ -93,9 +93,9 @@ for subdir, dirs, files in tqdm(os.walk(rootdir)):
                         matched_expressions = re.match('(^[^:]+)(:\s+)(.*)', the_input_line)
 
                         if (matched_expressions is not None):
-                        # print('There is a speaker Match Here:')
+                            # print('There is a speaker Match Here:')
                             the_speaker = matched_expressions.group(1)
-                # print('Group 2 is: ', matched_expressions.group(2) )	# The ': *' separator.
+                            # print('Group 2 is: ', matched_expressions.group(2) )	# The ': *' separator.
                             words_said = matched_expressions.group(3)
                         else:
                             words_said = the_input_line
@@ -183,7 +183,12 @@ for subdir, dirs, files in tqdm(os.walk(rootdir)):
 
     # print('DEBUGGING: returning a type: ', end='')
     # print( type(merged_dict) )
-                   
+                        big_boi_lsit = []
+                        print('DEBUGGING: Dumping the dictionary')
+                        for word, freq in merged_dict.items():
+                            big_boi_lsit.append(word)
+
+                            list(big_boi_lsit)
 
 
 
