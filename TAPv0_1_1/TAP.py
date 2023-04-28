@@ -46,7 +46,6 @@ import os
 
 from nltk.corpus import stopwords                       # Unknown reason why.
 stop_words = sorted( stopwords.words('english') )       # Global variable.
-from pluralizer import Pluralizer
 
 
 #find collocations in text
@@ -64,6 +63,9 @@ from nltk.probability import FreqDist
 def main( root_dir):
 
     [doc_list, docx_list, dirs_list, num_of_folders] = preprocessing.directctory_inspector(root_dir)
+    print("The list of files about to be processed are: ")
+    print(docx_list)
+    list_of_all_tf_dicts = []
 
     # TODO: This is an early attempt at making the process more user friendly
     # print("***********************************************************************")
@@ -94,17 +96,28 @@ def main( root_dir):
     #     exit("Ending TAP")
 
 
+    #Processing two documents as a test.
+    #I have gotten a list of all the docxs that I want to process.
+    #Now I need to process them one by one and insert them each into their
+    #own dictionary. To do this, I have to pass in one file at a time
+    #to be read until all the files are read and then passed into a dictionary.
+    #this is all to compute the TF-IDF
+
+    print("CAUTION: ONLY WORKING ON TWO FILES.")
+    for docx in docx_list[0:2]:
+
+        list_of_words_with_pos_tags = preprocessing.read_docx_files(doc_list,docx,dirs_list)
+
+        lemmatized_list = preprocessing.lemmatizer_function(list_of_words_with_pos_tags)
+
+        [fdist,fd_length] = preprocessing.collocation_bigram_freqdist(lemmatized_list)
+
+        [term_freq_list, tf_dict] = preprocessing.term_frequency_generator(fdist,fd_length)
+
+        list_of_all_tf_dicts.append(tf_dict)
 
 
-    list_of_words_with_pos_tags = preprocessing.read_docx_files(doc_list,docx_list,dirs_list)
-
-    lemmatized_list = preprocessing.lemmatizer_function(list_of_words_with_pos_tags)
-
-    [fdist,fd_length] = preprocessing.collocation_bigram_freqdist(lemmatized_list)
-
-    termfreq = preprocessing.term_frequency_generator(fdist,fd_length)
-
-    return_code= postprocessing.csv_writer(termfreq,csv_file)
+    return_code= postprocessing.csv_writer(term_freq_list,csv_file)
 
     if return_code:
         print("All files processed and exported to CSV file.")

@@ -37,6 +37,7 @@ def directctory_inspector(root_dir):
     dir_list = []
 
     for subdir, dirs, files in os.walk(root_dir):
+
         for folders in dirs:
             dir_list.append(folders)
 
@@ -76,57 +77,52 @@ def check_csv_file(common_comparison_csv_file_name, target_csv_file_name):
     return result_comparison_csv,result_target_csv
 
 #Transcript text file
-def read_docx_files(docs_to_be_changed, docx_list,dirs_list):
+def read_docx_files(docs_to_be_changed, docx_to_be_read,dirs_list):
     tokenizer_unigram = RegexpTokenizer(r'([A-Za-z0-9]+)+\s')
     list_of_words_with_pos_tags = []
     docs_read = 0
     list_of_files_processed = []
     list_of_dirs = dirs_list
 
+    #Read document using docxpy module
+    token_docx = docxpy.process(docx_to_be_read)
+    print("Working on file: " + docx_to_be_read)
+    list_of_files_processed.append(docx_to_be_read)
 
-    for files in docx_list:
-        #Read document using docxpy module
-        token_docx = docxpy.process(files)
-        print("Working on file: " + files)
-        list_of_files_processed.append(files)
+    #Expand contractions
+    token_docx = contractions.fix(token_docx)
+    print("Contractions completed...")
 
-        #Expand contractions
-        token_docx = contractions.fix(token_docx)
-        print("Contractions completed...")
+    SK_sw = sklearn_stop_words
+    NLTK_sw = stopwords.words('English')
+    stop_words = SK_sw.union(NLTK_sw)
 
-        SK_sw = sklearn_stop_words
-        NLTK_sw = stopwords.words('English')
-        stop_words = SK_sw.union(NLTK_sw)
+    token_docx_unigram = re.sub(r'[A-Za-z0-9]+:+\s+\s', '' , token_docx)
+    token_docx_unigram = re.sub(r'\t*', '', token_docx_unigram)
+    token_docx_unigram = re.sub(r'\n*', '', token_docx_unigram)
 
-        token_docx_unigram = re.sub(r'[A-Za-z0-9]+:+\s+\s', '' , token_docx)
-        token_docx_unigram = re.sub(r'\t*', '', token_docx_unigram)
-        token_docx_unigram = re.sub(r'\n*', '', token_docx_unigram)
+    print("Tokenizing document...")
+    tokenized_docx = tokenizer_unigram.tokenize(token_docx_unigram)
+    normalized_tokens = [x.lower() for x in tokenized_docx]
+    normalized_tokens_without_sw = [w for w in normalized_tokens if w not in stop_words]
 
-        print("Tokenizing document...")
-        tokenized_docx = tokenizer_unigram.tokenize(token_docx_unigram)
-        normalized_tokens = [x.lower() for x in tokenized_docx]
-        normalized_tokens_without_sw = [w for w in normalized_tokens if w not in stop_words]
-
-        print("************************************************************************************************************")
-        print("File " + files + " has this many words, discluding stopwords:")
-        print(len(normalized_tokens_without_sw))
-        print("************************************************************************************************************")
+    print("************************************************************************************************************")
+    print("File " + docx_to_be_read + " has this many words, with stopwords removed:")
+    print(len(normalized_tokens_without_sw))
+    print("************************************************************************************************************")
 
 
-        #Tag words with Part of Speech details
-        normalized_tagged = nltk.pos_tag(normalized_tokens_without_sw)
-        print("Assigning POS Tags...")
-        docs_read += 1
-        #inserting words into dictionary
-        print("Inserting words into dictionary...")
+    #Tag words with Part of Speech details
+    normalized_tagged = nltk.pos_tag(normalized_tokens_without_sw)
+    print("Assigning POS Tags...")
+    docs_read += 1
+    #inserting words into dictionary
+    print("Inserting words into dictionary...")
 
-        for tagged_words in normalized_tagged:
-            list_of_words_with_pos_tags.append(tagged_words)
-            # example_file_creation.save_dict_to_csv('DUMP.csv', dict_of_words_with_pos_tags)
+    for tagged_words in normalized_tagged:
+        list_of_words_with_pos_tags.append(tagged_words)
+        # example_file_creation.save_dict_to_csv('DUMP.csv', dict_of_words_with_pos_tags)
 
-    print("All files processed.")
-    print("Total number of files processed: ")
-    print(docs_read)
     print("Total words read: ")
     print(len(list_of_words_with_pos_tags))
 
@@ -194,10 +190,13 @@ def term_frequency_generator(fdist,fd_length):
     # Finds the term frequency by dividing word by total amount of words
     print("Attempting to calculate Term Frequency...")
     tf_list = []
+    tf_dict = OrderedDict()
     for word,count in fdist.word_fd.items():
         tf_list.append((word,(count/float(fd_length))))
+        tf_dict.update(({word:(count/float(fd_length))}))
 
-    return tf_list
+
+    return tf_list, tf_dict
 
 # print("Attempting to calculate IDF")
 # idf_list = []
