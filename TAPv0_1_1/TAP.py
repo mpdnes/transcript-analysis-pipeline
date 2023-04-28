@@ -33,13 +33,18 @@ import contractions			        # Common language contractions.
 from nltk.tokenize import word_tokenize 	# Tokenizer
 from nltk.tokenize import sent_tokenize		# ??? Sentence Tokenizer??
 
-from collections import Counter			# Types of collections.
 
 # tokenize document by sentence, under regular expression control.
 from nltk import regexp_tokenize
 
-from nltk.corpus import stopwords
-nltk.download( 'stopwords' )                            # Unknown reason why.
+#Mike modules
+import preprocessing
+import postprocessing
+import csv
+import os
+
+
+from nltk.corpus import stopwords                       # Unknown reason why.
 stop_words = sorted( stopwords.words('english') )       # Global variable.
 from pluralizer import Pluralizer
 
@@ -52,110 +57,72 @@ from nltk.collocations import *			# Use everything in collocations.  Why???
 # The frequency distributions are how often each word is used in each corpus.
 from nltk.probability import FreqDist
 
-#
-#  DrKinsman code to sort a dictionary from Most common to least common:
-#
-from Sort_Dict_of_Integers                import Sort_Dict_of_Integers
-
-
-from pre_filter_to_remove_known_phrases   import *
-from analyze_speaker_frequency_and_xfers  import *
-
-from unigram_analysis                     import *
-from bigram_analysis                      import *
-from trigram_analysis                     import *
-from quadgram_analysis                    import *
-
-from report_these_words                   import *
-
-
-# Number of unique words to get for one document, before the 180 stop words are removed.
-N_SINGLE_TUPLES_TO_GET_PER_DOC = 600
-
 # ##############################################################################
 #
 #  Here is the main module.
 #
-def main( transcript_file, comparison_file_or_stats ):
-    file = transcript_file
+def main( root_dir):
 
-    # Read in text from a Microsoft DOCX file.
-    tokenized = docxpy.process(file)
-    print( 'DEBUGGING:  docxpy returns tokenized as a type :', type(tokenized) )  	# Debugging
+    [doc_list, docx_list, dirs_list, num_of_folders] = preprocessing.directctory_inspector(root_dir)
 
-    # Expand contractions to remove noise:
-    # We do not want "don't" to matter.
-    tokenized = contractions.fix(tokenized)
-
-
-
-    print( 'CONTRACTIONS EXPANDED:  docxpy returns tokenized as a type :', type(tokenized) )  	# Debugging
-
+    # TODO: This is an early attempt at making the process more user friendly
+    # print("***********************************************************************")
+    # print("There are " + str(num_of_folders) + " classes to process.")
+    # print("Please choose from a list of the possible options:")
+    # print("1. List classes.")
+    # print("2. I know what classes I want to process and I can enter it.")
+    # print("3. I want to process all transcripts in all classes.")
+    # print("3. I don't want to do either of these." + "\n")
+    # initial_choice = input("Input choice with number (no period) >> ")
     #
-    #  Remove the "typewell does this... " line.
+    # if initial_choice == "1":
+    #     print(sorted(dirs_list))
+    #     class_to_process = input("What class do you want to process? >> " + "\n")
+    #     location = root_dir + "/" + class_to_process
+    #     length_of_dir = len(os.listdir(location))
+    #     print(str(class_to_process) + " has " + str(length_of_dir) + " transcripts." + "\n")
+    #     print("Do you want to process all the transcripts or a specific number?" )
+    #     print("1. All.")
+    #     print("2. A specific number." + "\n")
+    #     input("Input choice with number (no period) >> ")
     #
-    print('WARNING ... skipping pre_filter in file', __file__  )
-    # tokenized = pre_filter_to_remove_known_phrases( tokenized )
-
-    #  Find number of speaker transitions:
     #
-    #  A.  There is a dictionary entry for each speaker, 
-    #      with the number of words that they speak.
     #
-    #  B.  The number of times that the speaker changes is also returned.
-    [dict_of_speakers, n_transitions] = analyze_speaker_frequency_and_xfers( tokenized )
+    # elif initial_choice == "2":
+    #     specified_class = input("Enter the class you want to process >> ")
+    # elif initial_choice == "2":
+    #     exit("Ending TAP")
 
 
-    #import common_basis_for_comparison
 
-    #comparison = common_basis_for_comparison.common_basis_for_comparison(rootdir)
 
-    #unitary_words_and_abbreviations_DUMP = unigram_analysis( comparison )
-    unitary_words_and_abbreviations      = unigram_analysis( tokenized )
-    print("unitary_words_and_abbreviations = ", end='');
-    print( type( unitary_words_and_abbreviations ) ) 
-    # bigrams 	 			= bigram_analysis( tokenized )
-    # trigrams 				= trigram_analysis( tokenized )
-    # quadgrams 			= quadgram_analysis( tokenized )
+    list_of_words_with_pos_tags = preprocessing.read_docx_files(doc_list,docx_list,dirs_list)
 
-    #
-    #  For a given python list, the '+' operator is concatenation.
-    #  Here we concatenate all the words we need to report.
-    #
-    all_words   = unitary_words_and_abbreviations
-    # all_words = all_words + bigrams
-    # all_words = all_words + trigrams
-    # all_words = all_words + quadgrams
- 
-    #
-    #  Generate a word cloud, create reports for interpretors, etc...
-    # 
-    # print("All words = ", end='');
-    # print( all_words ) 
-    # for word, freq in all_words.items() :
-    #    print('word=', word, ' freq=', freq )
-    #
-    # print('\n\n')
-    # for key in dict.keys(all_words):
-        # print("key = ", key )
-    word_cloud = report_these_words( all_words )
-    print("Printing word cloud...")
-    plt.figure(figsize=(15,8))
-    plt.imshow(word_cloud)
-    plt.show()
+    lemmatized_list = preprocessing.lemmatizer_function(list_of_words_with_pos_tags)
 
-# ##############################################################################
+    [fdist,fd_length] = preprocessing.collocation_bigram_freqdist(lemmatized_list)
+
+    termfreq = preprocessing.term_frequency_generator(fdist,fd_length)
+
+    return_code= postprocessing.csv_writer(termfreq,csv_file)
+
+    if return_code:
+        print("All files processed and exported to CSV file.")
+    elif return_code == 'Exit':
+        print("Something else happened. Did not export to CSV.")
+
+
 #
 #  EPILOG -- CALL MAIN
 #
 #  TODO: add argument parsing.
 #
 if ( __name__ == "__main__" ) :
-    transcript_file = '../TEST_SUITE/CS420_2221_10117_2022-11-16.docx'          # "Mahalanobis" happens 6 times.
-    comparison_file_or_stats = '../TEST_SUITE/Baseline_Words.docx'        	# For comparison
+    root_dir = '../TEST_SUITE/DUMP/CSCI42001'
+    csv_file = '../TEST_SUITE/DUMP/DUMP_Words_All_CSCI.csv'
     print("Later on we will add argument parsing here.")
     print("This IS main.  Calling the main routine.")
-    main( transcript_file, comparison_file_or_stats )
+    main( root_dir )
     print('done')
 else:
     print("This is NOT main.  Nevermind.  Quitting.")
