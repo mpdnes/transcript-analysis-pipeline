@@ -28,7 +28,7 @@ import PIL as img
 import nltk			                # Natural Language Toolkit
 from nltk.corpus import stopwords		# Common stopwords.
 import contractions			        # Common language contractions.
-
+from nltk import *
 #import regular expression tokenizer
 from nltk.tokenize import word_tokenize 	# Tokenizer
 from nltk.tokenize import sent_tokenize		# ??? Sentence Tokenizer??
@@ -103,8 +103,7 @@ def main( root_dir):
     #to be read until all the files are read and then passed into a dictionary.
     #this is all to compute the TF-IDF
 
-    print("CAUTION: ONLY WORKING ON TWO FILES.")
-    for docx in docx_list[0:2]:
+    for docx in docx_list:
 
         list_of_words_with_pos_tags = preprocessing.read_docx_files(doc_list,docx,dirs_list)
 
@@ -115,6 +114,19 @@ def main( root_dir):
         [term_freq_list, tf_dict] = preprocessing.term_frequency_generator(fdist,fd_length)
 
         list_of_all_tf_dicts.append(tf_dict)
+
+
+
+    [list_of_all_tf_dicts,total_num_docs] = postprocessing.idf_calculator(list_of_all_tf_dicts)
+
+    scaled_idf_dict = OrderedDict(postprocessing.zipfs_law_scaling(list_of_all_tf_dicts,total_num_docs))
+    term_freq_dict = OrderedDict(term_freq_list)
+
+    tf_idf_list = postprocessing.compute_tf_idf(term_freq_dict,scaled_idf_dict)
+
+    print("debug")
+
+
 
 
     return_code= postprocessing.csv_writer(term_freq_list,csv_file)
