@@ -46,22 +46,32 @@ def idf_calculator(list_of_all_tf_dicts):
     list_of_words_with_idf = []
     docs_read = 0
 
+    #Combining all dictionaries.
+    #Read each dictionary document in list of all docs, individually
     for doc in list_of_all_tf_dicts:
+        #This keeps track of how many total documents there are to be used for idf calculation later.
         docs_read += 1
+        #Now we're looking inside individual dictionaries to analyze each word.
         for word in doc:
-
+            #Check to see if the word is already added.
             if word in dict(list_of_words_with_idf):
                 print("word " + str(word) + " already in list")
+                #If word is already in there, go to the next word.
                 continue
+            #If the word is not in the dictionary
             else:
-                i = 0
+                ii = 0
                 num_docs_containing_word = 0
-                while i < num_docs:
-                    if word in list_of_all_tf_dicts[i]:
+
+                #Find how many documents the word occurs in.
+                #Starting at the first document, check to see if the word appears in the list of documents.
+                while ii < num_docs:
+                    if word in list_of_all_tf_dicts[ii]:
                         num_docs_containing_word += 1
-                        i+=1
+                        ii+=1
                     else:
-                        i+=1
+                        #I didn't find the word, don't count it!!
+                        ii+=1
 
             word_with_count = word, num_docs_containing_word
             list_of_words_with_idf.append(word_with_count)
@@ -72,6 +82,7 @@ def zipfs_law_scaling(list_of_words_with_idf,total_num_docs):
     import math
     scaled_list_of_words_with_idf = []
     for word,count in list_of_words_with_idf:
+        #Compute the tf-idf and then scale it according to Zipf's Law.
         scaled_count = math.log(total_num_docs/count)
         list_addition = (word,scaled_count)
         scaled_list_of_words_with_idf.append(list_addition)
@@ -82,11 +93,13 @@ def compute_tf_idf(term_freq_list,scaled_idf):
     computed_idf_dict = {}
     words_idk = []
     import math
-    for key in term_freq_list:
-        if key in scaled_idf:
-            computed_idf_dict[key] = term_freq_list[key] * scaled_idf[key]
+
+    #Wanted to make sure that I'm multiplying the same words from different dictionaries.
+    for this_word in term_freq_list:
+        if this_word in scaled_idf:
+            computed_idf_dict[this_word] = term_freq_list[this_word] * scaled_idf[this_word]
         else:
-            words_idk.append(key)
+            words_idk.append(this_word)
 
     print("test")
 

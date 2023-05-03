@@ -96,7 +96,6 @@ def main( root_dir):
     #     exit("Ending TAP")
 
 
-    #Processing two documents as a test.
     #I have gotten a list of all the docxs that I want to process.
     #Now I need to process them one by one and insert them each into their
     #own dictionary. To do this, I have to pass in one file at a time
@@ -107,27 +106,36 @@ def main( root_dir):
 
         list_of_words_with_pos_tags = preprocessing.read_docx_files(doc_list,docx,dirs_list)
 
-        lemmatized_list = preprocessing.lemmatizer_function(list_of_words_with_pos_tags)
+        lemmatized_list             = preprocessing.lemmatizer_function(list_of_words_with_pos_tags)
 
-        [fdist,fd_length] = preprocessing.collocation_bigram_freqdist(lemmatized_list)
+        [fdist,fd_length]           = preprocessing.collocation_bigram_freqdist(lemmatized_list)
 
-        [term_freq_list, tf_dict] = preprocessing.term_frequency_generator(fdist,fd_length)
+        [term_freq_list, tf_dict]   = preprocessing.term_frequency_generator(fdist,fd_length)
 
         list_of_all_tf_dicts.append(tf_dict)
 
 
+    #Only grabbing the last term_freq_list in loop from line 113, which has a size of 506.
+    #TODO: Figure out a way to scale this for each individual document, not just the last one!
 
-    [list_of_all_tf_dicts,total_num_docs] = postprocessing.idf_calculator(list_of_all_tf_dicts)
+    #TODO: Figure out a way to remove numbers from dictionaries, but still retain
+    #tokens like L0, L1, etc.
 
-    scaled_idf_dict = OrderedDict(postprocessing.zipfs_law_scaling(list_of_all_tf_dicts,total_num_docs))
+    [list_of_all_idf_dicts,total_num_docs] = postprocessing.idf_calculator(list_of_all_tf_dicts)
+
+    scaled_idf_dict = OrderedDict(postprocessing.zipfs_law_scaling(list_of_all_idf_dicts,total_num_docs))
     term_freq_dict = OrderedDict(term_freq_list)
 
+    #TODO: Figure out why tf-idf list is different length than scaled-idf list
+        #we know that one is 3709 (scaled-idf) and the other is 506 (tf-list)
+        #proposed solution: only examining one document here. that's why tf is shorter.
     tf_idf_list = postprocessing.compute_tf_idf(term_freq_dict,scaled_idf_dict)
 
     print("debug")
 
 
-
+#TODO: Build a test suite to see if this is right. Do this by making documents with words that you know you should find.
+    #and words that are common across documents.
 
     return_code= postprocessing.csv_writer(term_freq_list,csv_file)
 
