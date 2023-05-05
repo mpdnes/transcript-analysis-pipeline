@@ -131,6 +131,9 @@ def main( root_dir):
         #proposed solution: only examining one document here. that's why tf is shorter.
     tf_idf_list = postprocessing.compute_tf_idf(term_freq_dict,scaled_idf_dict)
 
+    import Sort_Dict_of_Integers
+    sorted_tf_idf = Sort_Dict_of_Integers.Sort_Dict_of_Integers(tf_idf_list)
+
     print("debug")
 
 
