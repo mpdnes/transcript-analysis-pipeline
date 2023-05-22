@@ -14,7 +14,7 @@ from sklearn.feature_extraction.text import \
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from os import system
-import example_file_creation
+
 
 #RegEx expression that says, give me words, but not spaces! Used to tokenize
 #transcript further down

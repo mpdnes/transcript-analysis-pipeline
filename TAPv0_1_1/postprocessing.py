@@ -107,3 +107,4 @@ def compute_tf_idf(term_freq_list,scaled_idf):
 
 
 
+

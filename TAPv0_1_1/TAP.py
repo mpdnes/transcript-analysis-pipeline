@@ -66,6 +66,7 @@ def main( root_dir):
     print("The list of files about to be processed are: ")
     print(docx_list)
     list_of_all_tf_dicts = []
+    term_freq_list = []
 
     # TODO: This is an early attempt at making the process more user friendly
     # print("***********************************************************************")
@@ -129,10 +130,16 @@ def main( root_dir):
     #TODO: Figure out why tf-idf list is different length than scaled-idf list
         #we know that one is 3709 (scaled-idf) and the other is 506 (tf-list)
         #proposed solution: only examining one document here. that's why tf is shorter.
-    tf_idf_list = postprocessing.compute_tf_idf(term_freq_dict,scaled_idf_dict)
+    tf_idf_list = []
+    for dicts in list_of_all_tf_dicts:
+        dict_to_add = postprocessing.compute_tf_idf(dicts, scaled_idf_dict)
+        tf_idf_list.append(dict_to_add)
 
     import Sort_Dict_of_Integers
-    sorted_tf_idf = Sort_Dict_of_Integers.Sort_Dict_of_Integers(tf_idf_list)
+    sorted_tf_idf_list = []
+    for dict_in_list in tf_idf_list:
+        sorted_tf_idf = Sort_Dict_of_Integers.Sort_Dict_of_Integers(dict_in_list)
+        sorted_tf_idf_list.append(sorted_tf_idf)
 
     print("debug")
 
@@ -154,7 +161,7 @@ def main( root_dir):
 #  TODO: add argument parsing.
 #
 if ( __name__ == "__main__" ) :
-    root_dir = '../TEST_SUITE/DUMP/CSCI42001'
+    root_dir = '../TEST_SUITE/DUMP/PHYA52001'
     csv_file = '../TEST_SUITE/DUMP/DUMP_Words_All_CSCI.csv'
     print("Later on we will add argument parsing here.")
     print("This IS main.  Calling the main routine.")
