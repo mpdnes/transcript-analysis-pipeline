@@ -141,6 +141,14 @@ def main( root_dir):
         sorted_tf_idf = Sort_Dict_of_Integers.Sort_Dict_of_Integers(dict_in_list)
         sorted_tf_idf_list.append(sorted_tf_idf)
 
+    counter = 1
+
+    for dict_to_wordcloud in sorted_tf_idf_list:
+        wc = plt.imshow(postprocessing.wordcloud_generator(dict_to_wordcloud))
+        plt.savefig('Wordcloud'+ str(counter))
+        counter+=1
+
+
     print("debug")
 
 
@@ -161,7 +169,7 @@ def main( root_dir):
 #  TODO: add argument parsing.
 #
 if ( __name__ == "__main__" ) :
-    root_dir = '../TEST_SUITE/DUMP/PHYA52001'
+    root_dir = '/Users/mpdnes/Documents/GitHub/TAP/TEST_SUITE/CSCI42001'
     csv_file = '../TEST_SUITE/DUMP/DUMP_Words_All_CSCI.csv'
     print("Later on we will add argument parsing here.")
     print("This IS main.  Calling the main routine.")
