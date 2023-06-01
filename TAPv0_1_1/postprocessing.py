@@ -106,8 +106,6 @@ def compute_tf_idf(term_freq_list,scaled_idf):
         else:
             words_idk.append(this_word)
 
-    print("test")
-
     return computed_idf_dict
 
 def wordcloud_generator(dict_to_wordcloud):

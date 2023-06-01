@@ -78,7 +78,7 @@ def check_csv_file(common_comparison_csv_file_name, target_csv_file_name):
 
 #Transcript text file
 def read_docx_files(docs_to_be_changed, docx_to_be_read,dirs_list):
-    tokenizer_unigram = RegexpTokenizer(r'([A-Za-z0-9]+)+\s')
+    tokenizer_unigram = RegexpTokenizer(r'([A-Za-z]+)+\s')
     list_of_words_with_pos_tags = []
     docs_read = 0
     list_of_files_processed = []

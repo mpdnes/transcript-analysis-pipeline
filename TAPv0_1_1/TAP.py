@@ -141,27 +141,16 @@ def main( root_dir):
         sorted_tf_idf = Sort_Dict_of_Integers.Sort_Dict_of_Integers(dict_in_list)
         sorted_tf_idf_list.append(sorted_tf_idf)
 
-    counter = 1
+    counter = 0
 
     for dict_to_wordcloud in sorted_tf_idf_list:
         wc = plt.imshow(postprocessing.wordcloud_generator(dict_to_wordcloud))
+        plt.title(docx_list[counter][-11:])
         plt.savefig('Wordcloud'+ str(counter))
         counter+=1
 
 
     print("debug")
-
-
-#TODO: Build a test suite to see if this is right. Do this by making documents with words that you know you should find.
-    #and words that are common across documents.
-
-    return_code= postprocessing.csv_writer(term_freq_list,csv_file)
-
-    if return_code:
-        print("All files processed and exported to CSV file.")
-    elif return_code == 'Exit':
-        print("Something else happened. Did not export to CSV.")
-
 
 #
 #  EPILOG -- CALL MAIN
