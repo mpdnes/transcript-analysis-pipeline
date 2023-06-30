@@ -44,7 +44,7 @@ import csv
 import os
 
 
-from nltk.corpus import stopwords                       # Unknown reason why.
+from nltk.corpus import stopwords
 stop_words = sorted( stopwords.words('english') )       # Global variable.
 
 
