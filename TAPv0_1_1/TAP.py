@@ -19,15 +19,16 @@
 #  PROLOG: 
 #
 
-import re 				        # Regular expression matching.
-import docxpy			    		# Handling *.docx file in python.
-from wordcloud import WordCloud
-import matplotlib.pyplot as plt
-import PIL as img
+import re 				                # Regular expression matching.
+import docxpy			    		    # Handling *.docx file in python.
 
-import nltk			                # Natural Language Toolkit
+from wordcloud import WordCloud         # For creating the word cloud.
+import matplotlib.pyplot as plt         # For creating the word cloud.
+import PIL as img                       # For creating the word cloud.
+
+import nltk			                    # Natural Language Toolkit
 from nltk.corpus import stopwords		# Common stopwords.
-import contractions			        # Common language contractions.
+import contractions			            # Common language contractions.
 from nltk import *
 #import regular expression tokenizer
 from nltk.tokenize import word_tokenize 	# Tokenizer
@@ -42,6 +43,9 @@ import preprocessing
 import postprocessing
 import csv
 import os
+
+# Thomas Module(s)
+import Sort_Dict_of_Integers            # Given a dictionary of integers, sort them in order by the contents.
 
 
 from nltk.corpus import stopwords
@@ -62,6 +66,10 @@ from nltk.probability import FreqDist
 #
 def main( root_dir):
 
+    # Creating a list of all transcripts to analyze.
+    # Return a list of *.doc's (which should be changed to *.docX es).
+    # AND we get a list of directories.
+    # And a number of folders in the directory.
     [doc_list, docx_list, dirs_list, num_of_folders] = preprocessing.directctory_inspector(root_dir)
     print("The list of files about to be processed are: ")
     print(docx_list)
@@ -96,56 +104,76 @@ def main( root_dir):
     # elif initial_choice == "2":
     #     exit("Ending TAP")
 
+    #  I have gotten a list of all the docxs that I want to process.
+    #  Now I need to process them one by one and insert them each into their
+    #  own dictionary. To do this, I have to pass in one file at a time
+    #  to be read until all the files are read and then passed into a dictionary.
+    #  this is all to compute the TF-IDF
 
-    #I have gotten a list of all the docxs that I want to process.
-    #Now I need to process them one by one and insert them each into their
-    #own dictionary. To do this, I have to pass in one file at a time
-    #to be read until all the files are read and then passed into a dictionary.
-    #this is all to compute the TF-IDF
-
+    # THIS LOOP COMPUTES the TF-IDF.
+    #
+    # For each transcript in the list of transcripts.
+    #     Generates a DICTIONARY per transcript.
+    #
+    # The result is a list of dictionaries, with term frequencies.
+    #
     for docx in docx_list:
-
+        # This gets us the words with the Part of Speach tagging.
+        # POS is important to create an accurate lemmatized list.
+        #
         list_of_words_with_pos_tags = preprocessing.read_docx_files(doc_list,docx,dirs_list)
 
+        # Reduce a word to its root form:
         lemmatized_list             = preprocessing.lemmatizer_function(list_of_words_with_pos_tags)
 
+        # Collocation = "Co-Location" in TBK Terms.
+        # Result: A frequency distribution, and the number of unique words.
         [fdist,fd_length]           = preprocessing.collocation_bigram_freqdist(lemmatized_list)
 
+        # This is the TERM FREQUENCY only.
         [term_freq_list, tf_dict]   = preprocessing.term_frequency_generator(fdist,fd_length)
 
+        # Put this dictionary in the list.
         list_of_all_tf_dicts.append(tf_dict)
 
-
-    #Only grabbing the last term_freq_list in loop from line 113, which has a size of 506.
-    #TODO: Figure out a way to scale this for each individual document, not just the last one!
-
-    #TODO: Figure out a way to remove numbers from dictionaries, but still retain
-    #tokens like L0, L1, etc.
-
+    # At this point we have a list of dictionaries with unique words, and term frequencies, PER TRANSCRIPT.
+    #
+    #   NOW CREATE THE IDF -- a measure of how "interesting" each term is.
+    #
     [list_of_all_idf_dicts,total_num_docs] = postprocessing.idf_calculator(list_of_all_tf_dicts)
 
-    scaled_idf_dict = OrderedDict(postprocessing.zipfs_law_scaling(list_of_all_idf_dicts,total_num_docs))
-    term_freq_dict = OrderedDict(term_freq_list)
 
-    #TODO: Figure out why tf-idf list is different length than scaled-idf list
-        #we know that one is 3709 (scaled-idf) and the other is 506 (tf-list)
-        #proposed solution: only examining one document here. that's why tf is shorter.
+    #  This scales the terms according to ZIPFS Law.
+    #  (This involves conversion to a logorithmic domain.)
+    scaled_idf_dict = OrderedDict(postprocessing.zipfs_law_scaling(list_of_all_idf_dicts,total_num_docs))
+
+    # This next loop examines ALL transcripts, not just one.
+    # This forms a global TF-IDF list, for all terms.
     tf_idf_list = []
     for dicts in list_of_all_tf_dicts:
         dict_to_add = postprocessing.compute_tf_idf(dicts, scaled_idf_dict)
         tf_idf_list.append(dict_to_add)
 
-    import Sort_Dict_of_Integers
+    #  Sort in order of decreasing frequency:
+    #  Or, perhaps, importance??
     sorted_tf_idf_list = []
     for dict_in_list in tf_idf_list:
         sorted_tf_idf = Sort_Dict_of_Integers.Sort_Dict_of_Integers(dict_in_list)
         sorted_tf_idf_list.append(sorted_tf_idf)
 
+    #
+    #  ACTUALLY CREATE THE WORD CLOUD!
+    #  This creates it using imshow(), but never displays it.
+    #
     counter = 0
-
     for dict_to_wordcloud in sorted_tf_idf_list:
+        # TODO -- TBK Change options to wordcloud_generator, to change the colors.
         wc = plt.imshow(postprocessing.wordcloud_generator(dict_to_wordcloud))
+
+        # This gets the basename with the extension, and puts it in the title.
         plt.title(docx_list[counter][-11:])
+
+        # Save to file:
         plt.savefig('Wordcloud'+ str(counter))
         counter+=1
 
@@ -158,8 +186,10 @@ def main( root_dir):
 #  TODO: add argument parsing.
 #
 if ( __name__ == "__main__" ) :
-    root_dir = '/Users/mpdnes/Documents/GitHub/TAP/TEST_SUITE/CSCI42001'
-    csv_file = '../TEST_SUITE/DUMP/DUMP_Words_All_CSCI.csv'
+    # Make the directory for documents user independent.
+    home_dir = os.environ['HOME']
+    root_dir = home_dir + '/Documents/GitHub/TAP/TEST_SUITE/CSCI42001'
+    # csv_file = '../TEST_SUITE/DUMP/DUMP_Words_All_CSCI.csv'
     print("Later on we will add argument parsing here.")
     print("This IS main.  Calling the main routine.")
     main( root_dir )
