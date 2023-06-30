@@ -108,12 +108,24 @@ def compute_tf_idf(term_freq_list,scaled_idf):
 
     return computed_idf_dict
 
-def wordcloud_generator(dict_to_wordcloud):
 
-    wc = WordCloud(background_color="white", width=1000, height=1000, max_words=40, relative_scaling=0.5,
-                       normalize_plurals=False).generate_from_frequencies(dict_to_wordcloud)
+import random
+
+def hsl_random_color_func(word, font_size, position, orientation, random_state=None, **kwargs):
+    return "hsl(%d, 95%%, 65%%)" % random.randint(0, 360)
+
+def wordcloud_generator(dict_to_wordcloud):
+    '''
+    :param dict_to_wordcloud: 
+    :return: the word cloud --> the word cloud object.
+    This uses the package from amueller.github.io/word_cloud/
+    '''
+    wc = WordCloud(background_color="black", \
+                    width=1000, \
+                    height=1000, \
+                    max_words=50, \
+                    relative_scaling=0.5, \
+                    normalize_plurals=False).generate_from_frequencies(dict_to_wordcloud)
 
     return wc
-
-
 

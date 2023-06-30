@@ -74,7 +74,7 @@ def main( root_dir):
     print("The list of files about to be processed are: ")
     print(docx_list)
     list_of_all_tf_dicts = []
-    term_freq_list = []
+    term_freq_list       = []
 
     # TODO: This is an early attempt at making the process more user friendly
     # print("***********************************************************************")
@@ -117,7 +117,8 @@ def main( root_dir):
     #
     # The result is a list of dictionaries, with term frequencies.
     #
-    for docx in docx_list:
+    print("DEBUGGING HERE -- USING ONLY THE FIRST THREE DOCUMENTS\n")
+    for docx in docx_list[0:3]:
         # This gets us the words with the Part of Speach tagging.
         # POS is important to create an accurate lemmatized list.
         #
@@ -165,18 +166,39 @@ def main( root_dir):
     #  ACTUALLY CREATE THE WORD CLOUD!
     #  This creates it using imshow(), but never displays it.
     #
+
     counter = 0
     for dict_to_wordcloud in sorted_tf_idf_list:
         # TODO -- TBK Change options to wordcloud_generator, to change the colors.
-        wc = plt.imshow(postprocessing.wordcloud_generator(dict_to_wordcloud))
+
+        # TODO Figure out how to change the resulting file size:
+        # TODO: This might require changing the rc.params so the backend renderer is smarter.
+        # This specifies the file size in inches:
+        plt.figure( figsize=(10,14), dpi=100 )
+
+        word_cloud = postprocessing.wordcloud_generator(dict_to_wordcloud)
+
+        # NOW -- NOW that we have created the figure that is bigger,
+        # NOW put the word cloud into it.   This makes a bigger Wordcloud!
+        wc_fig = plt.imshow( \
+              word_cloud.recolor( color_func=postprocessing.hsl_random_color_func, random_state=3), \
+              interpolation = "bilinear")
+
 
         # This gets the basename with the extension, and puts it in the title.
-        plt.title(docx_list[counter][-11:])
+        plt.title( docx_list[counter][-11:] )
 
+        plt.axis( "off" )
+
+        plt.show()
+
+        # TODO: change the number so that it starts with 0.
+        # 01, 02 ... 09, 10, ...
         # Save to file:
-        plt.savefig('Wordcloud'+ str(counter))
+        plt.savefig('Wordcloud'+ str(counter), dpi=200 )
         counter+=1
 
+    # TODO: Check the TF-IDF Math.
 
     print("debug")
 
@@ -189,7 +211,6 @@ if ( __name__ == "__main__" ) :
     # Make the directory for documents user independent.
     home_dir = os.environ['HOME']
     root_dir = home_dir + '/Documents/GitHub/TAP/TEST_SUITE/CSCI42001'
-    # csv_file = '../TEST_SUITE/DUMP/DUMP_Words_All_CSCI.csv'
     print("Later on we will add argument parsing here.")
     print("This IS main.  Calling the main routine.")
     main( root_dir )
