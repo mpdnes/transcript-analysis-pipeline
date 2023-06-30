@@ -1,6 +1,11 @@
 import csv
 import os
 import sys
+from wordcloud import WordCloud
+from PIL import Image
+import matplotlib.pyplot as plt
+
+
 
 def csv_writer(termfreq,csv_file):
 
@@ -101,9 +106,14 @@ def compute_tf_idf(term_freq_list,scaled_idf):
         else:
             words_idk.append(this_word)
 
-    print("test")
-
     return computed_idf_dict
+
+def wordcloud_generator(dict_to_wordcloud):
+
+    wc = WordCloud(background_color="white", width=1000, height=1000, max_words=40, relative_scaling=0.5,
+                       normalize_plurals=False).generate_from_frequencies(dict_to_wordcloud)
+
+    return wc
 
 
 

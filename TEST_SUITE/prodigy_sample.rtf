@@ -1,0 +1,1234 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sl337\partightenfactor0
+
+\f0\fs32 \cf2 \expnd0\expndtw0\kerning0
+CSCI-420-01 Principles of Data Mining
+\fs29\fsmilli14667 \
+
+\fs32 Instructor: Thomas Kinsman
+\fs29\fsmilli14667 \
+
+\fs32 Monday, September 12th, 2022
+\fs29\fsmilli14667 \
+
+\fs32 Transcriber: Jason Farrell
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Everybody, please say hello to the chat bar so I know who's here.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Questions?\'a0 Some people have looked at the homework and started doing the next homework.\'a0 Am I right?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I'll have to pick on someone who might be brave.\'a0 What kinds of results are we getting?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Tristan:\'a0 The next homework is due next Sunday, right?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Right.\'a0 But remember, the due date is not the day you should do it, because crap happens.\'a0 Especially with my homework.\'a0 They're notorious for being a lot of work.\'a0 But they're really not.\'a0 You just have to think about them a little bit.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 What about homework #1?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Ruiying:\'a0 [Got a 62]
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 You got 62?\'a0 Oh, okay.\'a0\'a0 Just don't tell anybody else.\'a0 I'm teasing.\'a0 I don't care.\'a0 I want to make sure you all learn how to do this.\'a0 The programming is important, but the essence is I want you to learn the concepts involved.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Did you use regularization when you did that?\'a0 Sorry, I lost who was talking.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Ruiying:\'a0 [Not yet]
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Alright, very good.\'a0 Let me show you what I have so far.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 When I look at the histogram, this is what I'm getting.\'a0 I can actually munch this.\'a0 We can see that some of the values don't even exist.\'a0 I asked to do 20 bins here.\'a0 If I say go make me 40 bins, now I have more, smaller bins, and the mode jumped from 59 to 58.\'a0 It jumps around a bit.\'a0 But look at who got empty bins here?\'a0 That's a weird thing to happen.\'a0 That's okay.\'a0 I'm probably making the bins too small.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Oh, look at this, gang.\'a0 If I draw the envelope around this, you can see there's an envelope up here, and how far you want to stretch that is another thing.\'a0 We can see this behavior up here, and this peak to the right.\'a0 These are people going around 59 mph, and these people are going around 56 mph.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 [Working out the captions]
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Looking at this histogram, there are two big lumps, but also this one on the left.\'a0 These are people not in a hurry.\'a0 They're transporting explosive devices.\'a0 Or maybe they don't know the speed limit and they're still going 55mph.\'a0 Or maybe they're being paid by the hour.\'a0 For whatever reason, they're not in a hurry.\'a0 You should see something similar to this when you load your data.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 This is for a single traffic station that's recording the data, somewhere.\'a0 You can read it in and compute the histogram.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Here's the mixed variance as a function of the speed.\'a0 It's very similar.\'a0 How are we going to break those two apart?\'a0 It's almost a tie.\'a0 Any time you do this sort of thing, you should think, how am I going to set my threshold up to get rid of a tie?\'a0 It's vitally important to know that ahead of time, otherwise the software will do it for you and we won't know what we're doing.\'a0 We can use AI, but I want to make sure we use actual intelligence.\'a0 In fact, I specialize in actual intelligence, not just artificial intelligence.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 We could add some regularization in there.\'a0 Did we cover enough regularization for you folks to get an idea?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 I don't remember talking about it too much.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 Either do I.\'a0 Could you go over it?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 I'm also still confused about implementing Otsu's method.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 Me too.\'a0 As well as threshold stuff.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 I have my implementation here.\'a0 It took me half an hour.\'a0 There should be pseudocode out there for you to look at.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I'm going to read my data in.\'a0 I'm using MATLAB because I've been using it since 1980 and I'm a MatLab wizard.\'a0 I think in MATLAB.\'a0 I wake up in the middle of the night thinking of something else I could implement.\'a0 But you should use Python because that's what people will expect.\'a0 Not only that, you should use pandas within Python, and this is the time to get started with that.\'a0 It's really convenient.\'a0 People who use pandas love pandas.\'a0 I had a student email me that they put pandas on their resume and they got a job because of it.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Read the table in.\'a0 Get variable 2.\'a0 Variable 1 is the name of the second column, and there's no names.\'a0 It's all empty.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 This just says bring up a figure and show me a histogram.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 This is a special routine that I wrote, just so I could get a big figure and not a teeny tiny one.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Now we're going to implement Otsu's method.\'a0 I preallocate an array of zeroes.\'a0 And then I'm going to go fill it in.\'a0 And that's it.\'a0 There it is.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Well, it's not perfect yet.\'a0 Yours will be a bit different.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I'm going to set the threshold for this iteration from 1 to the length of the threshold.\'a0 It gets the current threshold.\'a0 Set a boolean variable of all of the data that's less than or equal to that threshold.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Let me munge this a bit.\'a0 Let's start the data at 54mph.\'a0\'a0 I'm going to rerun it.\'a0\'a0 I'm setting a break point here, and I'm going to step through it.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 With MATLAB, I can hold over this and see.\'a0 This is a logical array and you see a lot of zeroes and ones.\'a0 This is a boolean vector of all of the data less than or equal to.\'a0 Given this boolean vector, you could do this with a loop.\'a0 You either put it in the left or the right side, depending on the threshold.\'a0 That's up to you.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 If the length of the left hand side is equal to 0 . . . if I ask for the variance of something of zero length, it'll say not a number.\'a0 I don't want to do that.\'a0 I have to trap it out.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 This is all the stuff less than or equal to the threshold.\'a0 And this is the variance of the stuff that's greater than.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Let me ask this.\'a0 If I wanted to put things that were less than the threshold into the left hand side, what change would I make to this code?\'a0 Right now it's set up so that the, given the threshold, everything equal to or less to the threshold goes into the left hand side, and then I compute the variance of the left hand side.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 What if I only wanted the stuff that's less than the threshold to go into the left hand side; what change would I make?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 You would replace the less than/equal sign with a less than sign.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 On which line?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 25.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Yes.\'a0 That's the logical test.\'a0 I don't know if we'll get a different answer, but it's easy enough to run it and find out.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Oh!\'a0 Now I don't necessarily have a tie.\'a0 It looks like the curve shifted over to the right.\'a0 Maybe that's because I changed the starting threshold.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Let me unbreak my code.\'a0 I want to make sure I get the right answer that you folks get.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I want to make sure that you all think about the fact that there could be a tie in the code.\'a0 Taking advantage of that tie could save you.\'a0 Otherwise, you'll get an answer and you may not know what's going on.\'a0 In the past, when I've designed algorithms and tested for equality, I've gotten a massive improvement from doing that.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I forgot where we were.\'a0 Anybody remember?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Scott:\'a0 We were discussing classifications.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Not yet.\'a0 We were doing clustering.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 Classification as supervised learning.\'a0 We might have gone onto this next set of data.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Yeah, we were here.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Tristan, I actually went to review my notes . . .
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Tristan:\'a0 We talked about jitter.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Why do I add jitter?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Tristan:\'a0 To make it easier to follow.\'a0 The y position doesn't matter.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 To make it easier to read, yes.\'a0 You can almost see a lot spot here.\'a0 Or here.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I've got another question for the class.\'a0 I went to watch my Zoom recording and I couldn't see it.\'a0 Has anyone else experienced this problem?\'a0 Is it just me?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Mike:\'a0 Some of the recordings did appear, but most of them were, like, a black screen I guess.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 If they're really short, that's caused by students who try to get in and just sit there before class.\'a0 The other thing that will happen is a half hour of dead time because I want to make sure people can get in ahead of time if they need to.\'a0 So if you see that black screen, skip ahead.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 I was able to see the recordings from last week.\'a0\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Oh, excellent.\'a0 Because I can't!\'a0 Haha.\'a0 Rochester Institute of what?\'a0 I don't know.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 So, we're going to build a clustering technique that goes and looks through the data.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Here are some cars.\'a0 I have some car data.\'a0 I'm going to sweep a threshold from left to right and see where the split happens.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 The driver's intention is hidden from us.\'a0 This is old data.\'a0 You can see the same sort of behavior, though, where some people are going intentionally slow.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 For Otsu's method, I'm going to split my data into that which is less than or equal to the threshold and that which is greater than the threshold.\'a0 I'm going to compute the variance of each group.\'a0 And then I compute the average variance.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I do this for every single possible threshold.\'a0 When I'm done, I say, well, which of the thresholds was the best one.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I didn't actually use the full Otsu's method here.\'a0 We don't care about the weighted variance.\'a0 What we really care about is?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 The threshold?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Yeah.\'a0 I want to care about that threshold.\'a0 I need to have something in there to look through the set to find the minimum.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Here's a bit more code that says the same thing.\'a0 It's not formal pseudocode, but it should be enough to get the job done.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I want you to think about what happens if there's a tie.\'a0 Sometimes ties happen in the data.\'a0 I don't even have to intentionally put one in there.\'a0 They just happen.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 If the same minimum mixed variance happens for two different speeds, say 59 and 60mph, which do you report, and why?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Here's what I got for a different, older data set.\'a0 This is a basic thing.\'a0 You should be able to get the answer.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I'll cover regularization quickly.\'a0 But throughout machine learning, they say they're using "regularization" without really explaining where it comes from.\'a0 I'm going to define it for my classes and my understanding.\'a0 So that YOU can understand it.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I'm going to define something called a "cost function."\'a0 You'll see cost functions all over the place.\'a0 They're sometimes also called "energy functions" or "objective functions'.\'a0 They steal words from everyplace.\'a0 In the world of academics, people cross-pollinate.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Look at my picture.\'a0 In my picture here, I have a piece of metal.\'a0 If I bend it up and down across my face, this energy . . . well, as I bend the metal, it'll bend down and up like a bridge.\'a0 They build bridges so that when cars go over it, it bends down and becomes flat.\'a0 This metal is using physics to take on the minimum energy.\'a0 That's why they call these things "energy functions."\'a0 If you ask other professors where the energy function comes from, you'll understand how much they know about history.\'a0 If they say physics, then they know the answer.\'a0 If they don't say that, they haven't thought about it much.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I'm going to define a cost function for my class.\'a0 A cost function is a mathematical function we're trying to minimize or maximize.\'a0 We'll define that as an objective function, which is the stuff we absolutely care about, plus regularization.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 We want the objective function to be zero.\'a0\'a0 Regularization is the stuff that would be nice if it was zero.\'a0 Like the time it takes me to get from place A to place B, but it's not really important to be zero.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I'm going to define a function.\'a0 A lot of students freak out a bit when we say that.\'a0 Really, I am deciding how this function should go.\'a0 Usually what happens is you're given a function to minimize or maximize, and you don't know where it came from.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Here, I'll break my cost function into Otsu's method, the weighted mixed variance, plus some regularization.\'a0 [Teacher reading.]\'a0 It would be nice if it was 0, because that would mean I would have two equally sized clusters.\'a0 But it's not that important, and to make sure it's not that important I divide it by 25.\'a0 I divide it by some big number so that if the first part has two of the same value, the second part will take over and break the tie.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 If the regularization is too important, it will dominate the first part of the function.\'a0 I want this whole measure to be something close to 0.\'a0 If the regularization is given too much importance, I will always get back a clustering that has half the cars in one cluster and half of them in the other cluster.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Any questions about that?\'a0 Does that make sense?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Where did this number 25 come from?\'a0 Jared?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Jared:\'a0 The number of points in the data set?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 No.\'a0 David, are you there?\'a0 Where did I get the 25 from?\'a0 Why did I use 100?\'a0 Summer?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Summer:\'a0 I'm not sure.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Okay.\'a0 This is important.\'a0 That value of 25 is a value I made up.\'a0 It might have been the right thing, it might have been the wrong thing.\'a0 It seemed to work okay.\'a0 I might have put in 100.\'a0 If I put in 10, the regularization might have too much importance.\'a0 It might split the two.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 If I put in 1/100, now the regularization is going to dominate.\'a0 It'll make the regularization split the data so that I always have half of the cars below the threshold and half above it.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 So shockingly, I'm going to make stuff up.\'a0 You make up parameters, try them, and see if they work for your data.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Kylie, are you with me?\'a0 You can just give me a thumbs up if that's true.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Khamin:\'a0 Is there a way to calculate the number to divide by? \'a0
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 You should do that.\'a0 You'll become famous, haha.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I just kind of looked at it and said, hmm, what value should I use to make sure it didn't dominate.\'a0 No, there's no automatic way.\'a0 I guessed 25, and it seemed to work for my data.\'a0 You could have used 50 or 100 or 36.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 What I'm trying to do is make sure that these two things are of relative importance.\'a0 That they can be combined in a way that makes sense.\'a0 That they are commensurate.\'a0 They are appropriately scaled.\'a0 It's a big word, commensurate.\'a0 So that they can be combined together.\'a0 I should probably emphasize the word "commensurate."\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 This is another regularization that I made up.\'a0 I could have instead said the range of values in group 1 minutes the range of values in group 2, divided by 25.\'a0 I find the absolute difference and I divide by 25.\'a0 This is another way of saying I want the two groups to be about the same spread in speeds.\'a0 Maybe that makes sense, I don't know.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Someone made up regularization functions.\'a0 You can make up stuff too.\'a0 I hereby empower you to go forth and make stuff up as long as it works for your data.\'a0 How will you know it works?\'a0 You'll use enfold validation later on.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 The main uses of regularization are to break ties and to simplify your life.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I'm going to do some curve fitting.\'a0 I have some data and I want to draw a curve through it.\'a0 I'm going to use a polygon.\'a0 I'm going to approximate and describe this data using a zeroth order polynomial.\'a0 The answer is 4.\'a0 That's what it is.\'a0 4.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 That's oversimplified.\'a0 So I'm going to use a polynomial of order 1.\'a0 Oh, it gets better.\'a0 I'm getting closer.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Now I can add an order of 2 polynomial, a parabola.\'a0 It goes up on both ends.\'a0 Better still.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Order 3.\'a0 That's the yellow one.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Order 4 is really good.\'a0 I don't even know what to call it.\'a0 Quintic or something.\'a0 It seems to follow the data really well.\'a0 It nicely models my data.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 If 4 is good, maybe 5 is better?\'a0 The 5 is the blue line.\'a0 The blue line falls almost exactly on the black line.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 This red line also is almost exactly the same.\'a0 The point is, at some point you want to know where to stop.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I'm going to say I want to use the simplest polynomial I can.\'a0 I'm going to use Occam's Razor, and say always use the simplest method that gives me about the same accuracy.\'a0 If I had a way to get better accuracy, that's okay.\'a0 Sometimes people think Occam's Razor says to only use the one that's simple, and that's not true.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I'm going to plot these algorithms.\'a0 You as a human can look at this and say this first value is high, the second has a high error, the third has a high error, and look at this strong jump. . . . from here, it's pretty much flat.\'a0 I could teach a computer to find this automatically by working my way backwards to this big inflection.\'a0\'a0 I would use an inflection point detector to find that.\'a0 I'm looking for a place where the second derivative goes up really high.\'a0 Or the first derivative goes up really high.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 As I'm looking at it, you would use 4.\'a0 But don't go up here, because suddenly the error jumps up.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Or you could use some regularization.\'a0 Here, I'm saying to use regularization that's the order of the polynomial zero through eight divided by eight.\'a0 This is just a line.\'a0 I want my regularization to be close to 0.\'a0\'a0 How did I get that?\'a0 I selected it.\'a0 I looked at what the error was doing before and I said, hmm, I like small numbers.\'a0 I know that somewhere out here in the middle is probably the right answer.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I'm using regularization that I designed.\'a0\'a0 I selected this error term to add in.\'a0 With this cost function, instead of an inflection point detector, I'm using regularization.\'a0 I don't care about this high point on the left.\'a0 What I do care about is the low point.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 A computer, given this data and told to find the lowest point, would find this point at 0.8.\'a0 That happens with a polynomial order of 4.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Did I lose everybody?\'a0 Is that clear as dirt?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 Could you reexplain?\'a0 Sorry.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 That's okay.\'a0\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 If I was to plot this error function here, here it is.\'a0\'a0 You with me?\'a0 As a human, I can look at and say, oh, this is easy.\'a0 These points are high.\'a0 This value of 0.3 is a better value, so use a polynomial of order 4.\'a0 I can see that the error dropped from 1 something to 0.3.\'a0 It does keep dropping down a little bit more to the right, but you can barely see it.\'a0\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I'm telling the computer, of all of these here that are almost tied to prefer the one with the lowest polynomial order.\'a0 So we explicitly add in a regularization that scales by 8 so it goes from 0 to 1.\'a0 Are you with me?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 Yep.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 What if I were to divide this by 1000?\'a0 Would that help?\'a0 Or would I be throwing my regularization away?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 You whole thing?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 The range of this regularization would be from 0 to 8/1000.\'a0 It wouldn't be strong enough to compensate.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 You wouldn't be able to gather data from a high enough value?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 It means the regularization wouldn't be able to help me find the best data.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I know the answer is 4.\'a0 I can play with the amount of regularization and kick that in.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I want the range to go up to a value of 1.\'a0 The error, whatever that was, is a bit more than 1.\'a0 The average amount of error is like 1.2 on the lowest case.\'a0 So these are on the order of, meaning some multiple of 10, an order of 1.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 When I add these together, I'm saying the cost function is the objective function plus regularization that are both kind of commensurate.\'a0 They're both around 1.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 That's my design choice.\'a0 If I divided by this 16 here, I would be changing the slope being used on the right.\'a0 Instead of this slope going up by 1/8 every jump, the regularization would be going up by 1/16 every jump.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Sometimes you just look at it and guess, and then you try it.\'a0 What if it's not perfect?\'a0 You try something else.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Here's some bad regularization.\'a0 [On screen.]\'a0\'a0 This "fastest speed" term could dominate.\'a0 Using this cost function, I might pick the route and a speed for that route that was ridiculous.\'a0 I would get a lot of tickets.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 A better way to do it would be to say my average time to work is 30 minutes, and the average speed I travel is around 55mph.\'a0 The fastest speed is 60mph.\'a0 Know I have the time to work divided by 30.\'a0 The typical maximum speed is really what that should be.\'a0 That's another term that's around 1.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 To make sure the second term doesn't dominate the first term, I divide this by 25.\'a0 Again, I made that 25 up.\'a0 And this worked.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I'm improvising here.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Here's the point I want to get to here.\'a0 There are a lot of terms for regularization.\'a0 The AI folks, haha, they write a paper and they call this regularization a hinge loss or a lasso or whatever, and all of these different terms, somebody made up the vocabulary and the definition for them.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 These are invented terms.\'a0 They do not necessarily communicate understanding.\'a0 Sorry, they don't.\'a0 The machine language community likes to say this is the regularization I used.\'a0 And you ask them why, and they say they have no idea, haha.\'a0\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 You'll see a lot of these terms.\'a0 I may ask you about them.\'a0 You'll go oh, elastic net is a form of regularization.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 In general, the way I put things together, I have an objective function, something I would like to be zero, I scale it down to 1, and then I scale the second one so that it doesn't dominate.\'a0 Okay?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Questions?\'a0 Comments?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 You will sometimes see these terms combined together using something like alpha in here.\'a0 What they're doing when they do that . . . I'm going to hide part of this from you . . . if alpha is 0.1, this says don't let the regularization be too strong.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Sometimes you'll see the formula written down in such a way that . . . excuse me while I fight Zoom to get my mouse back . . . and they don't have this 1-alpha term in front.\'a0 But if alpha is really small, 1-alpha is about 1.\'a0 So that's basically say a, whatever it is, the cost function is equal to the objective function plus a bit of regularization on the right hand side.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I hope this helps you understand a bit about the math when we do it later on.\'a0 Does it make sense?\'a0 I may have to have a quiz to make sure you can rememberize it.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Alright, cool.\'a0 Let's go on.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Let's take a 4 minute break, and then we'll start talking about classification.\'a0 Rest your fingers.\'a0 Stand up for a second, and I'll talk to you in 4 minutes.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 [Break.]\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Alright, we're back!\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Are you ready, Alycia?\'a0\'a0 Here we go.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Interpreter:\'a0\'a0 Hannah is.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Alright, we're good to go.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 In the past, we've looked at one dimensional data.\'a0 We can do the same thing with two dimensional data.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 This is data about abominable snowmen and women.\'a0 We have height in centimeters on the left, and the age their hair turned grey on the x axis.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Hopefully you can see two clusters.\'a0 As humans, we can easily draw the line to divide those clusters.\'a0 For computers, that's another matter.\'a0 You have to write a program to find that clustering.\'a0 But it can be done.\'a0 You would use grid search or gradient descent or something to find that line.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 That's clustering.\'a0 You want to find the lumps in your data.\'a0 But now for the next homework, you're going to be given data for which you know the answers.\'a0 Now you get to say, oh, let's figure out what the answers are.\'a0 You can still look at this and say I can draw a line here between the blue and red data.\'a0 These are now classes.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Or maybe I want to draw the line here.\'a0 Or here.\'a0 How do I know the best thing to do?\'a0 I have to try it, and see what I care about.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 We're going to get into classification.\'a0 And I'll probably be redundant and say the same thing multiple ways.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 This data here, this is called a scatter plot.\'a0 When we plot one variable versus a second variable, we can use a scatter plot.\'a0 Write this down. \'a0I don't think this is in my notes.\'a0 A common technique is to plot every variable versus every other variable and then look through them for clusters.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Looking at this visually, I can say yeah, there are two lumps there.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 Sorry, you said plot every variable against every other variable?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Yes.\'a0 So you would plot attribute one against attribute one.\'a0 Attribute one against attribute two.\'a0 Attribute one against attribute three.\'a0 One versus four.\'a0 And then two versus three and so.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I don't do two versus one.\'a0 Why not?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 Because we already did one versus two.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Right.\'a0 There's no reason to repeat that.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 What is this a common technique for?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Exploratory data analysis.\'a0 I have data that I don't know about.\'a0 I plot everything against everything else, and then I can flip through the scatter plots.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Looking at this particular scatter plot, I can clearly see two lumps here.\'a0 Are you with me?\'a0 That's EDA.\'a0 Exploratory data analysis.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Now, this is for clustering.\'a0 I don't have classes here.\'a0 I have no class.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 When we go to classification, now I know what the classes are.\'a0 Here's another example with a different data set.\'a0 I plotted the red circles versus the blue crosses.\'a0 Now I can see clearly that there are two classes there.\'a0 And I could guess ahead of time and say I may want to say anyone to the right of this area is in the blue plus class.\'a0 Anyone to the left is in the red class.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 But how do I get a computer to find that?\'a0 That's kind of what the rest of the course is about.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Questions?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Ashley:\'a0 Maybe I'm missing something, but what's the point of being able to estimate a class if we already know the data's class?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Let me back up a second.\'a0 This is clustering.\'a0 I can divide this data into two lumps, and look at them to see what's going on.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 It could be that these two lumps are males and females.\'a0 Maybe this particular visualization helps me find males vs females of the snow folks.\'a0 I dunno.\'a0 I would assign some pseudo classes here.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Now, for this data, looking at this I can draw a line here that would say if you're above this line to the right you're in the blue class.\'a0 If you're below it to the left, you're in the red class.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Now, here comes a new data point.\'a0 This is future data that shows up.\'a0 We don't know the classification of this new data.\'a0 This person has a certain tail length and hair length.\'a0 What would you guess this person is, red or blue?\'a0 Given the fact that I learned this rule before, how would you guess that?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Ashley:\'a0 I said blue.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 I couldn't hear you.\'a0 The first one would be blue.\'a0 The double question mark would be red.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 We're building a classifier not really for the data we already know the class for.\'a0 We're building it for future data, so we can classify the future data when it shows up.\'a0 Data we've never seen before.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Ashley:\'a0 So it's for when you have a labeled training set, but unlabeled data coming in.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Well yeah, but future data is never labeled.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Ashley:\'a0 Makes sense, thank you.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 So, we have cars coming in.\'a0 This is unlabeled data.\'a0 We could cluster it.\'a0 But what I really want to do is have a target variable so I can easily sort them.\'a0 To do that, I get a training data set.\'a0 This is extremely valuable and expensive data to get.\'a0 To get this data, we have to pull over every single car, and the police officer has to say to them, what were you thinking?\'a0 We're going to determine the latent variable of their actions.\'a0 Their attitudes.\'a0 Their intention.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 To build a classifier, I'm going to use a threshold here somewhere that says anything over this, I'm going to think they're speeding.\'a0 But if I do this, there will be some people who are not speeding who will be misclassified.\'a0 And some of them will get missed.\'a0 Okay?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 So I take this threshold and I move it from left to right.\'a0 As I do that, the number of mistakes is going to drop off.\'a0 Make sense?\'a0 Where would you intuitively want to draw that line?\'a0 I'm going to say anyone higher than this threshold is trying to speed.\'a0 Where would you draw this line?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Ashley, I can't hear you.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 You have some intuitions.\'a0 Use them.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 I would say just under 60 because it looks like that's where the red starts to overtake the blue.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Who's talking?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Nick: Nick.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 I want to teach a computer to do this.\'a0 I have trained data.\'a0 What would we tell the computer to do?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Nick:\'a0 We could tell the computer to use . . . hmm.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 It knows.\'a0 If it draws a line here at 50mph, it can look to see how many cars are less than that.\'a0 There are two.\'a0 Those are mistakes.\'a0 And how many blue cars are there that are greater than 60mph?\'a0\'a0 You can add up all the histograms.\'a0 I have a lot of mistakes on the right hand side, so I would keep moving that threshold over until what becomes the minimum?\'a0 I have to figure out my cost function.\'a0 In this case, that would be the number of mistakes overall.\'a0 I want to minimize my number of oopsies.\'a0 I don't want to pull over people who are not trying to speed.\'a0 And I don't want to NOT pull over people who are not speeding.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Does that make sense?\'a0 Is everybody with me?\'a0 We're about to quit.\'a0 Any last questions?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 I think we're out of time.\'a0 We'll talk more about this as we go forward.\'a0 I should be putting up a quiz real soon now, so you can start practicing this vocabulary.\'a0 But also so I can practice putting up quizzes, because we've been having trouble doing that.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 Are you still going to give us the quiz about ourselves?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Yes.\'a0 I'm still working on that.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 You said we'll take tests on Saturdays, right?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Yes, and let me know if that's an issue.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 Do you have any posted dates yet?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Not yet.\'a0 It'll depend on how quickly we get through the material.\'a0 We should know dates at least a week ahead.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 Are the questions rhetorical or do we need to answer them on a separate sheet?\'a0 Like "does the situation happen", for example.\'a0\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 You should check for it.\'a0 Your program should say, oh look, a tie happened.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 But I don't need to literally answer in my .pdf?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Yes, you should.\'a0 I'm looking for those answers.\'a0\'a0 The two things should stand alone.\'a0 We should be able to read your code and see that you understood it, and I should be able to read your .pdf and see that you got it.\'a0 The graders have the ability to say this was a really well written .pdf and give you a bonus point.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 Are we implementing another section of code that handles three thresholds?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Yes, you would have to implement a little chunk of code.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Student:\'a0 Separate code?\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 Instructor:\'a0 Write it separately.\'a0 And you can copy paste.\'a0 That's fine.\'a0 You can say, this code is for the bonus and label it as such.\'a0 
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+
+\fs32 [End of class.]
+\fs29\fsmilli14667 \
+
+\fs32 \'a0
+\fs29\fsmilli14667 \
+\
+}
