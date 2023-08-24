@@ -79,12 +79,14 @@ def check_csv_file(common_comparison_csv_file_name, target_csv_file_name):
 #Transcript text file
 def read_docx_files(docs_to_be_changed, docx_to_be_read,dirs_list):
     tokenizer_unigram = RegexpTokenizer(r'([A-Za-z]+)+\s')
+    tokenizer_sent = RegexpTokenizer(r'(?<=[^A-Z].[.?!]) +(?=[A-Z])')
     list_of_words_with_pos_tags = []
     docs_read = 0
     list_of_files_processed = []
     list_of_dirs = dirs_list
 
     #Read document using docxpy module
+    token_docx_sent = docxpy.process(docx_to_be_read)
     token_docx = docxpy.process(docx_to_be_read)
     print("Working on file: " + docx_to_be_read)
     list_of_files_processed.append(docx_to_be_read)
@@ -101,10 +103,17 @@ def read_docx_files(docs_to_be_changed, docx_to_be_read,dirs_list):
     token_docx_unigram = re.sub(r'\t*', '', token_docx_unigram)
     token_docx_unigram = re.sub(r'\n*', '', token_docx_unigram)
 
+    token_docx_sent = re.sub(r'[A-Za-z0-9]+:+\s+\s', '', token_docx)
+    token_docx_sent = re.sub(r'\t*', '', token_docx_unigram)
+    token_docx_sent = re.sub(r'\n*', '', token_docx_unigram)
+
     print("Tokenizing document...")
     tokenized_docx = tokenizer_unigram.tokenize(token_docx_unigram)
+    tokenized_docx_sent = re.split(r'(?<=[^A-Z].[.?!]) +(?=[A-Z])',token_docx_sent)
     normalized_tokens = [x.lower() for x in tokenized_docx]
+    normalized_tokens_sent = [y.lower() for y in tokenized_docx_sent]
     normalized_tokens_without_sw = [w for w in normalized_tokens if w not in stop_words]
+    normalized_tokens_sent_without_sw = [z for z in normalized_tokens_sent if z not in stop_words]
 
     print("************************************************************************************************************")
     print("File " + docx_to_be_read + " has this many words, with stopwords removed:")
@@ -126,7 +135,7 @@ def read_docx_files(docs_to_be_changed, docx_to_be_read,dirs_list):
     print("Total words read: ")
     print(len(list_of_words_with_pos_tags))
 
-    return list_of_words_with_pos_tags
+    return list_of_words_with_pos_tags, normalized_tokens_sent_without_sw
 
 
 

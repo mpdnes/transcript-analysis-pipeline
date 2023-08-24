@@ -118,11 +118,11 @@ def main( root_dir):
     # The result is a list of dictionaries, with term frequencies.
     #
     print("DEBUGGING HERE -- USING ONLY THE FIRST THREE DOCUMENTS\n")
-    for docx in docx_list[0:3]:
+    for docx in docx_list:
         # This gets us the words with the Part of Speach tagging.
         # POS is important to create an accurate lemmatized list.
         #
-        list_of_words_with_pos_tags = preprocessing.read_docx_files(doc_list,docx,dirs_list)
+        [list_of_words_with_pos_tags, tokenized_sent] = preprocessing.read_docx_files(doc_list,docx,dirs_list)
 
         # Reduce a word to its root form:
         lemmatized_list             = preprocessing.lemmatizer_function(list_of_words_with_pos_tags)
