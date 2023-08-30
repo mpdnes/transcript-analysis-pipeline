@@ -127,6 +127,9 @@ def main( root_dir):
         # Reduce a word to its root form:
         lemmatized_list             = preprocessing.lemmatizer_function(list_of_words_with_pos_tags)
 
+        lemmatized_sent_list = preprocessing.sentence_lemmatizer(tokenized_sent)
+
+
         # Collocation = "Co-Location" in TBK Terms.
         # Result: A frequency distribution, and the number of unique words.
         [fdist,fd_length]           = preprocessing.collocation_bigram_freqdist(lemmatized_list)

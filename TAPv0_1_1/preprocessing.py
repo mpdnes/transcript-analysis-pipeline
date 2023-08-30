@@ -93,6 +93,7 @@ def read_docx_files(docs_to_be_changed, docx_to_be_read,dirs_list):
 
     #Expand contractions
     token_docx = contractions.fix(token_docx)
+    token_docx_sent = contractions.fix(token_docx_sent)
     print("Contractions completed...")
 
     SK_sw = sklearn_stop_words
@@ -103,9 +104,9 @@ def read_docx_files(docs_to_be_changed, docx_to_be_read,dirs_list):
     token_docx_unigram = re.sub(r'\t*', '', token_docx_unigram)
     token_docx_unigram = re.sub(r'\n*', '', token_docx_unigram)
 
-    token_docx_sent = re.sub(r'[A-Za-z0-9]+:+\s+\s', '', token_docx)
-    token_docx_sent = re.sub(r'\t*', '', token_docx_unigram)
-    token_docx_sent = re.sub(r'\n*', '', token_docx_unigram)
+    token_docx_sent = re.sub(r'[A-Za-z0-9]+:+\s+\s', '', token_docx_sent)
+    token_docx_sent = re.sub(r'\t*', '', token_docx_sent)
+    token_docx_sent = re.sub(r'\n*', '', token_docx_sent)
 
     print("Tokenizing document...")
     tokenized_docx = tokenizer_unigram.tokenize(token_docx_unigram)
@@ -113,8 +114,15 @@ def read_docx_files(docs_to_be_changed, docx_to_be_read,dirs_list):
     normalized_tokens = [x.lower() for x in tokenized_docx]
     normalized_tokens_sent = [y.lower() for y in tokenized_docx_sent]
     normalized_tokens_without_sw = [w for w in normalized_tokens if w not in stop_words]
-    normalized_tokens_sent_without_sw = [z for z in normalized_tokens_sent if z not in stop_words]
 
+    u=0
+
+    normalized_tokens_sent_without_sw=[]
+    for sentence in normalized_tokens_sent:
+        sent_without_sw_to_add=[]
+        for word in sentence.split():
+            sent_without_sw_to_add= ([word for word in sentence.split() if word not in stop_words])
+        normalized_tokens_sent_without_sw.append(' '.join(sent_without_sw_to_add))
     print("************************************************************************************************************")
     print("File " + docx_to_be_read + " has this many words, with stopwords removed:")
     print(len(normalized_tokens_without_sw))
@@ -123,6 +131,7 @@ def read_docx_files(docs_to_be_changed, docx_to_be_read,dirs_list):
 
     #Tag words with Part of Speech details
     normalized_tagged = nltk.pos_tag(normalized_tokens_without_sw)
+
     print("Assigning POS Tags...")
     docs_read += 1
     #inserting words into dictionary
@@ -137,7 +146,51 @@ def read_docx_files(docs_to_be_changed, docx_to_be_read,dirs_list):
 
     return list_of_words_with_pos_tags, normalized_tokens_sent_without_sw
 
+def sentence_lemmatizer(normalized_tokens_sent_without_sw):
+    lemmatizer = WordNetLemmatizer()
+    overall_sent_list = []
+    joined_sent_list = []
 
+    for sentence in normalized_tokens_sent_without_sw:
+        pos_tag_word = nltk.pos_tag(word_tokenize(sentence))
+        sent_lemmatized_list = []
+        for words, pos_tags in pos_tag_word:
+            # TODO: Print out the actual word type so we know what it is, just in case.
+            # print("Beginning lemmatization on word: " + words)
+            if pos_tags.startswith('N'):
+                pos_tags = 'n'
+                lemmatized_word = lemmatizer.lemmatize(words, pos=pos_tags)
+                sent_lemmatized_list.append(lemmatized_word)                    # print("Lemmatized word: " + lemmatized_word)
+            elif pos_tags.startswith('J'):
+                pos_tags = 'a'
+                lemmatized_word = lemmatizer.lemmatize(words, pos=pos_tags)
+                sent_lemmatized_list.append(lemmatized_word)                    # print("Lemmatized word: " + lemmatized_word)
+                    # print("Word type: Adjective")
+            elif pos_tags.startswith('R'):
+                pos_tags = 'r'
+                lemmatized_word = lemmatizer.lemmatize(words, pos=pos_tags)
+                sent_lemmatized_list.append(lemmatized_word)                    # print("Word type: Adverb")
+                    # print("Lemmatized word: " + lemmatized_word)
+            elif pos_tags.startswith('V'):
+                pos_tags = 'v'
+                lemmatized_word = lemmatizer.lemmatize(words, pos=pos_tags)
+                sent_lemmatized_list.append(lemmatized_word)
+                    # print("Word type: Verb")
+                    # print("Lemmatized word: " + lemmatized_word)
+            elif pos_tags.startswith('C'):
+                pos_tags = 'n'
+                lemmatized_word = lemmatizer.lemmatize(words, pos=pos_tags)
+                sent_lemmatized_list.append(lemmatized_word)
+                    # print("Lemmatized word: " + lemmatized_word)
+                    # print("Word type: Noun")
+
+
+        joined_sent_list.append(' '.join(sent_lemmatized_list))
+
+    overall_sent_list.append(joined_sent_list)
+
+    print("Completed word gathering and lemmatization. Ready for FreqDist.")
+    return overall_sent_list
 
 def lemmatizer_function(list_of_words_with_pos_tags):
     lemmatizer = WordNetLemmatizer()
