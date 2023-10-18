@@ -108,6 +108,17 @@ def compute_tf_idf(term_freq_list,scaled_idf):
 
     return computed_idf_dict
 
+def sentence_scorer(tf_idf_list,sent_list):
+    import re
+    scores_list = []
+    for sent in sent_list:
+        words = sent.split(" ")
+        for word in words:
+           if word in tf_idf_list.keys():
+               print("found " + word)
+
+
+    return scores_List
 
 import random
 

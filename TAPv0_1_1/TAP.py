@@ -118,7 +118,7 @@ def main( root_dir):
     # The result is a list of dictionaries, with term frequencies.
     #
     print("DEBUGGING HERE -- USING ONLY THE FIRST THREE DOCUMENTS\n")
-    for docx in docx_list:
+    for docx in docx_list[0:1]:
         # This gets us the words with the Part of Speach tagging.
         # POS is important to create an accurate lemmatized list.
         #
@@ -164,6 +164,9 @@ def main( root_dir):
     for dict_in_list in tf_idf_list:
         sorted_tf_idf = Sort_Dict_of_Integers.Sort_Dict_of_Integers(dict_in_list)
         sorted_tf_idf_list.append(sorted_tf_idf)
+
+    testing = postprocessing.sentence_scorer(tf_idf_list, lemmatized_sent_list)
+
 
     #
     #  ACTUALLY CREATE THE WORD CLOUD!

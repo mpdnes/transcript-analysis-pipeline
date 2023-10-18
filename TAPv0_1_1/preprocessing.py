@@ -148,7 +148,7 @@ def read_docx_files(docs_to_be_changed, docx_to_be_read,dirs_list):
 
 def sentence_lemmatizer(normalized_tokens_sent_without_sw):
     lemmatizer = WordNetLemmatizer()
-    overall_sent_list = []
+
     joined_sent_list = []
 
     for sentence in normalized_tokens_sent_without_sw:
@@ -187,10 +187,10 @@ def sentence_lemmatizer(normalized_tokens_sent_without_sw):
 
         joined_sent_list.append(' '.join(sent_lemmatized_list))
 
-    overall_sent_list.append(joined_sent_list)
+
 
     print("Completed word gathering and lemmatization. Ready for FreqDist.")
-    return overall_sent_list
+    return joined_sent_list
 
 def lemmatizer_function(list_of_words_with_pos_tags):
     lemmatizer = WordNetLemmatizer()
