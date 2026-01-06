@@ -1,2 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.egg
+*.egg-info/
+dist/
+build/
 
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Generated files
+*.aux
+*.log
+*.synctex.gz
+*.out
+DUMP.csv
+Wordcloud*.png
+
+# Temporary files
+~$*.docx
+~$*.pptx
+*.tmp
+*.bak
+
+# Output files
+TAPv0_1_1/*.csv
+TAPv0_1_1/*.png
+
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
