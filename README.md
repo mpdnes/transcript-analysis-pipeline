@@ -61,15 +61,14 @@ python TAP.py
 ### Project Structure
 
 ```
-TAP/
+transcript-analysis-pipeline/
 ├── TAPv0_1_1/              # Main application code
 │   ├── TAP.py              # Main analysis script
 │   ├── preprocessing.py    # Document preprocessing utilities
 │   ├── postprocessing.py   # Analysis output formatting
 │   └── setup.py            # Configuration
-├── TEST_SUITE/             # Sample transcript files
+├── TEST_SUITE/             # Directory for transcript files
 ├── BUILD_CLASSIFIER_for_UNIGRAMS/  # MATLAB classifier scripts
-├── REPORT_on_Phase_1/      # Project documentation and results
 └── requirements.txt        # Python dependencies
 ```
 
@@ -122,12 +121,6 @@ TAP generates:
 ## Research Context
 
 This project was developed as part of research into real-time captioning quality and linguistic patterns in educational transcription. The analysis helps identify common terms, captioning patterns, and areas for improvement in real-time captioning services.
-
-## Documentation
-
-Additional documentation available in:
-- `REPORT_on_Phase_1/`: Detailed analysis reports and results
-- `DOODLES_and_NOTES/`: Design documents and flow diagrams
 
 ## License
 
