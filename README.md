@@ -31,8 +31,8 @@ TAP (Transcript Analysis Project) was created to analyze typed transcripts from 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/TAP.git
-cd TAP
+git clone https://github.com/mpdnes/transcript-analysis-pipeline.git
+cd transcript-analysis-pipeline
 ```
 
 2. Install dependencies:
